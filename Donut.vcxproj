@@ -119,11 +119,12 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_OPENGL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>external/glm;external/spdlog/include;src/glad/include;src/imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external/glm;external/spdlog/include;src/glad/include;src/imgui;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>donut_pch.h</PrecompiledHeaderFile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,11 +170,17 @@
     <ClCompile Include="src\imgui\imgui_widgets.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\indexbuffer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\mesh.cpp" />
+    <ClCompile Include="src\render_impl\opengl\opengl_indexbuffer.cpp" />
+    <ClCompile Include="src\render_impl\opengl\opengl_shader.cpp" />
+    <ClCompile Include="src\render_impl\opengl\opengl_shadersection.cpp" />
+    <ClCompile Include="src\render_impl\opengl\opengl_vertexbuffer.cpp" />
     <ClCompile Include="src\shader.cpp" />
     <ClCompile Include="src\shadersection.cpp" />
     <ClCompile Include="src\testcanvas.cpp" />
+    <ClCompile Include="src\vertexbuffer.cpp" />
     <ClCompile Include="src\vertexlayout.cpp" />
     <ClCompile Include="src\window.cpp" />
   </ItemGroup>
@@ -196,6 +203,14 @@
     <ClInclude Include="src\indexbuffer.h" />
     <ClInclude Include="src\mesh.h" />
     <ClInclude Include="src\noncopyable.h" />
+    <ClInclude Include="src\render_impl\indexbuffer_impl.h" />
+    <ClInclude Include="src\render_impl\opengl\opengl_indexbuffer.h" />
+    <ClInclude Include="src\render_impl\opengl\opengl_shader.h" />
+    <ClInclude Include="src\render_impl\opengl\opengl_shadersection.h" />
+    <ClInclude Include="src\render_impl\opengl\opengl_vertexbuffer.h" />
+    <ClInclude Include="src\render_impl\shadersection_impl.h" />
+    <ClInclude Include="src\render_impl\shader_impl.h" />
+    <ClInclude Include="src\render_impl\vertexbuffer_impl.h" />
     <ClInclude Include="src\shader.h" />
     <ClInclude Include="src\shadersection.h" />
     <ClInclude Include="src\testcanvas.h" />

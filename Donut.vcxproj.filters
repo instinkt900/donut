@@ -43,6 +43,24 @@
     <ClCompile Include="src\imgui\imgui_widgets.cpp">
       <Filter>src\imgui</Filter>
     </ClCompile>
+    <ClCompile Include="src\indexbuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vertexbuffer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_impl\opengl\opengl_indexbuffer.cpp">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_impl\opengl\opengl_shader.cpp">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_impl\opengl\opengl_shadersection.cpp">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_impl\opengl\opengl_vertexbuffer.cpp">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -114,6 +132,30 @@
     <ClInclude Include="src\imgui\imstb_truetype.h">
       <Filter>src\imgui</Filter>
     </ClInclude>
+    <ClInclude Include="src\render_impl\opengl\opengl_indexbuffer.h">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\opengl\opengl_shader.h">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\opengl\opengl_shadersection.h">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\opengl\opengl_vertexbuffer.h">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\indexbuffer_impl.h">
+      <Filter>src\render_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\vertexbuffer_impl.h">
+      <Filter>src\render_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\shader_impl.h">
+      <Filter>src\render_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\shadersection_impl.h">
+      <Filter>src\render_impl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -136,6 +178,12 @@
     </Filter>
     <Filter Include="src\imgui">
       <UniqueIdentifier>{87acfb8a-07df-439c-8406-713bdd9cd038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\render_impl">
+      <UniqueIdentifier>{bc3b4141-0201-48c1-87bc-db35c7e50b4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\render_impl\opengl">
+      <UniqueIdentifier>{1a130696-c0eb-4a86-876c-4717927ae502}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

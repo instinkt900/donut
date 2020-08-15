@@ -1,33 +1,21 @@
 #pragma once
 
-namespace donut {
-    enum class ShaderSectionType {
-        Vertex,
-        Fragment
-    };
+#include "render_impl/shadersection_impl.h"
 
+namespace donut {
 	class ShaderSection {
     public:
         ShaderSection(ShaderSectionType type, char const* source);
-        ~ShaderSection() = default;
-
         ShaderSection(ShaderSection const& other) = default;
         ShaderSection& operator=(ShaderSection const& other) = default;
+        ~ShaderSection() = default;
 
-        bool Valid() const { return nullptr != m_data; }
+        bool Valid() const { return nullptr != m_impl; }
         operator bool() const { return Valid(); }
 
-        int GetId() const {
-            assert(Valid());
-            return m_data->m_id;
-        }
+        int GetId() const;
 
     private:
-        struct Data {
-            ~Data() { glDeleteShader(m_id); }
-            int m_id = 0;
-        };
-
-        std::shared_ptr<Data> m_data;
+        std::shared_ptr<ShaderSectionImpl> m_impl;
 	};
 }

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "render_impl/shader_impl.h"
+
 namespace donut {
 	class Shader {
     public:
@@ -10,7 +12,7 @@ namespace donut {
         Shader(Shader const&) = default;
         Shader& operator=(Shader const&) = default;
 
-        bool Valid() const { return nullptr != m_data; }
+        bool Valid() const { return nullptr != m_impl; }
         operator bool() const { return Valid(); }
 
         void Bind() const;
@@ -22,13 +24,6 @@ namespace donut {
         void SetMatrix44(std::string const& name, glm::mat4x4 const& mat);
 
     private:
-        struct Data {
-            ~Data() { glDeleteProgram(m_id); }
-            int m_id;
-            std::unordered_map<std::string, int> m_uniformCache;
-        };
-        std::shared_ptr<Data> m_data;
-
-        int GetUniformLoc(std::string const& name);
+        std::shared_ptr<ShaderImpl> m_impl;
 	};
 }
