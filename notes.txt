@@ -1,0 +1,5 @@
+git credentials
+dl zip from
+https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/tag/1.20.0
+run install.cmd
+git config --global credential.helper manager
