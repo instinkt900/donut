@@ -34,9 +34,9 @@ namespace donut {
     }
 
     void VertexLayout::Apply() const {
-        int offset = 0;
+        size_t offset = 0;
         for (unsigned int i = 0; i < m_elements.size(); ++i) {
-            glVertexAttribPointer(i, m_elements[i].m_count, ToGL(m_elements[i].m_type), m_elements[i].m_normalized, m_stride, (void*)offset);
+            glVertexAttribPointer(i, m_elements[i].m_count, ToGL(m_elements[i].m_type), m_elements[i].m_normalized, static_cast<GLsizei>(m_stride), (void*)offset);
             glEnableVertexAttribArray(i);
             offset += m_elements[i].m_count * TypeSize(m_elements[i].m_type);
         }
