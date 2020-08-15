@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\donut_pch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\window.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\testcanvas.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\glad\src\glad.c" />
+    <ClCompile Include="src\shader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\shadersection.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\vertexlayout.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\mesh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_impl_glfw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_impl_opengl3.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\icanvas.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\donut_pch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\window.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\noncopyable.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testcanvas.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shader.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shadersection.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vertexbuffer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\indexbuffer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vertexelement.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\vertexlayout.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\mesh.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imstb_rectpack.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imstb_textedit.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imstb_truetype.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imgui_impl_glfw.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imgui_impl_opengl3.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d6cf8251-5bdd-47a2-8c59-18306dec7744}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{4032e5ea-720c-4603-8a1f-e59022e159f5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
