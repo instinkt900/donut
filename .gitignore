@@ -1,0 +1,5 @@
+.vs
+*.user
+imgui.ini
+packages
+x64

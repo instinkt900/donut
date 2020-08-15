@@ -13,7 +13,6 @@
     <ClCompile Include="src\testcanvas.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="external\glad\src\glad.c" />
     <ClCompile Include="src\shader.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -26,23 +25,23 @@
     <ClCompile Include="src\mesh.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="external\imgui\imgui.cpp">
-      <Filter>imgui</Filter>
+    <ClCompile Include="src\glad\src\glad.c">
+      <Filter>src\glad\src</Filter>
     </ClCompile>
-    <ClCompile Include="external\imgui\imgui_demo.cpp">
-      <Filter>imgui</Filter>
+    <ClCompile Include="src\imgui\imgui.cpp">
+      <Filter>src\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="external\imgui\imgui_draw.cpp">
-      <Filter>imgui</Filter>
+    <ClCompile Include="src\imgui\imgui_draw.cpp">
+      <Filter>src\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="external\imgui\imgui_widgets.cpp">
-      <Filter>imgui</Filter>
+    <ClCompile Include="src\imgui\imgui_impl_glfw.cpp">
+      <Filter>src\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="external\imgui\imgui_impl_glfw.cpp">
-      <Filter>imgui</Filter>
+    <ClCompile Include="src\imgui\imgui_impl_opengl3.cpp">
+      <Filter>src\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="external\imgui\imgui_impl_opengl3.cpp">
-      <Filter>imgui</Filter>
+    <ClCompile Include="src\imgui\imgui_widgets.cpp">
+      <Filter>src\imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,37 +84,58 @@
     <ClInclude Include="src\mesh.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="external\imgui\imconfig.h">
-      <Filter>imgui</Filter>
+    <ClInclude Include="src\glad\include\glad\glad.h">
+      <Filter>src\glad\include\glad</Filter>
     </ClInclude>
-    <ClInclude Include="external\imgui\imgui.h">
-      <Filter>imgui</Filter>
+    <ClInclude Include="src\glad\include\KHR\khrplatform.h">
+      <Filter>src\glad\include\KHR</Filter>
     </ClInclude>
-    <ClInclude Include="external\imgui\imgui_internal.h">
-      <Filter>imgui</Filter>
+    <ClInclude Include="src\imgui\imconfig.h">
+      <Filter>src\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="external\imgui\imstb_rectpack.h">
-      <Filter>imgui</Filter>
+    <ClInclude Include="src\imgui\imgui.h">
+      <Filter>src\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="external\imgui\imstb_textedit.h">
-      <Filter>imgui</Filter>
+    <ClInclude Include="src\imgui\imgui_impl_glfw.h">
+      <Filter>src\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="external\imgui\imstb_truetype.h">
-      <Filter>imgui</Filter>
+    <ClInclude Include="src\imgui\imgui_impl_opengl3.h">
+      <Filter>src\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="external\imgui\imgui_impl_glfw.h">
-      <Filter>imgui</Filter>
+    <ClInclude Include="src\imgui\imgui_internal.h">
+      <Filter>src\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="external\imgui\imgui_impl_opengl3.h">
-      <Filter>imgui</Filter>
+    <ClInclude Include="src\imgui\imstb_rectpack.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imstb_textedit.h">
+      <Filter>src\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\imgui\imstb_truetype.h">
+      <Filter>src\imgui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{d6cf8251-5bdd-47a2-8c59-18306dec7744}</UniqueIdentifier>
     </Filter>
-    <Filter Include="imgui">
-      <UniqueIdentifier>{4032e5ea-720c-4603-8a1f-e59022e159f5}</UniqueIdentifier>
+    <Filter Include="src\glad">
+      <UniqueIdentifier>{647cd9d0-5e52-40b1-9238-9a2262b4da80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\glad\include">
+      <UniqueIdentifier>{7c0dbcd4-c219-4c20-ac74-8aa035af047c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\glad\include\glad">
+      <UniqueIdentifier>{949f3a90-fe0c-43b9-88af-7ea08378c3d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\glad\include\KHR">
+      <UniqueIdentifier>{42bb556e-88f4-4395-9609-e0578fd78a55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\glad\src">
+      <UniqueIdentifier>{515868e6-2a99-4dc7-9b3b-56a35390bed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\imgui">
+      <UniqueIdentifier>{87acfb8a-07df-439c-8406-713bdd9cd038}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
