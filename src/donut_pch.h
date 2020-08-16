@@ -4,11 +4,16 @@
 
 #include <string>
 
-#include "render_impl/render_impl.h"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include "noncopyable.h"
-#include "shadersection.h"
-#include "shader.h"
-#include "vertexbuffer.h"
-#include "indexbuffer.h"
-#include "mesh.h"
+
+#include "renderer/render_impl/render_impl.h"
+#include "renderer/shadersection.h"
+#include "renderer/shader.h"
+#include "renderer/vertexbuffer.h"
+#include "renderer/indexbuffer.h"
+#include "renderer/mesh.h"
+#include "renderer/icanvas.h"
+#include "renderer/window.h"

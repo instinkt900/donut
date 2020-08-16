@@ -1,10 +1,6 @@
 #include "donut_pch.h"
 #include "testcanvas.h"
 
-#include "window.h"
-
-#include <glm/gtc/matrix_transform.hpp>
-
 auto const VertexShaderSource = R"(
 #version 330 core
 uniform mat4 viewProjection;

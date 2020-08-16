@@ -1,7 +1,5 @@
 #pragma once
 
-#include "icanvas.h"
-
 namespace donut {
     struct TestVertex {
         glm::vec3 m_position;

@@ -7,22 +7,7 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\window.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\testcanvas.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\shader.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\shadersection.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\vertexlayout.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\mesh.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\glad\src\glad.c">
@@ -43,69 +28,57 @@
     <ClCompile Include="src\imgui\imgui_widgets.cpp">
       <Filter>src\imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\indexbuffer.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_glfw_window.cpp">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="src\vertexbuffer.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_indexbuffer.cpp">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="src\render_impl\opengl\opengl_indexbuffer.cpp">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_shader.cpp">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="src\render_impl\opengl\opengl_shader.cpp">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_shadersection.cpp">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="src\render_impl\opengl\opengl_shadersection.cpp">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_vertexbuffer.cpp">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="src\render_impl\opengl\opengl_vertexbuffer.cpp">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_vertexlayout.cpp">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="src\render_impl\opengl\opengl_vertexlayout.cpp">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClCompile Include="src\renderer\indexbuffer.cpp">
+      <Filter>src\renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\render_impl\opengl\opengl_glfw_window.cpp">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClCompile Include="src\renderer\mesh.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\shader.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\shadersection.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\vertexbuffer.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\vertexlayout.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\window.cpp">
+      <Filter>src\renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\icanvas.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\donut_pch.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\window.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\noncopyable.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\testcanvas.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\shader.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\shadersection.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vertexbuffer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\indexbuffer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vertexelement.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\vertexlayout.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\mesh.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\glad\include\glad\glad.h">
@@ -138,44 +111,71 @@
     <ClInclude Include="src\imgui\imstb_truetype.h">
       <Filter>src\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\opengl\opengl_indexbuffer.h">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_glfw_window.h">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\opengl\opengl_shader.h">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_indexbuffer.h">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\opengl\opengl_shadersection.h">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_shader.h">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\opengl\opengl_vertexbuffer.h">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_shadersection.h">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\indexbuffer_impl.h">
-      <Filter>src\render_impl</Filter>
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_vertexbuffer.h">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\vertexbuffer_impl.h">
-      <Filter>src\render_impl</Filter>
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_vertexlayout.h">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\shader_impl.h">
-      <Filter>src\render_impl</Filter>
+    <ClInclude Include="src\renderer\render_impl\indexbuffer_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\shadersection_impl.h">
-      <Filter>src\render_impl</Filter>
+    <ClInclude Include="src\renderer\render_impl\render_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\opengl\opengl_vertexlayout.h">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClInclude Include="src\renderer\render_impl\shader_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\vertexlayout_impl.h">
-      <Filter>src\render_impl</Filter>
+    <ClInclude Include="src\renderer\render_impl\shadersection_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\opengl\opengl_glfw_window.h">
-      <Filter>src\render_impl\opengl</Filter>
+    <ClInclude Include="src\renderer\render_impl\vertexbuffer_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\window_impl.h">
-      <Filter>src\render_impl</Filter>
+    <ClInclude Include="src\renderer\render_impl\vertexlayout_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
     </ClInclude>
-    <ClInclude Include="src\render_impl\render_impl.h">
-      <Filter>src\render_impl</Filter>
+    <ClInclude Include="src\renderer\render_impl\window_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\icanvas.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\indexbuffer.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\mesh.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\shader.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\shadersection.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\vertexbuffer.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\vertexelement.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\vertexlayout.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\window.h">
+      <Filter>src\renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -200,11 +200,14 @@
     <Filter Include="src\imgui">
       <UniqueIdentifier>{87acfb8a-07df-439c-8406-713bdd9cd038}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\render_impl">
-      <UniqueIdentifier>{bc3b4141-0201-48c1-87bc-db35c7e50b4a}</UniqueIdentifier>
+    <Filter Include="src\renderer">
+      <UniqueIdentifier>{67de1397-e863-4bae-b030-684d1b48174e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\render_impl\opengl">
-      <UniqueIdentifier>{1a130696-c0eb-4a86-876c-4717927ae502}</UniqueIdentifier>
+    <Filter Include="src\renderer\renderer_impl">
+      <UniqueIdentifier>{4427f88c-cd4e-4593-8b3b-a3ce6b827435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\renderer\renderer_impl\opengl">
+      <UniqueIdentifier>{fd816619-d81b-482f-820e-1a8ec2462856}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
