@@ -64,20 +64,18 @@ namespace donut {
 
     }
 
-    void TestCanvas::OnAddedToWindow(Window* window, int width, int height) {
-        m_width = width;
-        m_height = height;
-        glViewport(0, 0, m_width, m_height);
+    void TestCanvas::OnAddedToWindow(Window window) {
+        m_width = window.GetContentWidth();
+        m_height = window.GetContentHeight();
     }
 
-    void TestCanvas::OnRemovedFromWindow(Window* window) {
+    void TestCanvas::OnRemovedFromWindow(Window window) {
 
     }
 
     void TestCanvas::OnResize(int width, int height) {
         m_width = width;
         m_height = height;
-        glViewport(0, 0, m_width, m_height);
     }
 
     void TestCanvas::OnKey(int key, int action, int mods) {
@@ -97,6 +95,8 @@ namespace donut {
     }
 
     void TestCanvas::Draw() {
+        glViewport(0, 0, m_width, m_height);
+
         m_shader.Bind();
         m_mesh.Draw();
         m_shader.Unbind();

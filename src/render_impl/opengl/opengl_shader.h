@@ -3,7 +3,7 @@
 #include "shadersection.h"
 
 namespace donut::opengl {
-    class ShaderImpl {
+    class ShaderImpl : public NonCopyable {
     public:
         static std::shared_ptr<ShaderImpl> Create(std::initializer_list<ShaderSection> const& sections);
         ~ShaderImpl();

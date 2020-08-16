@@ -1,7 +1,7 @@
 #pragma once
 
 namespace donut::opengl {
-    class IndexBufferImpl {
+    class IndexBufferImpl : public NonCopyable {
     public:
         static std::shared_ptr<IndexBufferImpl> Create(unsigned int* data, unsigned int count);
         ~IndexBufferImpl();

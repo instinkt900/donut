@@ -3,7 +3,7 @@
 #ifdef USE_OPENGL
 #include "opengl/opengl_shader.h"
 namespace donut {
-    using namespace opengl;
+    using ShaderImpl = opengl::ShaderImpl;
 }
 #else
 #error TODO

@@ -13,8 +13,8 @@ namespace donut {
         TestCanvas();
         ~TestCanvas();
 
-        void OnAddedToWindow(Window* window, int width, int height) override;
-        void OnRemovedFromWindow(Window* window) override;
+        void OnAddedToWindow(Window window) override;
+        void OnRemovedFromWindow(Window window) override;
         void OnResize(int width, int height) override;
         void OnKey(int key, int action, int mods) override;
         void OnMouseButton(int button, int action, int mods) override;

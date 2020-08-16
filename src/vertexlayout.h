@@ -1,19 +1,23 @@
 #pragma once
 
-#include "vertexelement.h"
+#include "render_impl/vertexlayout_impl.h"
 
 namespace donut {
 	class VertexLayout {
     public:
+        VertexLayout() = default;
         VertexLayout(std::initializer_list<VertexElement> elements);
+        VertexLayout(VertexLayout const&) = default;
+        VertexLayout& operator=(VertexLayout const&) = default;
         ~VertexLayout() = default;
 
-        size_t GetStride() const { return m_stride; }
+        bool Valid() const { return m_impl != nullptr; }
+        operator bool() const { return Valid(); }
 
+        size_t GetStride() const;
         void Apply() const;
 
     private:
-        std::vector<VertexElement> m_elements;
-        size_t m_stride;
+        std::shared_ptr<VertexLayoutImpl> m_impl;
 	};
 }

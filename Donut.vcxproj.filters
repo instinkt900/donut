@@ -61,6 +61,12 @@
     <ClCompile Include="src\render_impl\opengl\opengl_vertexbuffer.cpp">
       <Filter>src\render_impl\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="src\render_impl\opengl\opengl_vertexlayout.cpp">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\render_impl\opengl\opengl_glfw_window.cpp">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -154,6 +160,21 @@
       <Filter>src\render_impl</Filter>
     </ClInclude>
     <ClInclude Include="src\render_impl\shadersection_impl.h">
+      <Filter>src\render_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\opengl\opengl_vertexlayout.h">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\vertexlayout_impl.h">
+      <Filter>src\render_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\opengl\opengl_glfw_window.h">
+      <Filter>src\render_impl\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\window_impl.h">
+      <Filter>src\render_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\render_impl\render_impl.h">
       <Filter>src\render_impl</Filter>
     </ClInclude>
   </ItemGroup>

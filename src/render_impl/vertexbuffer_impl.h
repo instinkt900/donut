@@ -3,7 +3,7 @@
 #ifdef USE_OPENGL
 #include "opengl/opengl_vertexbuffer.h"
 namespace donut {
-    using namespace opengl;
+    using VertexBufferImpl = opengl::VertexBufferImpl;
 }
 #else
 #error TODO

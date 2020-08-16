@@ -1,5 +1,6 @@
 #pragma once
 
+// TODO find a better place for this
 namespace donut {
     enum class ShaderSectionType {
         Vertex,
@@ -10,7 +11,7 @@ namespace donut {
 #ifdef USE_OPENGL
 #include "opengl/opengl_shadersection.h"
 namespace donut {
-    using namespace opengl;
+    using ShaderSectionImpl = opengl::ShaderSectionImpl;
 }
 #else
 #error TODO
