@@ -26,77 +26,77 @@ void main()
 }
 )";
 
-namespace donut {
-    TestCanvas::TestCanvas() {
-        m_shader = Shader { ShaderSection(ShaderSectionType::Vertex, VertexShaderSource),
-            ShaderSection(ShaderSectionType::Fragment, FragmentShaderSource) };
+using namespace donut;
 
-        VertexLayout layout {
-            VertexElement { VertexElementType::Float, 3, false },
-            VertexElement { VertexElementType::Float, 4, false }
-        };
+TestCanvas::TestCanvas() {
+    m_shader = Shader { ShaderSection(ShaderSectionType::Vertex, VertexShaderSource),
+        ShaderSection(ShaderSectionType::Fragment, FragmentShaderSource) };
 
-        TestVertex verts[] = {
-            { { -0.5, -0.5, 0 }, { 1, 1, 1, 1 } },
-            { { 0.5, -0.5, 0 }, { 1, 1, 1, 1 } },
-            { { 0, 0.5, 0 }, { 1, 1, 1, 1 } },
-        };
+    VertexLayout layout {
+        VertexElement { VertexElementType::Float, 3, false },
+        VertexElement { VertexElementType::Float, 4, false }
+    };
 
-        unsigned int indices[] { 0, 1, 2 };
+    TestVertex verts[] = {
+        { { -0.5, -0.5, 0 }, { 1, 1, 1, 1 } },
+        { { 0.5, -0.5, 0 }, { 1, 1, 1, 1 } },
+        { { 0, 0.5, 0 }, { 1, 1, 1, 1 } },
+    };
 
-        VertexBuffer vb(layout, verts, 3);
-        IndexBuffer ib(indices, 3);
-        m_mesh = Mesh(vb, ib);
+    unsigned int indices[] { 0, 1, 2 };
 
-        auto const ortho = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f);
-        m_shader.Bind();
-        m_shader.SetMatrix44("viewProjection", ortho);
-        m_shader.SetMatrix44("model", glm::mat4x4(1.0f));
-        m_shader.SetVector4("color", glm::vec4(1, 1, 1, 1));
-        m_shader.Unbind();
-    }
+    VertexBuffer vb(layout, verts, 3);
+    IndexBuffer ib(indices, 3);
+    m_mesh = Mesh(vb, ib);
 
-    TestCanvas::~TestCanvas() {
+    auto const ortho = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f);
+    m_shader.Bind();
+    m_shader.SetMatrix44("viewProjection", ortho);
+    m_shader.SetMatrix44("model", glm::mat4x4(1.0f));
+    m_shader.SetVector4("color", glm::vec4(1, 1, 1, 1));
+    m_shader.Unbind();
+}
 
-    }
+TestCanvas::~TestCanvas() {
 
-    void TestCanvas::OnAddedToWindow(Window window) {
-        m_width = window.GetContentWidth();
-        m_height = window.GetContentHeight();
-    }
+}
 
-    void TestCanvas::OnRemovedFromWindow(Window window) {
+void TestCanvas::OnAddedToWindow(Window window) {
+    m_width = window.GetContentWidth();
+    m_height = window.GetContentHeight();
+}
 
-    }
+void TestCanvas::OnRemovedFromWindow(Window window) {
 
-    void TestCanvas::OnResize(int width, int height) {
-        m_width = width;
-        m_height = height;
-    }
+}
 
-    void TestCanvas::OnKey(int key, int action, int mods) {
+void TestCanvas::OnResize(int width, int height) {
+    m_width = width;
+    m_height = height;
+}
 
-    }
+void TestCanvas::OnKey(int key, int action, int mods) {
 
-    void TestCanvas::OnMouseButton(int button, int action, int mods) {
+}
 
-    }
+void TestCanvas::OnMouseButton(int button, int action, int mods) {
 
-    void TestCanvas::OnMouseScroll(double xOffset, double yOffset) {
+}
 
-    }
+void TestCanvas::OnMouseScroll(double xOffset, double yOffset) {
 
-    void TestCanvas::OnMouseMove(double x, double y) {
+}
 
-    }
+void TestCanvas::OnMouseMove(double x, double y) {
 
-    void TestCanvas::Draw() {
-        glViewport(0, 0, m_width, m_height);
+}
 
-        m_shader.Bind();
-        m_mesh.Draw();
-        m_shader.Unbind();
+void TestCanvas::Draw() {
+    glViewport(0, 0, m_width, m_height);
 
-        ImGui::Text("Hello world");
-    }
+    m_shader.Bind();
+    m_mesh.Draw();
+    m_shader.Unbind();
+
+    ImGui::Text("Hello world");
 }
