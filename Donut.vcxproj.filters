@@ -67,6 +67,12 @@
     <ClCompile Include="src\renderer\window.cpp">
       <Filter>src\renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\scene\scene.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\entity.cpp">
+      <Filter>src\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -177,6 +183,12 @@
     <ClInclude Include="src\renderer\window.h">
       <Filter>src\renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\scene\scene.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\entity.h">
+      <Filter>src\scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -208,6 +220,9 @@
     </Filter>
     <Filter Include="src\renderer\renderer_impl\opengl">
       <UniqueIdentifier>{fd816619-d81b-482f-820e-1a8ec2462856}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scene">
+      <UniqueIdentifier>{a0cceb8c-4336-4dc4-91d7-dd60d9b86baa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

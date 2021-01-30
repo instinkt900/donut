@@ -122,7 +122,7 @@
       <PreprocessorDefinitions>USE_OPENGL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>external/glm;external/spdlog/include;src/glad/include;src/imgui;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external/glm;external/spdlog/include;external/entt/single_include;src/glad/include;src/imgui;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>donut_pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -184,6 +184,8 @@
     <ClCompile Include="src\renderer\vertexbuffer.cpp" />
     <ClCompile Include="src\renderer\vertexlayout.cpp" />
     <ClCompile Include="src\renderer\window.cpp" />
+    <ClCompile Include="src\scene\entity.cpp" />
+    <ClCompile Include="src\scene\scene.cpp" />
     <ClCompile Include="src\testcanvas.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +226,8 @@
     <ClInclude Include="src\renderer\vertexelement.h" />
     <ClInclude Include="src\renderer\vertexlayout.h" />
     <ClInclude Include="src\renderer\window.h" />
+    <ClInclude Include="src\scene\entity.h" />
+    <ClInclude Include="src\scene\scene.h" />
     <ClInclude Include="src\testcanvas.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

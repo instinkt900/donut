@@ -1,6 +1,7 @@
 #pragma once
 
-#include "spdlog/spdlog.h"
+#include <entt/entt.hpp>
+#include <spdlog/spdlog.h>
 
 #include <string>
 
@@ -17,3 +18,6 @@
 #include "renderer/mesh.h"
 #include "renderer/icanvas.h"
 #include "renderer/window.h"
+
+#include "scene/scene.h"
+#include "scene/entity.h"
