@@ -15,6 +15,8 @@
 #include "renderer/shader.h"
 #include "renderer/vertexbuffer.h"
 #include "renderer/indexbuffer.h"
+#include "renderer/image.h"
+#include "renderer/texture2d.h"
 #include "renderer/mesh.h"
 #include "renderer/icanvas.h"
 #include "renderer/window.h"

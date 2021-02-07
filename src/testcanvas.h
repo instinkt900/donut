@@ -2,7 +2,7 @@
 
 struct TestVertex {
     glm::vec3 m_position;
-    glm::vec4 m_color;
+    glm::vec2 m_UV;
 };
 
 class TestCanvas : public donut::ICanvas {
@@ -23,4 +23,5 @@ private:
     int m_width = 0, m_height = 0;
     donut::Shader m_shader;
     donut::Mesh m_mesh;
+    donut::Texture2D m_texture;
 };

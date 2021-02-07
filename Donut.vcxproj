@@ -122,13 +122,15 @@
       <PreprocessorDefinitions>USE_OPENGL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>external/glm;external/spdlog/include;external/entt/single_include;src/glad/include;src/imgui;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external/glm;external/spdlog/include;external/entt/single_include;src/glad/include;src/imgui;src;C:\Development\FastNoise2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>donut_pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Development\FastNoise2\out\build\x64-MSVC-Debug\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FastNoise.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -171,16 +173,21 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\renderer\image.cpp" />
+    <ClCompile Include="src\renderer\imagedata.cpp" />
     <ClCompile Include="src\renderer\indexbuffer.cpp" />
     <ClCompile Include="src\renderer\mesh.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_glfw_window.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_indexbuffer.cpp" />
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_mesh.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_shader.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_shadersection.cpp" />
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_texture2d.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_vertexbuffer.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_vertexlayout.cpp" />
     <ClCompile Include="src\renderer\shader.cpp" />
     <ClCompile Include="src\renderer\shadersection.cpp" />
+    <ClCompile Include="src\renderer\texture2d.cpp" />
     <ClCompile Include="src\renderer\vertexbuffer.cpp" />
     <ClCompile Include="src\renderer\vertexlayout.cpp" />
     <ClCompile Include="src\renderer\window.cpp" />
@@ -205,23 +212,30 @@
     <ClInclude Include="src\imgui\imstb_truetype.h" />
     <ClInclude Include="src\noncopyable.h" />
     <ClInclude Include="src\renderer\icanvas.h" />
+    <ClInclude Include="src\renderer\image.h" />
+    <ClInclude Include="src\renderer\imagedata.h" />
     <ClInclude Include="src\renderer\indexbuffer.h" />
     <ClInclude Include="src\renderer\mesh.h" />
     <ClInclude Include="src\renderer\render_impl\indexbuffer_impl.h" />
+    <ClInclude Include="src\renderer\render_impl\mesh_impl.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_glfw_window.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_indexbuffer.h" />
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_mesh.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_shader.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_shadersection.h" />
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_texture2d.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_vertexbuffer.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_vertexlayout.h" />
     <ClInclude Include="src\renderer\render_impl\render_impl.h" />
     <ClInclude Include="src\renderer\render_impl\shadersection_impl.h" />
     <ClInclude Include="src\renderer\render_impl\shader_impl.h" />
+    <ClInclude Include="src\renderer\render_impl\texture2d_impl.h" />
     <ClInclude Include="src\renderer\render_impl\vertexbuffer_impl.h" />
     <ClInclude Include="src\renderer\render_impl\vertexlayout_impl.h" />
     <ClInclude Include="src\renderer\render_impl\window_impl.h" />
     <ClInclude Include="src\renderer\shader.h" />
     <ClInclude Include="src\renderer\shadersection.h" />
+    <ClInclude Include="src\renderer\texture2d.h" />
     <ClInclude Include="src\renderer\vertexbuffer.h" />
     <ClInclude Include="src\renderer\vertexelement.h" />
     <ClInclude Include="src\renderer\vertexlayout.h" />

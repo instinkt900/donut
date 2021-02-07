@@ -3,7 +3,7 @@
 namespace donut {
     class Scene;
 
-	class Entity {
+    class Entity {
     public:
         Entity() = default;
         Entity(Entity const&) = default;
@@ -51,5 +51,5 @@ namespace donut {
         entt::entity m_id = entt::null;
 
         Entity(std::shared_ptr<Scene> scene, entt::entity entityId);
-	};
+    };
 }

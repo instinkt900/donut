@@ -3,22 +3,26 @@
 
 namespace donut {
     Mesh::Mesh() {
-
+        m_impl = std::make_shared<MeshImpl>();
     }
 
-    Mesh::Mesh(VertexBuffer vertexBuffer, IndexBuffer indexBuffer)
-        : m_vertexBuffer(vertexBuffer)
-        , m_indexBuffer(indexBuffer) {
+    Mesh::Mesh(VertexBuffer vertexBuffer, IndexBuffer indexBuffer) {
+        m_impl = std::make_shared<MeshImpl>(vertexBuffer, indexBuffer);
+    }
 
+    void Mesh::SetPrimitiveType(PrimitiveType type) {
+        if (Valid())
+            m_impl->SetPrimitiveType(type);
+    }
+
+    PrimitiveType Mesh::GetPrimitiveType() const {
+        if (Valid())
+            return m_impl->GetPrimitiveType();
+        return PrimitiveType::UNKNOWN;
     }
 
     void Mesh::Draw() {
-        if (m_vertexBuffer && m_indexBuffer) {
-            m_vertexBuffer.Bind();
-            m_indexBuffer.Bind();
-            glDrawElements(GL_TRIANGLES, m_indexBuffer.GetCount(), GL_UNSIGNED_INT, 0);
-            m_indexBuffer.Unbind();
-            m_vertexBuffer.Unbind();
-        }
+        if (Valid())
+            m_impl->Draw();
     }
 }

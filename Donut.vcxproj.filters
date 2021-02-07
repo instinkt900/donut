@@ -73,6 +73,21 @@
     <ClCompile Include="src\scene\entity.cpp">
       <Filter>src\scene</Filter>
     </ClCompile>
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_texture2d.cpp">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\texture2d.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\imagedata.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\image.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_mesh.cpp">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -189,6 +204,27 @@
     <ClInclude Include="src\scene\entity.h">
       <Filter>src\scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_texture2d.h">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\render_impl\texture2d_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\texture2d.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\image.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\imagedata.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\render_impl\mesh_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_mesh.h">
+      <Filter>src\renderer\renderer_impl\opengl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -223,6 +259,9 @@
     </Filter>
     <Filter Include="src\scene">
       <UniqueIdentifier>{a0cceb8c-4336-4dc4-91d7-dd60d9b86baa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Noise">
+      <UniqueIdentifier>{66c30aca-b731-4ced-9a6b-dfe67b9ca6a5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
