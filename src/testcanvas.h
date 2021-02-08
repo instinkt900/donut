@@ -22,6 +22,7 @@ public:
 private:
     int m_width = 0, m_height = 0;
     donut::Shader m_shader;
-    donut::Mesh m_mesh;
+    donut::VertexBuffer m_vertexBuffer;
+    donut::IndexBuffer m_indexBuffer;
     donut::Texture2D m_texture;
 };

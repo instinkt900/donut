@@ -3,10 +3,10 @@
 #include "vertexelement.h"
 
 namespace donut::opengl {
-    class VertexLayoutImpl : public NonCopyable {
+    class VertexLayout : public NonCopyable {
     public:
-        VertexLayoutImpl(std::initializer_list<VertexElement> elements);
-        ~VertexLayoutImpl() = default;
+        VertexLayout(std::initializer_list<VertexElement> elements);
+        ~VertexLayout() = default;
 
         size_t GetStride() const { return m_stride; }
 

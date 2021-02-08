@@ -16,12 +16,15 @@ namespace donut::opengl {
     IndexBufferImpl::~IndexBufferImpl() {
         glDeleteBuffers(1, &m_id);
     }
+
     unsigned int IndexBufferImpl::GetCount() const {
         return m_count;
     }
+
     void IndexBufferImpl::Bind() const {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
     }
+
     void IndexBufferImpl::Unbind() const {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }

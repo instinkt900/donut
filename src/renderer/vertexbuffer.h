@@ -6,7 +6,7 @@ namespace donut {
     class VertexBuffer {
     public:
         VertexBuffer() = default;
-        VertexBuffer(VertexLayout layout, void* data, unsigned int count);
+        VertexBuffer(VertexLayout const& layout, void* data, unsigned int count);
         VertexBuffer(VertexBuffer const&) = default;
         VertexBuffer& operator=(VertexBuffer const&) = default;
         ~VertexBuffer() = default;

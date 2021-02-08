@@ -173,9 +173,10 @@ TestCanvas::TestCanvas() {
     for (int i = 0; i < verts.size(); ++i)
         indices[i] = i;
 
-    VertexBuffer vb(layout, verts.data(), verts.size());
-    IndexBuffer ib(indices.data(), indices.size());
-    m_mesh = Mesh(vb, ib);
+    VertexBuffer vb(layout, verts.data(), static_cast<unsigned int>(verts.size()));
+    IndexBuffer ib(indices.data(), static_cast<unsigned int>(indices.size()));
+    m_vertexBuffer = vb;
+    m_indexBuffer = ib;
 
     //Image img = GetCollapsedNoise();
     Image img = GetNoisyImage();
@@ -225,11 +226,13 @@ void TestCanvas::OnMouseMove(double x, double y) {
 }
 
 void TestCanvas::Draw() {
-    glViewport(0, 0, m_width, m_height);
-
+    Renderer::Viewport(0, 0, m_width, m_height);
+    Renderer::Clear({ 0, 0, 0, 1 });
     m_shader.Bind();
     m_texture.Bind();
-    m_mesh.Draw();
+    m_vertexBuffer.Bind();
+    Renderer::DrawPrimitives(PrimitiveType::TRIANGLES, 0, 6);
+    m_vertexBuffer.Unbind();
     m_texture.Unbind();
     m_shader.Unbind();
 

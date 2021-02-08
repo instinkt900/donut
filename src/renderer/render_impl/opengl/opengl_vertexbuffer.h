@@ -5,7 +5,7 @@
 namespace donut::opengl {
     class VertexBufferImpl : public NonCopyable {
     public:
-        static std::shared_ptr<VertexBufferImpl> Create(VertexLayout layout, void* data, unsigned int count);
+        static std::shared_ptr<VertexBufferImpl> Create(VertexLayout const& layout, void* data, unsigned int count);
         ~VertexBufferImpl();
         void Bind() const;
         void Unbind() const;

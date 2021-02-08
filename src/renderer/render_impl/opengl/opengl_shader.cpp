@@ -20,24 +20,31 @@ namespace donut::opengl {
             return std::shared_ptr<ShaderImpl>(new ShaderImpl(program));
         }
     }
+
     ShaderImpl::~ShaderImpl() {
         glDeleteProgram(m_id);
     }
+
     void ShaderImpl::Bind() const {
         glUseProgram(m_id);
     }
+
     void ShaderImpl::Unbind() const {
         glUseProgram(0);
     }
+
     void ShaderImpl::SetVector3(std::string const& name, glm::vec3 const& vec) {
         glUniform3fv(GetUniformLoc(name), 1, (GLfloat*)&vec);
     }
+
     void ShaderImpl::SetVector4(std::string const& name, glm::vec4 const& vec) {
         glUniform4fv(GetUniformLoc(name), 1, (GLfloat*)&vec);
     }
+
     void ShaderImpl::SetMatrix33(std::string const& name, glm::mat3x3 const& mat) {
         glUniformMatrix3fv(GetUniformLoc(name), 1, GL_FALSE, (GLfloat*)&mat);
     }
+
     void ShaderImpl::SetMatrix44(std::string const& name, glm::mat4x4 const& mat) {
         glUniformMatrix4fv(GetUniformLoc(name), 1, GL_FALSE, (GLfloat*)&mat);
     }

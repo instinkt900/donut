@@ -2,7 +2,7 @@
 #include "vertexbuffer.h"
 
 namespace donut {
-    VertexBuffer::VertexBuffer(VertexLayout layout, void* data, unsigned int count) {
+    VertexBuffer::VertexBuffer(VertexLayout const& layout, void* data, unsigned int count) {
         m_impl = VertexBufferImpl::Create(layout, data, count);
     }
 

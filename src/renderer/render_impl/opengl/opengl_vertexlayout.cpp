@@ -14,7 +14,7 @@ namespace donut::opengl {
         }
     }
 
-    VertexLayoutImpl::VertexLayoutImpl(std::initializer_list<VertexElement> elements) {
+    VertexLayout::VertexLayout(std::initializer_list<VertexElement> elements) {
         m_stride = 0;
         m_elements.reserve(elements.size());
         for (auto&& el : elements) {
@@ -23,7 +23,7 @@ namespace donut::opengl {
         }
     }
 
-    void VertexLayoutImpl::Apply() const {
+    void VertexLayout::Apply() const {
         size_t offset = 0;
         for (unsigned int i = 0; i < m_elements.size(); ++i) {
             glVertexAttribPointer(i, m_elements[i].m_count, ToGL(m_elements[i].m_type), m_elements[i].m_normalized, static_cast<GLsizei>(m_stride), (void*)offset);

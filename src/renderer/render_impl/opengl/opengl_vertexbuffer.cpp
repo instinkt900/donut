@@ -2,7 +2,7 @@
 #include "opengl_vertexbuffer.h"
 
 namespace donut::opengl {
-    std::shared_ptr<VertexBufferImpl> VertexBufferImpl::Create(VertexLayout layout, void* data, unsigned int count) {
+    std::shared_ptr<VertexBufferImpl> VertexBufferImpl::Create(VertexLayout const& layout, void* data, unsigned int count) {
         unsigned int vertexArray = 0;
         glGenVertexArrays(1, &vertexArray);
         if (vertexArray != 0) {

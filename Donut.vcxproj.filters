@@ -49,19 +49,10 @@
     <ClCompile Include="src\renderer\indexbuffer.cpp">
       <Filter>src\renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\renderer\mesh.cpp">
-      <Filter>src\renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\renderer\shader.cpp">
       <Filter>src\renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\renderer\shadersection.cpp">
-      <Filter>src\renderer</Filter>
-    </ClCompile>
     <ClCompile Include="src\renderer\vertexbuffer.cpp">
-      <Filter>src\renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\vertexlayout.cpp">
       <Filter>src\renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\renderer\window.cpp">
@@ -85,7 +76,10 @@
     <ClCompile Include="src\renderer\image.cpp">
       <Filter>src\renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\renderer\render_impl\opengl\opengl_mesh.cpp">
+    <ClCompile Include="src\renderer\shadersection.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\render_impl\opengl\opengl_renderer.cpp">
       <Filter>src\renderer\renderer_impl\opengl</Filter>
     </ClCompile>
   </ItemGroup>
@@ -159,13 +153,7 @@
     <ClInclude Include="src\renderer\render_impl\shader_impl.h">
       <Filter>src\renderer\renderer_impl</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\render_impl\shadersection_impl.h">
-      <Filter>src\renderer\renderer_impl</Filter>
-    </ClInclude>
     <ClInclude Include="src\renderer\render_impl\vertexbuffer_impl.h">
-      <Filter>src\renderer\renderer_impl</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\render_impl\vertexlayout_impl.h">
       <Filter>src\renderer\renderer_impl</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\render_impl\window_impl.h">
@@ -175,9 +163,6 @@
       <Filter>src\renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\indexbuffer.h">
-      <Filter>src\renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\mesh.h">
       <Filter>src\renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\shader.h">
@@ -219,11 +204,17 @@
     <ClInclude Include="src\renderer\imagedata.h">
       <Filter>src\renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\render_impl\mesh_impl.h">
-      <Filter>src\renderer\renderer_impl</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\render_impl\opengl\opengl_mesh.h">
+    <ClInclude Include="src\renderer\render_impl\opengl\opengl_renderer.h">
       <Filter>src\renderer\renderer_impl\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\primitivetype.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\renderer.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\render_impl\shadersection_impl.h">
+      <Filter>src\renderer\renderer_impl</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

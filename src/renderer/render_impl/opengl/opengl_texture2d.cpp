@@ -29,13 +29,16 @@ namespace donut::opengl {
         }
         return nullptr;
     }
+
     Texture2DImpl::~Texture2DImpl() {
         glDeleteTextures(1, &m_textureId);
     }
+
     void Texture2DImpl::Bind() const {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, m_textureId);
     }
+
     void Texture2DImpl::Unbind() const {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
