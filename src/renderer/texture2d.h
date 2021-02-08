@@ -10,7 +10,7 @@ namespace donut {
 }
 
 #ifdef USE_OPENGL
-#include "render_impl/opengl/opengl_texture2d.h"
+#include "renderer_apis/opengl/opengl_texture2d.h"
 namespace donut {
     using Texture2D = opengl::Texture2D;
 }

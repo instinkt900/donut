@@ -19,6 +19,16 @@ namespace donut {
         }
     }
 
+    std::shared_ptr<Image> Image::CreateFromFile(std::string const& filename) {
+        int width, height, channels;
+        auto const stbimage = stbi_load(filename.c_str(), &width, &height, &channels, 3);
+        if (stbimage) {
+            auto const format = channels <= 3 ? ImageFormat::RGB : ImageFormat::RGBA;
+            return std::make_shared<Image>(width, height, format, stbimage);
+        }
+        return nullptr;
+    }
+
     Image::Image(int width, int height, ImageFormat format, void* data)
         : m_width(width)
         , m_height(height)
@@ -29,16 +39,6 @@ namespace donut {
             std::copy_n(static_cast<unsigned char*>(data), bufferSize, m_data);
         else
             std::fill_n(m_data, bufferSize, 0x0);
-    }
-
-    std::shared_ptr<Image> Image::CreateFromFile(std::string const& filename) {
-        int width, height, channels;
-        auto const stbimage = stbi_load(filename.c_str(), &width, &height, &channels, 3);
-        if (stbimage) {
-            auto const format = channels <= 3 ? ImageFormat::RGB : ImageFormat::RGBA;
-            return std::make_shared<Image>(width, height, format, stbimage);
-        }
-        return nullptr;
     }
 
     Image::~Image() {
