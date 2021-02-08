@@ -1,14 +1,14 @@
 #pragma once
 
 namespace donut::opengl {
-    class ShaderSectionImpl : public NonCopyable {
+    class ShaderSection : public NonCopyable {
     public:
-        static std::shared_ptr<ShaderSectionImpl> Create(ShaderSectionType type, char const* source);
+        static std::shared_ptr<ShaderSection> Create(ShaderSectionType type, char const* source);
         int GetId() const;
 
     private:
         int m_id;
-        ShaderSectionImpl(int id);
+        ShaderSection(int id);
     };
 
 }

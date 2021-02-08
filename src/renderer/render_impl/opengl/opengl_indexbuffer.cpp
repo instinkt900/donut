@@ -2,33 +2,33 @@
 #include "opengl_indexbuffer.h"
 
 namespace donut::opengl {
-    std::shared_ptr<IndexBufferImpl> IndexBufferImpl::Create(unsigned int* data, unsigned int count) {
+    std::shared_ptr<IndexBuffer> IndexBuffer::Create(unsigned int* data, unsigned int count) {
         unsigned int id = 0;
         glGenBuffers(1, &id);
         if (id != 0) {
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, id);
             glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * count, data, GL_STATIC_DRAW);
-            return std::shared_ptr<IndexBufferImpl>(new IndexBufferImpl(id, count));
+            return std::shared_ptr<IndexBuffer>(new IndexBuffer(id, count));
         }
         return nullptr;
     }
 
-    IndexBufferImpl::~IndexBufferImpl() {
+    IndexBuffer::~IndexBuffer() {
         glDeleteBuffers(1, &m_id);
     }
 
-    unsigned int IndexBufferImpl::GetCount() const {
+    unsigned int IndexBuffer::GetCount() const {
         return m_count;
     }
 
-    void IndexBufferImpl::Bind() const {
+    void IndexBuffer::Bind() const {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
     }
 
-    void IndexBufferImpl::Unbind() const {
+    void IndexBuffer::Unbind() const {
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 
-    IndexBufferImpl::IndexBufferImpl(unsigned int id, unsigned int count)
+    IndexBuffer::IndexBuffer(unsigned int id, unsigned int count)
         : m_id(id), m_count(count) { }
 }

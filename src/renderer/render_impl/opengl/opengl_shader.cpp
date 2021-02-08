@@ -2,11 +2,11 @@
 #include "opengl_shader.h"
 
 namespace donut::opengl {
-    std::shared_ptr<ShaderImpl> ShaderImpl::Create(std::initializer_list<ShaderSection> const& sections) {
+    std::shared_ptr<Shader> Shader::Create(std::initializer_list<ShaderSection const*> const& sections) {
         int program = glCreateProgram();
 
         for (auto&& section : sections)
-            glAttachShader(program, section.GetId());
+            glAttachShader(program, section->GetId());
         glLinkProgram(program);
 
         int success;
@@ -17,41 +17,42 @@ namespace donut::opengl {
             spdlog::error("Shader program link failed. {}", message);
             return nullptr;
         } else {
-            return std::shared_ptr<ShaderImpl>(new ShaderImpl(program));
+            return std::shared_ptr<Shader>(new Shader(program));
         }
     }
 
-    ShaderImpl::~ShaderImpl() {
+    Shader::~Shader() {
         glDeleteProgram(m_id);
     }
 
-    void ShaderImpl::Bind() const {
+    void Shader::Bind() const {
         glUseProgram(m_id);
     }
 
-    void ShaderImpl::Unbind() const {
+    void Shader::Unbind() const {
         glUseProgram(0);
     }
 
-    void ShaderImpl::SetVector3(std::string const& name, glm::vec3 const& vec) {
+    void Shader::SetVector3(std::string const& name, glm::vec3 const& vec) {
         glUniform3fv(GetUniformLoc(name), 1, (GLfloat*)&vec);
     }
 
-    void ShaderImpl::SetVector4(std::string const& name, glm::vec4 const& vec) {
+    void Shader::SetVector4(std::string const& name, glm::vec4 const& vec) {
         glUniform4fv(GetUniformLoc(name), 1, (GLfloat*)&vec);
     }
 
-    void ShaderImpl::SetMatrix33(std::string const& name, glm::mat3x3 const& mat) {
+    void Shader::SetMatrix33(std::string const& name, glm::mat3x3 const& mat) {
         glUniformMatrix3fv(GetUniformLoc(name), 1, GL_FALSE, (GLfloat*)&mat);
     }
 
-    void ShaderImpl::SetMatrix44(std::string const& name, glm::mat4x4 const& mat) {
+    void Shader::SetMatrix44(std::string const& name, glm::mat4x4 const& mat) {
         glUniformMatrix4fv(GetUniformLoc(name), 1, GL_FALSE, (GLfloat*)&mat);
     }
 
-    ShaderImpl::ShaderImpl(int program)
+    Shader::Shader(int program)
         : m_id(program) { }
-    int ShaderImpl::GetUniformLoc(std::string const& name) {
+
+    int Shader::GetUniformLoc(std::string const& name) {
         auto const it = m_uniformCache.find(name);
         if (std::end(m_uniformCache) != it)
             return it->second;

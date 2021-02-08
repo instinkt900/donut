@@ -8,8 +8,8 @@ namespace donut {
         ICanvas() = default;
         virtual ~ICanvas() = default;
 
-        virtual void OnAddedToWindow(Window window) = 0;
-        virtual void OnRemovedFromWindow(Window window) = 0;
+        virtual void OnAddedToWindow(Window* window) = 0;
+        virtual void OnRemovedFromWindow(Window* window) = 0;
         virtual void OnResize(int width, int height) = 0;
         virtual void OnKey(int key, int action, int mods) = 0;
         virtual void OnMouseButton(int button, int action, int mods) = 0;

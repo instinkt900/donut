@@ -1,26 +1,32 @@
 #pragma once
 
-#include "imagedata.h"
-
 namespace donut {
+    enum class ImageFormat {
+        INVALID,
+        RGB,
+        RGBA,
+        BGR,
+        BGRA
+    };
+
     class Image {
     public:
+        static std::shared_ptr<Image> CreateFromFile(std::string const& filename);
         Image(int width, int height, ImageFormat format, void* data = nullptr);
-        Image(std::string const& filename);
         Image(Image const& other) = default;
         Image& operator=(Image const& other) = default;
-        ~Image() = default;
+        ~Image();
 
-        bool Valid() const { return m_image != nullptr; }
-        operator bool() const { return Valid(); }
-
-        int GetWidth() const { return m_image->GetWidth(); }
-        int GetHeight() const { return m_image->GetHeight(); }
-        ImageFormat GetFormat() const { return m_image->GetFormat(); }
-        unsigned char* GetData() { return m_image->GetData(); }
-        unsigned char const* GetData() const { return m_image->GetData(); }
+        int GetWidth() const { return m_width; }
+        int GetHeight() const { return m_height; }
+        ImageFormat GetFormat() const { return m_format; }
+        unsigned char* GetData() { return m_data; }
+        unsigned char const* GetData() const { return m_data; }
 
     private:
-        std::shared_ptr<ImageData> m_image;
+        unsigned char* m_data = nullptr;
+        int m_width = 0;
+        int m_height = 0;
+        ImageFormat m_format = ImageFormat::INVALID;
     };
 }

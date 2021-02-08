@@ -159,8 +159,9 @@ std::vector<TestVertex> BuildQuadMesh() {
 }
 
 TestCanvas::TestCanvas() {
-    m_shader = Shader { ShaderSection(ShaderSectionType::Vertex, VertexShaderSource),
-        ShaderSection(ShaderSectionType::Fragment, FragmentShaderSource) };
+    auto const vertexSection = ShaderSection::Create(ShaderSectionType::Vertex, VertexShaderSource);
+    auto const fragmentSection = ShaderSection::Create(ShaderSectionType::Fragment, FragmentShaderSource);
+    m_shader = Shader::Create({ vertexSection.get(), fragmentSection.get() });
 
     VertexLayout layout {
         VertexElement { VertexElementType::Float, 3, false },
@@ -173,34 +174,34 @@ TestCanvas::TestCanvas() {
     for (int i = 0; i < verts.size(); ++i)
         indices[i] = i;
 
-    VertexBuffer vb(layout, verts.data(), static_cast<unsigned int>(verts.size()));
-    IndexBuffer ib(indices.data(), static_cast<unsigned int>(indices.size()));
+    std::shared_ptr<VertexBuffer> vb = VertexBuffer::Create(layout, verts.data(), static_cast<unsigned int>(verts.size()));
+    std::shared_ptr<IndexBuffer> ib = IndexBuffer::Create(indices.data(), static_cast<unsigned int>(indices.size()));
     m_vertexBuffer = vb;
     m_indexBuffer = ib;
 
     //Image img = GetCollapsedNoise();
     Image img = GetNoisyImage();
 
-    m_texture = Texture2D(img);
+    m_texture = Texture2D::Create(img);
 
     auto const ortho = glm::ortho(-640.0f, 640.0f, -360.0f, 360.0f);
-    m_shader.Bind();
-    m_shader.SetMatrix44("viewProjection", ortho);
-    m_shader.SetMatrix44("model", glm::mat4x4(1.0f));
-    m_shader.SetVector4("color", glm::vec4(1, 1, 1, 1));
-    m_shader.Unbind();
+    m_shader->Bind();
+    m_shader->SetMatrix44("viewProjection", ortho);
+    m_shader->SetMatrix44("model", glm::mat4x4(1.0f));
+    m_shader->SetVector4("color", glm::vec4(1, 1, 1, 1));
+    m_shader->Unbind();
 }
 
 TestCanvas::~TestCanvas() {
 
 }
 
-void TestCanvas::OnAddedToWindow(Window window) {
-    m_width = window.GetContentWidth();
-    m_height = window.GetContentHeight();
+void TestCanvas::OnAddedToWindow(Window* window) {
+    m_width = window->GetContentWidth();
+    m_height = window->GetContentHeight();
 }
 
-void TestCanvas::OnRemovedFromWindow(Window window) {
+void TestCanvas::OnRemovedFromWindow(Window* window) {
 
 }
 
@@ -228,13 +229,13 @@ void TestCanvas::OnMouseMove(double x, double y) {
 void TestCanvas::Draw() {
     Renderer::Viewport(0, 0, m_width, m_height);
     Renderer::Clear({ 0, 0, 0, 1 });
-    m_shader.Bind();
-    m_texture.Bind();
-    m_vertexBuffer.Bind();
+    m_shader->Bind();
+    m_texture->Bind();
+    m_vertexBuffer->Bind();
     Renderer::DrawPrimitives(PrimitiveType::TRIANGLES, 0, 6);
-    m_vertexBuffer.Unbind();
-    m_texture.Unbind();
-    m_shader.Unbind();
+    m_vertexBuffer->Unbind();
+    m_texture->Unbind();
+    m_shader->Unbind();
 
     ImGui::Text("Hello world");
 }

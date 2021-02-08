@@ -12,7 +12,7 @@ namespace donut::opengl {
         }
     }
 
-    std::shared_ptr<ShaderSectionImpl> ShaderSectionImpl::Create(ShaderSectionType type, char const* source) {
+    std::shared_ptr<ShaderSection> ShaderSection::Create(ShaderSectionType type, char const* source) {
         int shader = glCreateShader(ToGL(type));
         glShaderSource(shader, 1, &source, nullptr);
         glCompileShader(shader);
@@ -25,13 +25,13 @@ namespace donut::opengl {
             spdlog::error("Vertex shader compile failed. {}", message);
             return nullptr;
         } else {
-            return std::shared_ptr<ShaderSectionImpl>(new ShaderSectionImpl(shader));
+            return std::shared_ptr<ShaderSection>(new ShaderSection(shader));
         }
     }
-    int ShaderSectionImpl::GetId() const {
+    int ShaderSection::GetId() const {
         return m_id;
     }
 
-    ShaderSectionImpl::ShaderSectionImpl(int id)
+    ShaderSection::ShaderSection(int id)
         : m_id(id) { }
 }

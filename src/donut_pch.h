@@ -9,8 +9,19 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include "noncopyable.h"
+#include "abstract.h"
 
-#include "renderer/render_impl/render_impl.h"
+#ifdef USE_OPENGL
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+#else
+#error TODO
+#endif
+
+#include <imgui.h>
+
 #include "renderer/shadersection.h"
 #include "renderer/shader.h"
 #include "renderer/vertexbuffer.h"

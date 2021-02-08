@@ -14,7 +14,7 @@ namespace donut::opengl {
         }
     }
 
-    std::shared_ptr<Texture2DImpl> Texture2DImpl::Create(int width, int height, ImageFormat format, void const* data) {
+    std::shared_ptr<Texture2D> Texture2D::Create(int width, int height, ImageFormat format, void const* data) {
         unsigned int textureId = 0;
         glGenTextures(1, &textureId);
         if (textureId != 0) {
@@ -25,24 +25,28 @@ namespace donut::opengl {
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, ToGL(format), GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
-            return std::shared_ptr<Texture2DImpl>(new Texture2DImpl(textureId));
+            return std::shared_ptr<Texture2D>(new Texture2D(textureId));
         }
         return nullptr;
     }
 
-    Texture2DImpl::~Texture2DImpl() {
+    std::shared_ptr<Texture2D> Texture2D::Create(Image const& imageData) {
+        return Create(imageData.GetWidth(), imageData.GetHeight(), imageData.GetFormat(), imageData.GetData());
+    }
+
+    Texture2D::~Texture2D() {
         glDeleteTextures(1, &m_textureId);
     }
 
-    void Texture2DImpl::Bind() const {
+    void Texture2D::Bind() const {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, m_textureId);
     }
 
-    void Texture2DImpl::Unbind() const {
+    void Texture2D::Unbind() const {
         glBindTexture(GL_TEXTURE_2D, 0);
     }
 
-    Texture2DImpl::Texture2DImpl(unsigned int textureId)
+    Texture2D::Texture2D(unsigned int textureId)
         : m_textureId(textureId) { }
 }

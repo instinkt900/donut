@@ -3,10 +3,11 @@
 #include "shadersection.h"
 
 namespace donut::opengl {
-    class ShaderImpl : public NonCopyable {
+    class Shader : public NonCopyable {
     public:
-        static std::shared_ptr<ShaderImpl> Create(std::initializer_list<ShaderSection> const& sections);
-        ~ShaderImpl();
+        static std::shared_ptr<Shader> Create(std::initializer_list<ShaderSection const*> const& sections);
+        ~Shader();
+
         void Bind() const;
         void Unbind() const;
         void SetVector3(std::string const& name, glm::vec3 const& vec);
@@ -17,7 +18,8 @@ namespace donut::opengl {
     private:
         int m_id;
         std::unordered_map<std::string, int> m_uniformCache;
-        ShaderImpl(int program);
+
+        Shader(int program);
         int GetUniformLoc(std::string const& name);
     };
 }

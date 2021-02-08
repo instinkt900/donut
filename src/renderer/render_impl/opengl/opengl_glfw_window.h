@@ -4,14 +4,14 @@ namespace donut {
     class ICanvas;
 
     namespace opengl {
-        class GLFWWindowImpl : public NonCopyable {
+        class GLFWWindow : public NonCopyable {
         public:
-            static std::shared_ptr<GLFWWindowImpl> Create(int width, int height, std::string const& title);
-            ~GLFWWindowImpl();
+            static std::shared_ptr<GLFWWindow> Create(int width, int height, std::string const& title);
+            ~GLFWWindow();
 
             bool Update();
 
-            void SetCanvas(std::shared_ptr<ICanvas> canvas) { m_currentCanvas = canvas; }
+            void SetCanvas(std::shared_ptr<ICanvas> canvas);
             std::shared_ptr<ICanvas> GetCanvas() const { return m_currentCanvas; }
 
             int GetWidth() const { return m_width; }
@@ -33,7 +33,7 @@ namespace donut {
             void OnMouseScroll(double xOffset, double yOffset);
             void OnMouseMove(double x, double y);
 
-            GLFWWindowImpl(GLFWwindow* window);
+            GLFWWindow(GLFWwindow* window);
         };
     }
 }

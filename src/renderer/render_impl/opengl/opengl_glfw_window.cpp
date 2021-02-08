@@ -1,10 +1,10 @@
 #include "donut_pch.h"
 #include "opengl_glfw_window.h"
 
-#define GET_WINDOW(glfwWindow) static_cast<GLFWWindowImpl*>(glfwGetWindowUserPointer(glfwWindow))
+#define GET_WINDOW(glfwWindow) static_cast<GLFWWindow*>(glfwGetWindowUserPointer(glfwWindow))
 
 namespace donut::opengl {
-    std::shared_ptr<GLFWWindowImpl> GLFWWindowImpl::Create(int width, int height, std::string const& title) {
+    std::shared_ptr<GLFWWindow> GLFWWindow::Create(int width, int height, std::string const& title) {
         if (!glfwInit()) {
             spdlog::error("glfwInit failed!");
             return nullptr;
@@ -20,10 +20,10 @@ namespace donut::opengl {
             return nullptr;
         }
 
-        return std::shared_ptr<GLFWWindowImpl>(new GLFWWindowImpl(window));
+        return std::shared_ptr<GLFWWindow>(new GLFWWindow(window));
     }
 
-    GLFWWindowImpl::~GLFWWindowImpl() {
+    GLFWWindow::~GLFWWindow() {
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplGlfw_Shutdown();
         ImGui::DestroyContext();
@@ -32,7 +32,7 @@ namespace donut::opengl {
         glfwTerminate();
     }
 
-    bool GLFWWindowImpl::Update() {
+    bool GLFWWindow::Update() {
         glfwPollEvents();
 
         ImGui_ImplOpenGL3_NewFrame();
@@ -51,7 +51,19 @@ namespace donut::opengl {
         return !glfwWindowShouldClose(m_window);
     }
 
-    void GLFWWindowImpl::OnResize(int width, int height) {
+    void GLFWWindow::SetCanvas(std::shared_ptr<ICanvas> canvas) {
+        if (nullptr != m_currentCanvas) {
+            m_currentCanvas->OnRemovedFromWindow(this);
+        }
+
+        m_currentCanvas = canvas;
+
+        if (nullptr != m_currentCanvas) {
+            m_currentCanvas->OnAddedToWindow(this);
+        }
+    }
+
+    void GLFWWindow::OnResize(int width, int height) {
         m_width = width;
         m_height = height;
         glfwGetFramebufferSize(m_window, &m_contentWidth, &m_contentHeight);
@@ -60,31 +72,31 @@ namespace donut::opengl {
         }
     }
 
-    void GLFWWindowImpl::OnKey(int key, int scancode, int action, int mods) {
+    void GLFWWindow::OnKey(int key, int scancode, int action, int mods) {
         if (nullptr != m_currentCanvas) {
             m_currentCanvas->OnKey(key, action, mods);
         }
     }
 
-    void GLFWWindowImpl::OnMouseButton(int button, int action, int mods) {
+    void GLFWWindow::OnMouseButton(int button, int action, int mods) {
         if (nullptr != m_currentCanvas) {
             m_currentCanvas->OnMouseButton(button, action, mods);
         }
     }
 
-    void GLFWWindowImpl::OnMouseScroll(double xOffset, double yOffset) {
+    void GLFWWindow::OnMouseScroll(double xOffset, double yOffset) {
         if (nullptr != m_currentCanvas) {
             m_currentCanvas->OnMouseScroll(xOffset, yOffset);
         }
     }
 
-    void GLFWWindowImpl::OnMouseMove(double x, double y) {
+    void GLFWWindow::OnMouseMove(double x, double y) {
         if (nullptr != m_currentCanvas) {
             m_currentCanvas->OnMouseMove(x, y);
         }
     }
 
-    GLFWWindowImpl::GLFWWindowImpl(GLFWwindow* window)
+    GLFWWindow::GLFWWindow(GLFWwindow* window)
         : m_window(window) {
         glfwGetWindowSize(m_window, &m_width, &m_height);
         glfwGetFramebufferSize(m_window, &m_contentWidth, &m_contentHeight);

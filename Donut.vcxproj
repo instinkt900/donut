@@ -174,8 +174,6 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\renderer\image.cpp" />
-    <ClCompile Include="src\renderer\imagedata.cpp" />
-    <ClCompile Include="src\renderer\indexbuffer.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_glfw_window.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_indexbuffer.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_renderer.cpp" />
@@ -184,11 +182,6 @@
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_texture2d.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_vertexbuffer.cpp" />
     <ClCompile Include="src\renderer\render_impl\opengl\opengl_vertexlayout.cpp" />
-    <ClCompile Include="src\renderer\shader.cpp" />
-    <ClCompile Include="src\renderer\shadersection.cpp" />
-    <ClCompile Include="src\renderer\texture2d.cpp" />
-    <ClCompile Include="src\renderer\vertexbuffer.cpp" />
-    <ClCompile Include="src\renderer\window.cpp" />
     <ClCompile Include="src\scene\entity.cpp" />
     <ClCompile Include="src\scene\scene.cpp" />
     <ClCompile Include="src\testcanvas.cpp" />
@@ -197,6 +190,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\abstract.h" />
     <ClInclude Include="src\glad\include\glad\glad.h" />
     <ClInclude Include="src\glad\include\KHR\khrplatform.h" />
     <ClInclude Include="src\donut_pch.h" />
@@ -211,11 +205,9 @@
     <ClInclude Include="src\noncopyable.h" />
     <ClInclude Include="src\renderer\icanvas.h" />
     <ClInclude Include="src\renderer\image.h" />
-    <ClInclude Include="src\renderer\imagedata.h" />
     <ClInclude Include="src\renderer\indexbuffer.h" />
     <ClInclude Include="src\renderer\primitivetype.h" />
     <ClInclude Include="src\renderer\renderer.h" />
-    <ClInclude Include="src\renderer\render_impl\indexbuffer_impl.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_glfw_window.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_indexbuffer.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_renderer.h" />
@@ -224,12 +216,6 @@
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_texture2d.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_vertexbuffer.h" />
     <ClInclude Include="src\renderer\render_impl\opengl\opengl_vertexlayout.h" />
-    <ClInclude Include="src\renderer\render_impl\render_impl.h" />
-    <ClInclude Include="src\renderer\render_impl\shadersection_impl.h" />
-    <ClInclude Include="src\renderer\render_impl\shader_impl.h" />
-    <ClInclude Include="src\renderer\render_impl\texture2d_impl.h" />
-    <ClInclude Include="src\renderer\render_impl\vertexbuffer_impl.h" />
-    <ClInclude Include="src\renderer\render_impl\window_impl.h" />
     <ClInclude Include="src\renderer\shader.h" />
     <ClInclude Include="src\renderer\shadersection.h" />
     <ClInclude Include="src\renderer\texture2d.h" />

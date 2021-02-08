@@ -6,7 +6,7 @@
 
 namespace donut {
     namespace opengl {
-        class Renderer {
+        class Renderer : public Abstract {
         public:
             static void Viewport(int x, int y, int width, int height);
             static void Clear(glm::vec4 const& color);

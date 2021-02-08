@@ -3,10 +3,10 @@
 #include "vertexlayout.h"
 
 namespace donut::opengl {
-    class VertexBufferImpl : public NonCopyable {
+    class VertexBuffer : public NonCopyable {
     public:
-        static std::shared_ptr<VertexBufferImpl> Create(VertexLayout const& layout, void* data, unsigned int count);
-        ~VertexBufferImpl();
+        static std::shared_ptr<VertexBuffer> Create(VertexLayout const& layout, void* data, unsigned int count);
+        ~VertexBuffer();
         void Bind() const;
         void Unbind() const;
 
@@ -14,6 +14,6 @@ namespace donut::opengl {
         unsigned int m_vertexBuffer;
         unsigned int m_vertexArray;
 
-        VertexBufferImpl(unsigned int vertexBuffer, unsigned int vertexArray);
+        VertexBuffer(unsigned int vertexBuffer, unsigned int vertexArray);
     };
 }
