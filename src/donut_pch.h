@@ -28,9 +28,11 @@
 #include "renderer/indexbuffer.h"
 #include "renderer/image.h"
 #include "renderer/texture2d.h"
+#include "renderer/framebuffer.h"
 #include "renderer/renderer.h"
 #include "renderer/icanvas.h"
 #include "renderer/window.h"
 
 #include "scene/scene.h"
 #include "scene/entity.h"
+#include "scene/systems/renderingsystem.h"

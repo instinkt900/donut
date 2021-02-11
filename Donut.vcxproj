@@ -174,6 +174,7 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\renderer\image.cpp" />
+    <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_framebuffer.cpp" />
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_glfw_window.cpp" />
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_indexbuffer.cpp" />
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_renderer.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_vertexlayout.cpp" />
     <ClCompile Include="src\scene\entity.cpp" />
     <ClCompile Include="src\scene\scene.cpp" />
+    <ClCompile Include="src\scene\systems\renderingsystem.cpp" />
     <ClCompile Include="src\testcanvas.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -203,11 +205,13 @@
     <ClInclude Include="src\imgui\imstb_textedit.h" />
     <ClInclude Include="src\imgui\imstb_truetype.h" />
     <ClInclude Include="src\noncopyable.h" />
+    <ClInclude Include="src\renderer\framebuffer.h" />
     <ClInclude Include="src\renderer\icanvas.h" />
     <ClInclude Include="src\renderer\image.h" />
     <ClInclude Include="src\renderer\indexbuffer.h" />
     <ClInclude Include="src\renderer\primitivetype.h" />
     <ClInclude Include="src\renderer\renderer.h" />
+    <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_framebuffer.h" />
     <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_glfw_window.h" />
     <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_indexbuffer.h" />
     <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_renderer.h" />
@@ -223,8 +227,12 @@
     <ClInclude Include="src\renderer\vertexelement.h" />
     <ClInclude Include="src\renderer\vertexlayout.h" />
     <ClInclude Include="src\renderer\window.h" />
+    <ClInclude Include="src\scene\components\cameracomponent.h" />
+    <ClInclude Include="src\scene\components\meshcomponent.h" />
+    <ClInclude Include="src\scene\components\transformcomponent.h" />
     <ClInclude Include="src\scene\entity.h" />
     <ClInclude Include="src\scene\scene.h" />
+    <ClInclude Include="src\scene\systems\renderingsystem.h" />
     <ClInclude Include="src\testcanvas.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

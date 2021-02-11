@@ -61,6 +61,12 @@
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_vertexlayout.cpp">
       <Filter>src\renderer\renderer_apis\opengl</Filter>
     </ClCompile>
+    <ClCompile Include="src\scene\systems\renderingsystem.cpp">
+      <Filter>src\scene\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_framebuffer.cpp">
+      <Filter>src\renderer\renderer_apis\opengl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -174,6 +180,24 @@
     <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_vertexlayout.h">
       <Filter>src\renderer\renderer_apis\opengl</Filter>
     </ClInclude>
+    <ClInclude Include="src\scene\components\meshcomponent.h">
+      <Filter>src\scene\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\systems\renderingsystem.h">
+      <Filter>src\scene\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\components\transformcomponent.h">
+      <Filter>src\scene\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\components\cameracomponent.h">
+      <Filter>src\scene\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_framebuffer.h">
+      <Filter>src\renderer\renderer_apis\opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\framebuffer.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -211,6 +235,12 @@
     </Filter>
     <Filter Include="src\renderer\renderer_apis\opengl">
       <UniqueIdentifier>{4ed6ea26-629c-4bc3-ad68-f461f04bd107}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scene\components">
+      <UniqueIdentifier>{089fd896-ac9d-4c85-b4fb-59f803dca12f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\scene\systems">
+      <UniqueIdentifier>{0db9dc97-6c57-457c-85e6-8f0a8288fb0b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,38 +1,12 @@
 #include "donut_pch.h"
 #include "testcanvas.h"
 
+#include "scene/components/transformcomponent.h"
+#include "scene/components/cameracomponent.h"
+#include "scene/components/meshcomponent.h"
+
 #define _USE_MATH_DEFINES
 #include <math.h>
-
-auto const VertexShaderSource = R"(
-#version 330 core
-uniform mat4 viewProjection;
-uniform mat4 model;
-layout (location = 0) in vec4 inVertexPosition;
-layout (location = 1) in vec2 inVertexUV;
-out vec2 vertexUV;
-void main()
-{
-    gl_Position = viewProjection * model * vec4(inVertexPosition.xyz, 1.0);
-    vertexUV = inVertexUV;
-}
-)";
-
-auto const FragmentShaderSource = R"(
-#version 330 core
-uniform vec4 color;
-uniform sampler2D textureSampler;
-in vec2 vertexUV;
-out vec4 fragColor;
-
-void main()
-{
-    fragColor = texture(textureSampler, vertexUV);
-    //fragColor.rg = vertexUV;
-    //fragColor.b = 0.0f;
-    fragColor.a = 1.0f;
-}
-)";
 
 using namespace donut;
 
@@ -159,9 +133,13 @@ std::vector<TestVertex> BuildQuadMesh() {
 }
 
 TestCanvas::TestCanvas() {
-    auto const vertexSection = ShaderSection::Create(ShaderSectionType::Vertex, VertexShaderSource);
-    auto const fragmentSection = ShaderSection::Create(ShaderSectionType::Fragment, FragmentShaderSource);
-    m_shader = Shader::Create({ vertexSection.get(), fragmentSection.get() });
+    m_scene = std::make_shared<donut::Scene>();
+    m_renderingSystem = std::make_unique<donut::RenderingSystem>();
+
+    auto ent = m_scene->CreateEntity();
+    auto& transformComponent = ent.AddComponent<TransformComponent>();
+    transformComponent.m_transform = glm::identity<glm::mat4x4>();
+    auto& meshComponent = ent.AddComponent<MeshComponent>();
 
     VertexLayout layout {
         VertexElement { VertexElementType::Float, 3, false },
@@ -176,20 +154,25 @@ TestCanvas::TestCanvas() {
 
     std::shared_ptr<VertexBuffer> vb = VertexBuffer::Create(layout, verts.data(), static_cast<unsigned int>(verts.size()));
     std::shared_ptr<IndexBuffer> ib = IndexBuffer::Create(indices.data(), static_cast<unsigned int>(indices.size()));
-    m_vertexBuffer = vb;
-    m_indexBuffer = ib;
+    meshComponent.m_vertexBuffer = vb;
+    meshComponent.m_indexBuffer = ib;
+
+    FrameBufferDesc frameBufferDesc;
+    frameBufferDesc.m_width = 100;
+    frameBufferDesc.m_height = 100;
+    FrameBufferTextureDesc colorDesc;
+    colorDesc.m_format = FrameBufferTextureFormat::RGBA;
+    frameBufferDesc.m_attachments.push_back(colorDesc);
+    m_frameBuffer = FrameBuffer::Create(frameBufferDesc);
+
+    m_frameBuffer->Bind();
+    Renderer::Clear({ 1.0f, 1.0f, 0.0f, 1.0f });
+    m_frameBuffer->Unbind();
 
     //Image img = GetCollapsedNoise();
     Image img = GetNoisyImage();
-
-    m_texture = Texture2D::Create(img);
-
-    auto const ortho = glm::ortho(-640.0f, 640.0f, -360.0f, 360.0f);
-    m_shader->Bind();
-    m_shader->SetMatrix44("viewProjection", ortho);
-    m_shader->SetMatrix44("model", glm::mat4x4(1.0f));
-    m_shader->SetVector4("color", glm::vec4(1, 1, 1, 1));
-    m_shader->Unbind();
+    meshComponent.m_texture = Texture2D::Create(img, TextureFormat::RGBA);
+    //meshComponent.m_texture = m_frameBuffer->GetColorTexture(0);
 }
 
 TestCanvas::~TestCanvas() {
@@ -199,6 +182,17 @@ TestCanvas::~TestCanvas() {
 void TestCanvas::OnAddedToWindow(Window* window) {
     m_width = window->GetContentWidth();
     m_height = window->GetContentHeight();
+
+    auto camera = m_scene->CreateEntity();
+    auto& cameraTransformComponent = camera.AddComponent<TransformComponent>();
+    auto& cameraComponent = camera.AddComponent<CameraComponent>();
+
+    cameraTransformComponent.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, -80.0f });
+    cameraComponent.m_active = true;
+    cameraComponent.m_fov = glm::radians(70.0f);
+    cameraComponent.m_aspect = m_width / static_cast<float>(m_height);
+    cameraComponent.m_near = 0.1f;
+    cameraComponent.m_far = 100.0f;
 }
 
 void TestCanvas::OnRemovedFromWindow(Window* window) {
@@ -228,14 +222,6 @@ void TestCanvas::OnMouseMove(double x, double y) {
 
 void TestCanvas::Draw() {
     Renderer::Viewport(0, 0, m_width, m_height);
-    Renderer::Clear({ 0, 0, 0, 1 });
-    m_shader->Bind();
-    m_texture->Bind();
-    m_vertexBuffer->Bind();
-    Renderer::DrawPrimitives(PrimitiveType::TRIANGLES, 0, 6);
-    m_vertexBuffer->Unbind();
-    m_texture->Unbind();
-    m_shader->Unbind();
-
+    m_renderingSystem->Update(*m_scene);
     ImGui::Text("Hello world");
 }

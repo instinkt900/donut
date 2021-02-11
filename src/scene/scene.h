@@ -10,6 +10,8 @@ namespace donut {
 
         Entity CreateEntity();
 
+        entt::registry& GetRegistry() { return m_registry; }
+
     private:
         friend Entity;
         entt::registry m_registry;

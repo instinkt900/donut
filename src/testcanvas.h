@@ -21,8 +21,7 @@ public:
 
 private:
     int m_width = 0, m_height = 0;
-    std::shared_ptr<donut::Shader> m_shader;
-    std::shared_ptr<donut::VertexBuffer> m_vertexBuffer;
-    std::shared_ptr<donut::IndexBuffer> m_indexBuffer;
-    std::shared_ptr<donut::Texture2D> m_texture;
+    std::shared_ptr<donut::Scene> m_scene;
+    std::unique_ptr<donut::RenderingSystem> m_renderingSystem;
+    std::shared_ptr<donut::FrameBuffer> m_frameBuffer;
 };

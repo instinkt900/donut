@@ -6,6 +6,7 @@ namespace donut {
         RGBA,
         BGR,
         BGRA,
+        Depth,
     };
 }
 
