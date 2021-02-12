@@ -17,8 +17,8 @@ namespace donut::opengl {
             switch (format) {
                 case TextureFormat::BGR: return GL_BGR;
                 case TextureFormat::BGRA: return GL_BGRA;
-                case TextureFormat::RGB: return GL_RGB;
-                case TextureFormat::RGBA: return GL_RGBA;
+                case TextureFormat::RGB: return GL_RGB8;
+                case TextureFormat::RGBA: return GL_RGBA8;
                 case TextureFormat::Depth: return GL_DEPTH24_STENCIL8;
             }
             return 0;
@@ -34,11 +34,8 @@ namespace donut::opengl {
         glGenTextures(1, &textureId);
         if (textureId != 0) {
             glBindTexture(GL_TEXTURE_2D, textureId);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-            glTexImage2D(GL_TEXTURE_2D, 0, ToGL(format), width, height, 0, ToGL(srcFormat), GL_UNSIGNED_BYTE, data);
+            glTexStorage2D(GL_TEXTURE_2D, 1, ToGL(format), width, height);
+            glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height, ToGL(srcFormat), GL_UNSIGNED_BYTE, data);
             return std::shared_ptr<Texture2D>(new Texture2D(textureId));
         }
         return nullptr;
@@ -55,11 +52,7 @@ namespace donut::opengl {
         for (int i = 0; i < textureIds.size();  ++i) {
             if (textureIds[i] != 0) {
                 glBindTexture(GL_TEXTURE_2D, textureIds[i]);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                glTexImage2D(GL_TEXTURE_2D, 0, ToGL(format), width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+                glTexStorage2D(GL_TEXTURE_2D, 1, ToGL(format), width, height);
                 textures[i] = std::shared_ptr<Texture2D>(new Texture2D(textureIds[i]));
             }
         }

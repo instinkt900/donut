@@ -186,7 +186,10 @@
     <ClCompile Include="src\scene\entity.cpp" />
     <ClCompile Include="src\scene\scene.cpp" />
     <ClCompile Include="src\scene\systems\renderingsystem.cpp" />
-    <ClCompile Include="src\testcanvas.cpp" />
+    <ClCompile Include="src\test\emittersystem.cpp" />
+    <ClCompile Include="src\test\lifetimesystem.cpp" />
+    <ClCompile Include="src\test\testcanvas.cpp" />
+    <ClCompile Include="src\test\velocitysystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -233,7 +236,13 @@
     <ClInclude Include="src\scene\entity.h" />
     <ClInclude Include="src\scene\scene.h" />
     <ClInclude Include="src\scene\systems\renderingsystem.h" />
-    <ClInclude Include="src\testcanvas.h" />
+    <ClInclude Include="src\test\emittercomponent.h" />
+    <ClInclude Include="src\test\emittersystem.h" />
+    <ClInclude Include="src\test\lifetimecomponent.h" />
+    <ClInclude Include="src\test\lifetimesystem.h" />
+    <ClInclude Include="src\test\testcanvas.h" />
+    <ClInclude Include="src\test\velocitycomponent.h" />
+    <ClInclude Include="src\test\velocitysystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -16,6 +16,32 @@ namespace donut::opengl {
                 default: assert(false); return GL_POINTS;
             }
         }
+
+	void OpenGLMessageCallback(
+            unsigned source,
+            unsigned type,
+            unsigned id,
+            unsigned severity,
+            int length,
+            const char* message,
+            const void* userParam) {
+            switch (severity) {
+                case GL_DEBUG_SEVERITY_HIGH: spdlog::error(message); return;
+                case GL_DEBUG_SEVERITY_MEDIUM: spdlog::error(message); return;
+                case GL_DEBUG_SEVERITY_LOW: spdlog::warn(message); return;
+                case GL_DEBUG_SEVERITY_NOTIFICATION: spdlog::trace(message); return;
+            }
+        }
+    }
+
+    void Renderer::Init() {
+#ifndef NDEBUG
+        glEnable(GL_DEBUG_OUTPUT);
+        glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+        glDebugMessageCallback(OpenGLMessageCallback, nullptr);
+        glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DEBUG_SEVERITY_NOTIFICATION, 0, NULL, GL_FALSE);
+#endif
+        glEnable(GL_DEPTH_TEST);
     }
 
     void Renderer::Viewport(int x, int y, int width, int height) {
@@ -24,7 +50,7 @@ namespace donut::opengl {
 
     void Renderer::Clear(glm::vec4 const& color) {
         glClearColor(color.r, color.g, color.b, color.a);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
     void Renderer::DrawPrimitives(PrimitiveType primitiveType, unsigned int start, unsigned int count) {

@@ -137,5 +137,10 @@ namespace donut::opengl {
 
         ImGui_ImplGlfw_InitForOpenGL(m_window, true);
         ImGui_ImplOpenGL3_Init();
+
+        spdlog::info("OpenGL Info:");
+        spdlog::info("  Vendor: {0}", glGetString(GL_VENDOR));
+        spdlog::info("  Renderer: {0}", glGetString(GL_RENDERER));
+        spdlog::info("  Version: {0}", glGetString(GL_VERSION));
     }
 }
