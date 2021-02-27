@@ -32,7 +32,7 @@ void main()
     fragColor = texture(textureSampler, vertexUV);
     //fragColor.rg = vertexUV;
     //fragColor.b = 0.0f;
-    fragColor.a = 1.0f;
+    //fragColor.a = 1.0f;
 }
 )";
 }

@@ -138,10 +138,10 @@ std::vector<TestVertex> BuildQuadMesh() {
 
 TestCanvas::TestCanvas() {
     m_scene = std::make_shared<donut::Scene>();
-    m_emitterSystem = std::make_unique<donut::EmitterSystem>();
-    m_velocitySystem = std::make_unique<donut::VelocitySystem>();
-    m_lifetimeSystem = std::make_unique<donut::LifetimeSystem>();
-    m_renderingSystem = std::make_unique<donut::RenderingSystem>();
+    m_emitterSystem = std::make_unique<EmitterSystem>();
+    m_velocitySystem = std::make_unique<VelocitySystem>();
+    m_lifetimeSystem = std::make_unique<LifetimeSystem>();
+    m_renderingSystem = std::make_unique<RenderingSystem>();
 
     auto emitter = m_scene->CreateEntity();
     auto& emitterParams = emitter.AddComponent<EmitterComponent>();
@@ -175,13 +175,13 @@ TestCanvas::TestCanvas() {
     m_frameBuffer = FrameBuffer::Create(frameBufferDesc);
 
     m_frameBuffer->Bind();
-    Renderer::Clear({ 1.0f, 1.0f, 0.0f, 1.0f });
+    Renderer::Clear({ 1.0f, 1.0f, 0.0f, 0.3f });
     m_frameBuffer->Unbind();
 
     //Image img = GetCollapsedNoise();
     Image img = GetNoisyImage();
     emitterParams.m_mesh.m_texture = Texture2D::Create(img, TextureFormat::RGBA);
-    //meshComponent.m_texture = m_frameBuffer->GetColorTexture(0);
+    //emitterParams.m_mesh.m_texture = m_frameBuffer->GetColorTexture(0);
 }
 
 TestCanvas::~TestCanvas() {
