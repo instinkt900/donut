@@ -2,6 +2,7 @@
 
 namespace donut {
     class ILayer;
+    class Event;
 
 	class LayerStack {
     public:
@@ -13,11 +14,7 @@ namespace donut {
         void PushLayer(std::shared_ptr<ILayer> layer);
         void PopLayer();
 
-        void OnResize(int width, int height);
-        void OnKey(int key, int action, int mods);
-        void OnMouseButton(int button, int action, int mods);
-        void OnMouseScroll(double xOffset, double yOffset);
-        void OnMouseMove(double x, double y);
+        void OnEvent(Event const& event);
         void Draw();
 
     private:

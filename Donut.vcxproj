@@ -209,6 +209,14 @@
     <ClInclude Include="src\imgui\imstb_textedit.h" />
     <ClInclude Include="src\imgui\imstb_truetype.h" />
     <ClInclude Include="src\noncopyable.h" />
+    <ClInclude Include="src\renderer\events\event.h" />
+    <ClInclude Include="src\renderer\events\eventdispatch.h" />
+    <ClInclude Include="src\renderer\events\eventkey.h" />
+    <ClInclude Include="src\renderer\events\eventmousebutton.h" />
+    <ClInclude Include="src\renderer\events\eventmousemove.h" />
+    <ClInclude Include="src\renderer\events\eventmousescroll.h" />
+    <ClInclude Include="src\renderer\events\eventresize.h" />
+    <ClInclude Include="src\renderer\events\event_types.h" />
     <ClInclude Include="src\renderer\framebuffer.h" />
     <ClInclude Include="src\renderer\ilayer.h" />
     <ClInclude Include="src\renderer\image.h" />

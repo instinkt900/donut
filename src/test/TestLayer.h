@@ -1,5 +1,11 @@
 #pragma once
 
+#include "renderer/events/eventresize.h"
+#include "renderer/events/eventkey.h"
+#include "renderer/events/eventmousebutton.h"
+#include "renderer/events/eventmousescroll.h"
+#include "renderer/events/eventmousemove.h"
+
 namespace donut {
     class EmitterSystem;
     class VelocitySystem;
@@ -17,11 +23,7 @@ namespace donut {
 
         void OnAddedToStack(LayerStack& stack) override;
         void OnRemovedFromStack(LayerStack& stack) override;
-        void OnResize(int width, int height) override;
-        void OnKey(int key, int action, int mods) override;
-        void OnMouseButton(int button, int action, int mods) override;
-        void OnMouseScroll(double xOffset, double yOffset) override;
-        void OnMouseMove(double x, double y) override;
+        bool OnEvent(Event const& event) override;
         void Draw() override;
 
     private:
@@ -34,5 +36,11 @@ namespace donut {
         std::shared_ptr<FrameBuffer> m_frameBuffer;
 
         std::chrono::system_clock::time_point m_lastTime;
+
+        bool OnResizeEvent(EventResize const& event);
+        bool OnKeyEvent(EventKey const& event);
+        bool OnMouseButtonEvent(EventMouseButton const& event);
+        bool OnMouseScrollEvent(EventMouseScroll const& event);
+        bool OnMouseMoveEvent(EventMouseMove const& event);
     };
 }

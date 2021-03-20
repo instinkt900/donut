@@ -13,6 +13,8 @@
 #include "FastNoise/FastNoise.h"
 #include "FastSIMD/FunctionList.h"
 
+#include "renderer/events/eventdispatch.h"
+
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <map>
@@ -211,25 +213,14 @@ void TestLayer::OnRemovedFromStack(LayerStack& stack) {
 
 }
 
-void TestLayer::OnResize(int width, int height) {
-    m_width = width;
-    m_height = height;
-}
-
-void TestLayer::OnKey(int key, int action, int mods) {
-
-}
-
-void TestLayer::OnMouseButton(int button, int action, int mods) {
-
-}
-
-void TestLayer::OnMouseScroll(double xOffset, double yOffset) {
-
-}
-
-void TestLayer::OnMouseMove(double x, double y) {
-
+bool TestLayer::OnEvent(Event const& event) {
+    EventDispatch dispatch(event);
+    dispatch.Dispatch(this, &TestLayer::OnResizeEvent);
+    dispatch.Dispatch(this, &TestLayer::OnKeyEvent);
+    dispatch.Dispatch(this, &TestLayer::OnMouseButtonEvent);
+    dispatch.Dispatch(this, &TestLayer::OnMouseScrollEvent);
+    dispatch.Dispatch(this, &TestLayer::OnMouseMoveEvent);
+    return dispatch.WasDispatched();
 }
 
 void TestLayer::Draw() {
@@ -243,4 +234,26 @@ void TestLayer::Draw() {
     m_lifetimeSystem->Update(*m_scene, timestep);
     m_renderingSystem->Update(*m_scene);
     ImGui::Text("Hello world");
+}
+
+bool TestLayer::OnResizeEvent(EventResize const& event) {
+    m_width = event.GetWidth();
+    m_height = event.GetHeight();
+    return false;
+}
+
+bool TestLayer::OnKeyEvent(EventKey const& event) {
+    return false;
+}
+
+bool TestLayer::OnMouseButtonEvent(EventMouseButton const& event) {
+    return false;
+}
+
+bool TestLayer::OnMouseScrollEvent(EventMouseScroll const& event) {
+    return false;
+}
+
+bool TestLayer::OnMouseMoveEvent(EventMouseMove const& event) {
+    return false;
 }

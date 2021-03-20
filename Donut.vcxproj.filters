@@ -234,6 +234,30 @@
     <ClInclude Include="src\renderer\iwindow.h">
       <Filter>src\renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\renderer\events\event_types.h">
+      <Filter>src\renderer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\events\event.h">
+      <Filter>src\renderer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\events\eventresize.h">
+      <Filter>src\renderer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\events\eventdispatch.h">
+      <Filter>src\renderer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\events\eventkey.h">
+      <Filter>src\renderer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\events\eventmousebutton.h">
+      <Filter>src\renderer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\events\eventmousescroll.h">
+      <Filter>src\renderer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\events\eventmousemove.h">
+      <Filter>src\renderer\events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -280,6 +304,9 @@
     </Filter>
     <Filter Include="src\test">
       <UniqueIdentifier>{44f27273-bef4-4bf0-a52d-113b792f3836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\renderer\events">
+      <UniqueIdentifier>{54677ed5-dc34-4808-a615-27178fa25836}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

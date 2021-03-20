@@ -11,10 +11,28 @@ namespace {
     }
 
     template<typename T, typename F>
+    void SafeIterateBreakable(T const& container, F const& func) {
+        auto copy = container;
+        for (auto&& item : copy) {
+            if (func(item))
+                break;
+        }
+    }
+
+    template<typename T, typename F>
     void SafeIterateReverse(T const& container, F const& func) {
         auto copy = container;
         for (auto it = copy.rbegin(); it != copy.rend(); ++it) {
             func(*it);
+        }
+    }
+
+    template<typename T, typename F>
+    void SafeIterateBreakableReverse(T const& container, F const& func) {
+        auto copy = container;
+        for (auto it = copy.rbegin(); it != copy.rend(); ++it) {
+            if (func(*it))
+                break;
         }
     }
 }
@@ -35,33 +53,9 @@ namespace donut {
         m_layers.erase(m_layers.begin());
     }
 
-    void LayerStack::OnResize(int width, int height) {
-        SafeIterate(m_layers, [&](auto& layer) {
-            layer->OnResize(width, height);
-        });
-    }
-
-    void LayerStack::OnKey(int key, int action, int mods) {
-        SafeIterate(m_layers, [&](auto& layer) {
-            layer->OnKey(key, action, mods);
-        });
-    }
-
-    void LayerStack::OnMouseButton(int button, int action, int mods) {
-        SafeIterate(m_layers, [&](auto& layer) {
-            layer->OnMouseButton(button, action, mods);
-        });
-    }
-
-    void LayerStack::OnMouseScroll(double xOffset, double yOffset) {
-        SafeIterate(m_layers, [&](auto& layer) {
-            layer->OnMouseScroll(xOffset, yOffset);
-        });
-    }
-
-    void LayerStack::OnMouseMove(double x, double y) {
-        SafeIterate(m_layers, [&](auto& layer) {
-            layer->OnMouseMove(x, y);
+    void LayerStack::OnEvent(Event const& event) {
+        SafeIterateBreakableReverse(m_layers, [&](auto& layer) {
+            return layer->OnEvent(event);
         });
     }
 

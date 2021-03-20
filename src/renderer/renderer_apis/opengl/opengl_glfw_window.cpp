@@ -1,6 +1,12 @@
 #include "donut_pch.h"
 #include "opengl_glfw_window.h"
 
+#include "renderer/events/eventresize.h"
+#include "renderer/events/eventkey.h"
+#include "renderer/events/eventmousebutton.h"
+#include "renderer/events/eventmousescroll.h"
+#include "renderer/events/eventmousemove.h"
+
 #define GET_WINDOW(glfwWindow) static_cast<GLFWWindow*>(glfwGetWindowUserPointer(glfwWindow))
 
 namespace donut::opengl {
@@ -53,23 +59,23 @@ namespace donut::opengl {
         m_width = width;
         m_height = height;
         glfwGetFramebufferSize(m_window, &m_contentWidth, &m_contentHeight);
-        m_layerStack.OnResize(m_contentWidth, m_contentHeight);
+        m_layerStack.OnEvent(EventResize(m_contentWidth, m_contentHeight));
     }
 
     void GLFWWindow::OnKey(int key, int scancode, int action, int mods) {
-        m_layerStack.OnKey(key, action, mods);
+        m_layerStack.OnEvent(EventKey(key, action, mods));
     }
 
     void GLFWWindow::OnMouseButton(int button, int action, int mods) {
-        m_layerStack.OnMouseButton(button, action, mods);
+        m_layerStack.OnEvent(EventMouseButton(button, action, mods));
     }
 
     void GLFWWindow::OnMouseScroll(double xOffset, double yOffset) {
-        m_layerStack.OnMouseScroll(xOffset, yOffset);
+        m_layerStack.OnEvent(EventMouseScroll(xOffset, yOffset));
     }
 
     void GLFWWindow::OnMouseMove(double x, double y) {
-        m_layerStack.OnMouseMove(x, y);
+        m_layerStack.OnEvent(EventMouseMove(x, y));
     }
 
     GLFWWindow::GLFWWindow(GLFWwindow* window)
