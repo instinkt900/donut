@@ -1,5 +1,5 @@
 #include "donut_pch.h"
-#include "testcanvas.h"
+#include "TestLayer.h"
 
 #include "scene/components/transformcomponent.h"
 #include "scene/components/cameracomponent.h"
@@ -136,7 +136,7 @@ std::vector<TestVertex> BuildQuadMesh() {
     };
 }
 
-TestCanvas::TestCanvas() {
+TestLayer::TestLayer() {
     m_scene = std::make_shared<donut::Scene>();
     m_emitterSystem = std::make_unique<EmitterSystem>();
     m_velocitySystem = std::make_unique<VelocitySystem>();
@@ -184,13 +184,14 @@ TestCanvas::TestCanvas() {
     //emitterParams.m_mesh.m_texture = m_frameBuffer->GetColorTexture(0);
 }
 
-TestCanvas::~TestCanvas() {
+TestLayer::~TestLayer() {
 
 }
 
-void TestCanvas::OnAddedToWindow(Window* window) {
-    m_width = window->GetContentWidth();
-    m_height = window->GetContentHeight();
+void TestLayer::OnAddedToStack(LayerStack& stack) {
+    auto& window = stack.GetWindow();
+    m_width = window.GetContentWidth();
+    m_height = window.GetContentHeight();
 
     auto camera = m_scene->CreateEntity();
     auto& cameraTransformComponent = camera.AddComponent<TransformComponent>();
@@ -206,32 +207,32 @@ void TestCanvas::OnAddedToWindow(Window* window) {
     m_lastTime = std::chrono::system_clock::now();
 }
 
-void TestCanvas::OnRemovedFromWindow(Window* window) {
+void TestLayer::OnRemovedFromStack(LayerStack& stack) {
 
 }
 
-void TestCanvas::OnResize(int width, int height) {
+void TestLayer::OnResize(int width, int height) {
     m_width = width;
     m_height = height;
 }
 
-void TestCanvas::OnKey(int key, int action, int mods) {
+void TestLayer::OnKey(int key, int action, int mods) {
 
 }
 
-void TestCanvas::OnMouseButton(int button, int action, int mods) {
+void TestLayer::OnMouseButton(int button, int action, int mods) {
 
 }
 
-void TestCanvas::OnMouseScroll(double xOffset, double yOffset) {
+void TestLayer::OnMouseScroll(double xOffset, double yOffset) {
 
 }
 
-void TestCanvas::OnMouseMove(double x, double y) {
+void TestLayer::OnMouseMove(double x, double y) {
 
 }
 
-void TestCanvas::Draw() {
+void TestLayer::Draw() {
     auto time = std::chrono::system_clock::now();
     auto deltaTime = time - m_lastTime;
     auto const timestep = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(deltaTime).count());

@@ -30,7 +30,9 @@
 #include "renderer/texture2d.h"
 #include "renderer/framebuffer.h"
 #include "renderer/renderer.h"
-#include "renderer/icanvas.h"
+#include "renderer/iwindow.h"
+#include "renderer/ilayer.h"
+#include "renderer/layerstack.h"
 #include "renderer/window.h"
 
 #include "scene/scene.h"

@@ -10,13 +10,13 @@ namespace donut {
         glm::vec2 m_UV;
     };
 
-    class TestCanvas : public ICanvas {
+    class TestLayer : public ILayer {
     public:
-        TestCanvas();
-        ~TestCanvas();
+        TestLayer();
+        ~TestLayer();
 
-        void OnAddedToWindow(Window* window) override;
-        void OnRemovedFromWindow(Window* window) override;
+        void OnAddedToStack(LayerStack& stack) override;
+        void OnRemovedFromStack(LayerStack& stack) override;
         void OnResize(int width, int height) override;
         void OnKey(int key, int action, int mods) override;
         void OnMouseButton(int button, int action, int mods) override;

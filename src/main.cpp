@@ -1,12 +1,12 @@
 #include "donut_pch.h"
-#include "test/testcanvas.h"
+#include "test/TestLayer.h"
 
 int main(int argc, char const** argv) {
-    std::shared_ptr<donut::Window> window = donut::Window::Create(1280, 720, "Test Window");
+    auto window = donut::Window::Create(1280, 720, "Test Window");
     if (window) {
         donut::Renderer::Init();
-        std::shared_ptr<donut::ICanvas> scene = std::make_shared<donut::TestCanvas>();
-        window->SetCanvas(scene);
+        auto layer = std::make_shared<donut::TestLayer>();
+        window->GetLayerStack().PushLayer(layer);
         bool windowOpen = true;
         while (windowOpen) {
             windowOpen = window->Update();

@@ -1,31 +1,30 @@
 #pragma once
 
-namespace donut {
-    class ICanvas;
+#include "layerstack.h"
 
+namespace donut {
     namespace opengl {
-        class GLFWWindow : public NonCopyable {
+        class GLFWWindow : public IWindow, public NonCopyable {
         public:
             static std::shared_ptr<GLFWWindow> Create(int width, int height, std::string const& title);
             ~GLFWWindow();
 
-            bool Update();
+            bool Update() override;
 
-            void SetCanvas(std::shared_ptr<ICanvas> canvas);
-            std::shared_ptr<ICanvas> GetCanvas() const { return m_currentCanvas; }
+            LayerStack& GetLayerStack() override { return m_layerStack; }
 
-            int GetWidth() const { return m_width; }
-            int GetHeight() const { return m_height; }
+            int GetWidth() const override { return m_width; }
+            int GetHeight() const override { return m_height; }
 
-            int GetContentWidth() const { return m_contentWidth; }
-            int GetContentHeight() const { return m_contentHeight; }
+            int GetContentWidth() const override { return m_contentWidth; }
+            int GetContentHeight() const override { return m_contentHeight; }
 
         private:
             GLFWwindow* m_window = nullptr;
             int m_width = 0, m_height = 0;
             int m_contentWidth = 0, m_contentHeight = 0;
 
-            std::shared_ptr<ICanvas> m_currentCanvas;
+            LayerStack m_layerStack;
 
             void OnResize(int width, int height);
             void OnKey(int key, int scancode, int action, int mods);

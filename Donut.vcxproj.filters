@@ -64,7 +64,7 @@
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_framebuffer.cpp">
       <Filter>src\renderer\renderer_apis\opengl</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\testcanvas.cpp">
+    <ClCompile Include="src\test\TestLayer.cpp">
       <Filter>src\test</Filter>
     </ClCompile>
     <ClCompile Include="src\test\emittersystem.cpp">
@@ -75,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="src\test\lifetimesystem.cpp">
       <Filter>src\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\renderer\layerstack.cpp">
+      <Filter>src\renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -117,7 +120,7 @@
     <ClInclude Include="src\imgui\imstb_truetype.h">
       <Filter>src\imgui</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\icanvas.h">
+    <ClInclude Include="src\renderer\ilayer.h">
       <Filter>src\renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\indexbuffer.h">
@@ -204,7 +207,7 @@
     <ClInclude Include="src\renderer\framebuffer.h">
       <Filter>src\renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\testcanvas.h">
+    <ClInclude Include="src\test\TestLayer.h">
       <Filter>src\test</Filter>
     </ClInclude>
     <ClInclude Include="src\test\emittercomponent.h">
@@ -224,6 +227,12 @@
     </ClInclude>
     <ClInclude Include="src\test\lifetimesystem.h">
       <Filter>src\test</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\layerstack.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\iwindow.h">
+      <Filter>src\renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
