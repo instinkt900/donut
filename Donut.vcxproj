@@ -186,6 +186,8 @@
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_vertexlayout.cpp" />
     <ClCompile Include="src\scene\entity.cpp" />
     <ClCompile Include="src\scene\scene.cpp" />
+    <ClCompile Include="src\scene\systems\camerasystem.cpp" />
+    <ClCompile Include="src\scene\systems\inputsystem.cpp" />
     <ClCompile Include="src\scene\systems\renderingsystem.cpp" />
     <ClCompile Include="src\test\emittersystem.cpp" />
     <ClCompile Include="src\test\lifetimesystem.cpp" />
@@ -217,6 +219,7 @@
     <ClInclude Include="src\renderer\events\eventmousescroll.h" />
     <ClInclude Include="src\renderer\events\eventresize.h" />
     <ClInclude Include="src\renderer\events\event_types.h" />
+    <ClInclude Include="src\renderer\events\ieventlistener.h" />
     <ClInclude Include="src\renderer\framebuffer.h" />
     <ClInclude Include="src\renderer\ilayer.h" />
     <ClInclude Include="src\renderer\image.h" />
@@ -242,10 +245,14 @@
     <ClInclude Include="src\renderer\vertexlayout.h" />
     <ClInclude Include="src\renderer\window.h" />
     <ClInclude Include="src\scene\components\cameracomponent.h" />
+    <ClInclude Include="src\scene\components\inputcomponent.h" />
     <ClInclude Include="src\scene\components\meshcomponent.h" />
+    <ClInclude Include="src\scene\components\orbitcomponent.h" />
     <ClInclude Include="src\scene\components\transformcomponent.h" />
     <ClInclude Include="src\scene\entity.h" />
     <ClInclude Include="src\scene\scene.h" />
+    <ClInclude Include="src\scene\systems\camerasystem.h" />
+    <ClInclude Include="src\scene\systems\inputsystem.h" />
     <ClInclude Include="src\scene\systems\renderingsystem.h" />
     <ClInclude Include="src\test\emittercomponent.h" />
     <ClInclude Include="src\test\emittersystem.h" />

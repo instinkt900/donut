@@ -5,7 +5,7 @@
 namespace donut {
     class EventMouseScroll : public Event {
     public:
-        EventMouseScroll(int xOffset, int yOffset)
+        EventMouseScroll(double xOffset, double yOffset)
             : Event(EventType::EventMouseScroll)
             , m_xoffset(xOffset)
             , m_yoffset(yOffset) { }
@@ -14,11 +14,11 @@ namespace donut {
 
         static EventType GetStaticType() { return EventType::EventMouseScroll; }
 
-        int GetXOffset() const { return m_xoffset; }
-        int GetYOffset() const { return m_yoffset; }
+        double GetXOffset() const { return m_xoffset; }
+        double GetYOffset() const { return m_yoffset; }
 
     private:
-        int m_xoffset;
-        int m_yoffset;
+        double m_xoffset;
+        double m_yoffset;
     };
 }

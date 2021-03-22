@@ -48,23 +48,23 @@ namespace donut {
         Renderer::Clear({ 0, 0, 0, 1 });
         m_shader->Bind();
 
-        scene.GetRegistry().view<TransformComponent, CameraComponent>().each([&](entt::entity entity, TransformComponent const& transformComponent, CameraComponent const& cameraComponent) {
+        scene.GetRegistry().view<CameraComponent>().each([&](entt::entity entity, CameraComponent const& cameraComponent) {
             if (cameraComponent.m_active) {
-                auto const proj = glm::perspective(cameraComponent.m_fov, cameraComponent.m_aspect, cameraComponent.m_near, cameraComponent.m_far);
-                auto const view = transformComponent.m_transform;
-                m_shader->SetMatrix44("viewProjection", proj * view);
+                m_shader->SetMatrix44("viewProjection", cameraComponent.m_projection * cameraComponent.m_view);
             }
         });
 
         scene.GetRegistry().view<TransformComponent, MeshComponent>().each([&](entt::entity entity, TransformComponent const& transformComponent, MeshComponent const& meshComponent) {
             m_shader->SetMatrix44("model", transformComponent.m_transform);
-            meshComponent.m_texture->Bind();
+            if (meshComponent.m_texture)
+                meshComponent.m_texture->Bind();
             meshComponent.m_vertexBuffer->Bind();
             meshComponent.m_indexBuffer->Bind();
-            Renderer::DrawIndexedPrimitives(PrimitiveType::TRIANGLES, meshComponent.m_indexBuffer->GetCount());
+            Renderer::DrawIndexedPrimitives(meshComponent.m_primitiveType, meshComponent.m_indexBuffer->GetCount());
             meshComponent.m_indexBuffer->Unbind();
             meshComponent.m_vertexBuffer->Unbind();
-            meshComponent.m_texture->Unbind();
+            if (meshComponent.m_texture)
+                meshComponent.m_texture->Unbind();
         });
 
         m_shader->Unbind();

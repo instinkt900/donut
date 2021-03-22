@@ -10,6 +10,8 @@ namespace donut {
     class EmitterSystem;
     class VelocitySystem;
     class LifetimeSystem;
+    class InputSystem;
+    class CameraSystem;
 
     struct TestVertex {
         glm::vec3 m_position;
@@ -32,6 +34,8 @@ namespace donut {
         std::unique_ptr<EmitterSystem> m_emitterSystem;
         std::unique_ptr<VelocitySystem> m_velocitySystem;
         std::unique_ptr<LifetimeSystem> m_lifetimeSystem;
+        std::unique_ptr<CameraSystem> m_cameraSystem;
+        std::unique_ptr<InputSystem> m_inputSystem;
         std::unique_ptr<RenderingSystem> m_renderingSystem;
         std::shared_ptr<FrameBuffer> m_frameBuffer;
 

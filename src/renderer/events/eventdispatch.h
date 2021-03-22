@@ -1,5 +1,6 @@
 #pragma once
 
+#include "ieventlistener.h"
 #include "event.h"
 
 namespace donut {
@@ -11,12 +12,18 @@ namespace donut {
 
         bool WasDispatched() const { return m_dispatched; }
 
+        void Dispatch(IEventListener* listener) {
+            if (m_dispatched)
+                return;
+            m_dispatched = listener->OnEvent(m_event);
+        }
+
         template<typename T, typename E>
         void Dispatch(T* obj, bool (T::*func)(E const&)) {
             if (m_dispatched)
                 return;
             if (E const* castEvent = m_event.EventCast<E>())
-                (obj->*func)(*castEvent);
+                m_dispatched = (obj->*func)(*castEvent);
         }
 
     private:

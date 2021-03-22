@@ -5,7 +5,7 @@
 namespace donut {
     class EventMouseMove : public Event {
     public:
-        EventMouseMove(int x, int y)
+        EventMouseMove(double x, double y)
             : Event(EventType::EventMouseMove)
             , m_x(x)
             , m_y(y) { }
@@ -14,11 +14,11 @@ namespace donut {
 
         static EventType GetStaticType() { return EventType::EventMouseMove; }
 
-        int GetX() const { return m_x; }
-        int GetY() const { return m_y; }
+        double GetX() const { return m_x; }
+        double GetY() const { return m_y; }
 
     private:
-        int m_x;
-        int m_y;
+        double m_x;
+        double m_y;
     };
 }

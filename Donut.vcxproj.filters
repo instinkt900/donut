@@ -79,6 +79,12 @@
     <ClCompile Include="src\renderer\layerstack.cpp">
       <Filter>src\renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\scene\systems\camerasystem.cpp">
+      <Filter>src\scene\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\scene\systems\inputsystem.cpp">
+      <Filter>src\scene\systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -256,6 +262,21 @@
       <Filter>src\renderer\events</Filter>
     </ClInclude>
     <ClInclude Include="src\renderer\events\eventmousemove.h">
+      <Filter>src\renderer\events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\systems\camerasystem.h">
+      <Filter>src\scene\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\components\orbitcomponent.h">
+      <Filter>src\scene\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\systems\inputsystem.h">
+      <Filter>src\scene\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\scene\components\inputcomponent.h">
+      <Filter>src\scene\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\renderer\events\ieventlistener.h">
       <Filter>src\renderer\events</Filter>
     </ClInclude>
   </ItemGroup>

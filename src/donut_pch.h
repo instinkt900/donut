@@ -37,4 +37,6 @@
 
 #include "scene/scene.h"
 #include "scene/entity.h"
+#include "scene/systems/camerasystem.h"
+#include "scene/systems/inputsystem.h"
 #include "scene/systems/renderingsystem.h"

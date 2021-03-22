@@ -4,6 +4,8 @@
 #include "scene/components/transformcomponent.h"
 #include "scene/components/cameracomponent.h"
 #include "scene/components/meshcomponent.h"
+#include "scene/components/inputcomponent.h"
+#include "scene/components/orbitcomponent.h"
 
 #include "emittersystem.h"
 #include "velocitysystem.h"
@@ -138,11 +140,55 @@ std::vector<TestVertex> BuildQuadMesh() {
     };
 }
 
+MeshComponent BuildGridMesh(int width, int height, float sizeX, float sizeY) {
+    std::vector<TestVertex> vertices;
+
+    auto const horizLines = width + 1;
+    auto const vertLines = height + 1;
+    auto const horizSpacing = sizeX / width;
+    auto const vertSpacing = sizeY / height;
+
+    for (int i = 0; i < horizLines; ++i) {
+        auto const x1 = -sizeX / 2.0f;
+        auto const y1 = -sizeY / 2.0f + i * horizSpacing;
+        auto const x2 = sizeX / 2.0f;
+        auto const y2 = y1;
+        vertices.push_back({ { x1, y1, 0 }, { 0, 0 } });
+        vertices.push_back({ { x2, y2, 0 }, { 0, 0 } });
+    }
+
+    for (int i = 0; i < vertLines; ++i) {
+        auto const x1 = -sizeX / 2.0f + i * vertSpacing;
+        auto const y1 = -sizeY / 2.0f;
+        auto const x2 = x1;
+        auto const y2 = sizeY / 2.0f;
+        vertices.push_back({ { x1, y1, 0 }, { 0, 0 } });
+        vertices.push_back({ { x2, y2, 0 }, { 0, 0 } });
+    }
+
+    std::vector<unsigned int> indices(vertices.size());
+    for (int i = 0; i < vertices.size(); ++i)
+        indices[i] = i;
+
+    VertexLayout layout {
+        VertexElement { VertexElementType::Float, 3, false },
+        VertexElement { VertexElementType::Float, 2, false }
+    };
+
+    MeshComponent mesh;
+    mesh.m_primitiveType = PrimitiveType::LINES;
+    mesh.m_vertexBuffer = VertexBuffer::Create(layout, vertices.data(), static_cast<unsigned int>(vertices.size()));
+    mesh.m_indexBuffer = IndexBuffer::Create(indices.data(), static_cast<unsigned int>(indices.size()));
+    return mesh;
+}
+
 TestLayer::TestLayer() {
     m_scene = std::make_shared<donut::Scene>();
     m_emitterSystem = std::make_unique<EmitterSystem>();
     m_velocitySystem = std::make_unique<VelocitySystem>();
     m_lifetimeSystem = std::make_unique<LifetimeSystem>();
+    m_cameraSystem = std::make_unique<CameraSystem>();
+    m_inputSystem = std::make_unique<InputSystem>(*m_scene);
     m_renderingSystem = std::make_unique<RenderingSystem>();
 
     auto emitter = m_scene->CreateEntity();
@@ -184,6 +230,11 @@ TestLayer::TestLayer() {
     Image img = GetNoisyImage();
     emitterParams.m_mesh.m_texture = Texture2D::Create(img, TextureFormat::RGBA);
     //emitterParams.m_mesh.m_texture = m_frameBuffer->GetColorTexture(0);
+
+    auto gridEntity = m_scene->CreateEntity();
+    gridEntity.AddComponent<MeshComponent>(BuildGridMesh(5, 5, 10.0f, 10.f));
+    auto& gridTransform = gridEntity.AddComponent<TransformComponent>();
+    gridTransform.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, 0.0f });
 }
 
 TestLayer::~TestLayer() {
@@ -198,13 +249,22 @@ void TestLayer::OnAddedToStack(LayerStack& stack) {
     auto camera = m_scene->CreateEntity();
     auto& cameraTransformComponent = camera.AddComponent<TransformComponent>();
     auto& cameraComponent = camera.AddComponent<CameraComponent>();
+    auto& projectionComponent = camera.AddComponent<PerspectiveProjectionComponent>();
+    auto& inputComponent = camera.AddComponent<InputComponent>();
+    auto& orbitComponent = camera.AddComponent<OrbitComponent>();
+
+    inputComponent.m_enabled = true;
+    orbitComponent.m_target = glm::vec3(0, 0, 0);
+    orbitComponent.m_length = 80.0f;
+    orbitComponent.m_yawScale = 0.0001f;
+    orbitComponent.m_pitchScale = 0.0001f;
 
     cameraTransformComponent.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, -80.0f });
     cameraComponent.m_active = true;
-    cameraComponent.m_fov = glm::radians(70.0f);
-    cameraComponent.m_aspect = m_width / static_cast<float>(m_height);
-    cameraComponent.m_near = 0.1f;
-    cameraComponent.m_far = 1000.0f;
+    projectionComponent.m_fov = glm::radians(70.0f);
+    projectionComponent.m_aspect = m_width / static_cast<float>(m_height);
+    projectionComponent.m_near = 0.1f;
+    projectionComponent.m_far = 1000.0f;
 
     m_lastTime = std::chrono::system_clock::now();
 }
@@ -215,6 +275,7 @@ void TestLayer::OnRemovedFromStack(LayerStack& stack) {
 
 bool TestLayer::OnEvent(Event const& event) {
     EventDispatch dispatch(event);
+    dispatch.Dispatch(m_inputSystem.get());
     dispatch.Dispatch(this, &TestLayer::OnResizeEvent);
     dispatch.Dispatch(this, &TestLayer::OnKeyEvent);
     dispatch.Dispatch(this, &TestLayer::OnMouseButtonEvent);
@@ -229,9 +290,10 @@ void TestLayer::Draw() {
     auto const timestep = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(deltaTime).count());
     m_lastTime = time;
     Renderer::Viewport(0, 0, m_width, m_height);
-    m_emitterSystem->Update(*m_scene, timestep);
-    m_velocitySystem->Update(*m_scene, timestep);
-    m_lifetimeSystem->Update(*m_scene, timestep);
+    //m_emitterSystem->Update(*m_scene, timestep);
+    //m_velocitySystem->Update(*m_scene, timestep);
+    //m_lifetimeSystem->Update(*m_scene, timestep);
+    m_cameraSystem->Update(*m_scene);
     m_renderingSystem->Update(*m_scene);
     ImGui::Text("Hello world");
 }
