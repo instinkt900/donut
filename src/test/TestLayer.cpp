@@ -256,8 +256,8 @@ void TestLayer::OnAddedToStack(LayerStack& stack) {
     inputComponent.m_enabled = true;
     orbitComponent.m_target = glm::vec3(0, 0, 0);
     orbitComponent.m_length = 80.0f;
-    orbitComponent.m_yawScale = 0.0001f;
-    orbitComponent.m_pitchScale = 0.0001f;
+    orbitComponent.m_yawScale = 0.01f;
+    orbitComponent.m_pitchScale = 0.01f;
 
     cameraTransformComponent.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, -80.0f });
     cameraComponent.m_active = true;
@@ -295,6 +295,16 @@ void TestLayer::Draw() {
     //m_lifetimeSystem->Update(*m_scene, timestep);
     m_cameraSystem->Update(*m_scene);
     m_renderingSystem->Update(*m_scene);
+
+    if (ImGui::Begin("Entities")) {
+        auto& registry = m_scene->GetRegistry();
+        registry.each([&](auto entity) {
+            if (ImGui::CollapsingHeader("Entity")) {
+                OrbitComponent::ImGuiComponent(registry, entity);
+            }
+        });
+        ImGui::End();
+    }
     ImGui::Text("Hello world");
 }
 

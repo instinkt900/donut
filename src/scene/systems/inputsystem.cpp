@@ -42,13 +42,17 @@ namespace donut {
     }
 
     void InputSystem::UpdateOrbitComponent(OrbitComponent& orbitComponent, TransformComponent& transformComponent, EventMouseMove const& event) const {
-        orbitComponent.m_yaw = angleWrap(orbitComponent.m_yaw + orbitComponent.m_yawScale * static_cast<float>(event.GetX()));
-        orbitComponent.m_pitch = angleWrap(orbitComponent.m_pitch + orbitComponent.m_pitchScale * static_cast<float>(event.GetY()));
+        auto const currentPos = glm::vec2(event.GetX(), event.GetY());
+        auto const lastPos = orbitComponent.m_lastMousePos.value_or(currentPos);
+        auto const deltaPos = currentPos - lastPos;
+        orbitComponent.m_yaw = angleWrap(orbitComponent.m_yaw + orbitComponent.m_yawScale * deltaPos.x);
+        orbitComponent.m_pitch = angleWrap(orbitComponent.m_pitch + orbitComponent.m_pitchScale * deltaPos.y);
         auto transform = glm::identity<glm::mat4x4>();
         transform = glm::translate(transform, glm::vec3(0, 0, -orbitComponent.m_length));
         transform = glm::rotate(transform, orbitComponent.m_pitch, glm::vec3(1.0f, 0.0f, 0.0f));
-        transform = glm::rotate(transform, orbitComponent.m_yaw, glm::vec3(0.0f, 1.0f, 0.0f));
+        transform = glm::rotate(transform, orbitComponent.m_yaw, glm::vec3(0.0f, 0.0f, 1.0f));
         transform = glm::translate(transform, orbitComponent.m_target);
         transformComponent.m_transform = transform;
+        orbitComponent.m_lastMousePos = currentPos;
     }
 }

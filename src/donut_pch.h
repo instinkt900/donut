@@ -22,6 +22,8 @@
 
 #include <imgui.h>
 
+#include <optional>
+
 #include "renderer/shadersection.h"
 #include "renderer/shader.h"
 #include "renderer/vertexbuffer.h"
