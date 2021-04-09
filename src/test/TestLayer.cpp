@@ -140,6 +140,33 @@ std::vector<TestVertex> BuildQuadMesh() {
     };
 }
 
+MeshComponent BuildOriginMesh() {
+    std::vector<TestVertex> vertices {
+        { { 0, 0, 0 }, { 0, 0 } },
+        { { 10, 0, 0 }, { 0, 0 } },
+        { { 0, 0, 0 }, { 0, 0 } },
+        { { 0, 10, 0 }, { 0, 0 } },
+        { { 0, 0, 0 }, { 0, 0 } },
+        { { 0, 0, 10 }, { 0, 0 } },
+    };
+
+    std::vector<unsigned int> indices(vertices.size());
+    for (int i = 0; i < vertices.size(); ++i)
+        indices[i] = i;
+
+    VertexLayout layout {
+        VertexElement { VertexElementType::Float, 3, false },
+        VertexElement { VertexElementType::Float, 2, false }
+    };
+
+    MeshComponent mesh;
+    mesh.m_primitiveType = PrimitiveType::LINES;
+    mesh.m_vertexBuffer = VertexBuffer::Create(layout, vertices.data(), static_cast<unsigned int>(vertices.size()));
+    mesh.m_indexBuffer = IndexBuffer::Create(indices.data(), static_cast<unsigned int>(indices.size()));
+    mesh.m_material.m_color = { 1.0f, 0.0f, 0.0f, 1.0f };
+    return mesh;
+}
+
 MeshComponent BuildGridMesh(int width, int height, float sizeX, float sizeY) {
     std::vector<TestVertex> vertices;
 
@@ -179,6 +206,7 @@ MeshComponent BuildGridMesh(int width, int height, float sizeX, float sizeY) {
     mesh.m_primitiveType = PrimitiveType::LINES;
     mesh.m_vertexBuffer = VertexBuffer::Create(layout, vertices.data(), static_cast<unsigned int>(vertices.size()));
     mesh.m_indexBuffer = IndexBuffer::Create(indices.data(), static_cast<unsigned int>(indices.size()));
+    mesh.m_material.m_color = { 0.3f, 0.3f, 0.3f, 1.0f };
     return mesh;
 }
 
@@ -213,6 +241,7 @@ TestLayer::TestLayer() {
     std::shared_ptr<IndexBuffer> ib = IndexBuffer::Create(indices.data(), static_cast<unsigned int>(indices.size()));
     emitterParams.m_mesh.m_vertexBuffer = vb;
     emitterParams.m_mesh.m_indexBuffer = ib;
+    emitterParams.m_mesh.m_primitiveType = PrimitiveType::TRIANGLES;
 
     FrameBufferDesc frameBufferDesc;
     frameBufferDesc.m_width = 100;
@@ -228,11 +257,16 @@ TestLayer::TestLayer() {
 
     //Image img = GetCollapsedNoise();
     Image img = GetNoisyImage();
-    emitterParams.m_mesh.m_texture = Texture2D::Create(img, TextureFormat::RGBA);
+    emitterParams.m_mesh.m_material.m_texture = Texture2D::Create(img, TextureFormat::RGBA);
     //emitterParams.m_mesh.m_texture = m_frameBuffer->GetColorTexture(0);
 
+    auto originEntity = m_scene->CreateEntity();
+    originEntity.AddComponent<MeshComponent>(BuildOriginMesh());
+    auto& originTransform = originEntity.AddComponent<TransformComponent>();
+    originTransform.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, 0.0f });
+
     auto gridEntity = m_scene->CreateEntity();
-    gridEntity.AddComponent<MeshComponent>(BuildGridMesh(5, 5, 10.0f, 10.f));
+    gridEntity.AddComponent<MeshComponent>(BuildGridMesh(50, 50, 300.0f, 300.f));
     auto& gridTransform = gridEntity.AddComponent<TransformComponent>();
     gridTransform.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, 0.0f });
 }
@@ -290,9 +324,9 @@ void TestLayer::Draw() {
     auto const timestep = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(deltaTime).count());
     m_lastTime = time;
     Renderer::Viewport(0, 0, m_width, m_height);
-    //m_emitterSystem->Update(*m_scene, timestep);
-    //m_velocitySystem->Update(*m_scene, timestep);
-    //m_lifetimeSystem->Update(*m_scene, timestep);
+    m_emitterSystem->Update(*m_scene, timestep);
+    m_velocitySystem->Update(*m_scene, timestep);
+    m_lifetimeSystem->Update(*m_scene, timestep);
     m_cameraSystem->Update(*m_scene);
     m_renderingSystem->Update(*m_scene);
 

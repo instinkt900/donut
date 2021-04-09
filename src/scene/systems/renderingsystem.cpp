@@ -29,10 +29,7 @@ out vec4 fragColor;
 
 void main()
 {
-    fragColor = texture(textureSampler, vertexUV);
-    //fragColor.rg = vertexUV;
-    //fragColor.b = 0.0f;
-    //fragColor.a = 1.0f;
+    fragColor = color * texture(textureSampler, vertexUV);
 }
 )";
 }
@@ -56,15 +53,16 @@ namespace donut {
 
         scene.GetRegistry().view<TransformComponent, MeshComponent>().each([&](entt::entity entity, TransformComponent const& transformComponent, MeshComponent const& meshComponent) {
             m_shader->SetMatrix44("model", transformComponent.m_transform);
-            if (meshComponent.m_texture)
-                meshComponent.m_texture->Bind();
+            m_shader->SetVector4("color", meshComponent.m_material.m_color);
+            if (meshComponent.m_material.m_texture)
+                meshComponent.m_material.m_texture->Bind();
             meshComponent.m_vertexBuffer->Bind();
             meshComponent.m_indexBuffer->Bind();
             Renderer::DrawIndexedPrimitives(meshComponent.m_primitiveType, meshComponent.m_indexBuffer->GetCount());
             meshComponent.m_indexBuffer->Unbind();
             meshComponent.m_vertexBuffer->Unbind();
-            if (meshComponent.m_texture)
-                meshComponent.m_texture->Unbind();
+            if (meshComponent.m_material.m_texture)
+                meshComponent.m_material.m_texture->Unbind();
         });
 
         m_shader->Unbind();

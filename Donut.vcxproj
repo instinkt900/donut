@@ -226,6 +226,7 @@
     <ClInclude Include="src\renderer\indexbuffer.h" />
     <ClInclude Include="src\renderer\iwindow.h" />
     <ClInclude Include="src\renderer\layerstack.h" />
+    <ClInclude Include="src\renderer\material.h" />
     <ClInclude Include="src\renderer\primitivetype.h" />
     <ClInclude Include="src\renderer\renderer.h" />
     <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_framebuffer.h" />

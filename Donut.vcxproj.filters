@@ -279,6 +279,9 @@
     <ClInclude Include="src\renderer\events\ieventlistener.h">
       <Filter>src\renderer\events</Filter>
     </ClInclude>
+    <ClInclude Include="src\renderer\material.h">
+      <Filter>src\renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
