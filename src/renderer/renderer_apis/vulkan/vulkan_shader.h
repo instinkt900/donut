@@ -1,9 +1,9 @@
 #pragma once
-#if defined(USE_OPENGL)
+#if defined(USE_VULKAN)
 
 #include "renderer/shadersection.h"
 
-namespace donut::opengl {
+namespace donut::vulkan {
     class Shader : public NonCopyable {
     public:
         static std::shared_ptr<Shader> Create(std::initializer_list<ShaderSection const*> const& sections);
@@ -21,7 +21,6 @@ namespace donut::opengl {
         std::unordered_map<std::string, int> m_uniformCache;
 
         Shader(int program);
-        int GetUniformLoc(std::string const& name);
     };
 }
 

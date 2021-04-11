@@ -1,21 +1,19 @@
 #pragma once
-#if defined(USE_OPENGL)
+#if defined(USE_VULKAN)
 
 #include "renderer/vertexelement.h"
 
-namespace donut::opengl {
+namespace donut::vulkan {
     class VertexLayout : public NonCopyable {
     public:
         VertexLayout(std::initializer_list<VertexElement> elements);
         ~VertexLayout() = default;
 
-        size_t GetStride() const { return m_stride; }
+        size_t GetStride() const { return 0; }
 
         void Apply() const;
 
     private:
-        std::vector<VertexElement> m_elements;
-        size_t m_stride;
     };
 }
 

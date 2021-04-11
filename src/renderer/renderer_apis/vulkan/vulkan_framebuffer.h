@@ -1,7 +1,7 @@
 #pragma once
-#if defined(USE_OPENGL)
+#if defined(USE_VULKAN)
 
-namespace donut::opengl {
+namespace donut::vulkan {
     class FrameBuffer : public NonCopyable {
     public:
         static std::shared_ptr<FrameBuffer> Create(FrameBufferDesc const& desc);
@@ -14,12 +14,6 @@ namespace donut::opengl {
         std::shared_ptr<Texture2D> GetColorTexture(unsigned int index) const;
 
     private:
-        unsigned int m_id = 0;
-        unsigned int m_width = 0;
-        unsigned int m_height = 0;
-
-        std::vector<std::shared_ptr<Texture2D>> m_colorTextures;
-        std::shared_ptr<Texture2D> m_depthTexture;
     };
 }
 

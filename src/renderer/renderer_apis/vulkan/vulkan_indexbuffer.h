@@ -1,7 +1,7 @@
 #pragma once
-#if defined(USE_OPENGL)
+#if defined(USE_VULKAN)
 
-namespace donut::opengl {
+namespace donut::vulkan {
     class IndexBuffer : public NonCopyable {
     public:
         static std::shared_ptr<IndexBuffer> Create(unsigned int* data, unsigned int count);
@@ -11,7 +11,6 @@ namespace donut::opengl {
         void Unbind() const;
 
     private:
-        unsigned int m_id = 0;
         unsigned int m_count = 0;
 
         IndexBuffer(unsigned int id, unsigned int count);

@@ -1,7 +1,7 @@
 #pragma once
-#if defined(USE_OPENGL)
+#if defined(USE_VULKAN)
 
-namespace donut::opengl {
+namespace donut::vulkan {
     class Texture2D : public NonCopyable {
     public:
         static std::shared_ptr<Texture2D> Create(int width, int height, TextureFormat format);

@@ -1,4 +1,5 @@
 #include "donut_pch.h"
+#if defined(USE_OPENGL)
 #include "opengl_glfw_window.h"
 
 #include "renderer/events/eventresize.h"
@@ -127,3 +128,5 @@ namespace donut::opengl {
         spdlog::info("  Version: {0}", glGetString(GL_VERSION));
     }
 }
+
+#endif

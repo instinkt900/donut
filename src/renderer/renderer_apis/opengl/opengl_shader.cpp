@@ -1,4 +1,5 @@
 #include "donut_pch.h"
+#if defined(USE_OPENGL)
 #include "opengl_shader.h"
 
 namespace donut::opengl {
@@ -65,3 +66,5 @@ namespace donut::opengl {
         return loc;
     }
 }
+
+#endif

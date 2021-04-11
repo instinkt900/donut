@@ -1,4 +1,5 @@
 #include "donut_pch.h"
+#if defined(USE_OPENGL)
 #include "opengl_indexbuffer.h"
 
 namespace donut::opengl {
@@ -32,3 +33,5 @@ namespace donut::opengl {
     IndexBuffer::IndexBuffer(unsigned int id, unsigned int count)
         : m_id(id), m_count(count) { }
 }
+
+#endif

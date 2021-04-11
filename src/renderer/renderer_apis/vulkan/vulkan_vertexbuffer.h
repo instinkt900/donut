@@ -1,9 +1,9 @@
 #pragma once
-#if defined(USE_OPENGL)
+#if defined(USE_VULKAN)
 
 #include "renderer/vertexlayout.h"
 
-namespace donut::opengl {
+namespace donut::vulkan {
     class VertexBuffer : public NonCopyable {
     public:
         static std::shared_ptr<VertexBuffer> Create(VertexLayout const& layout, void* data, unsigned int count);
@@ -12,9 +12,6 @@ namespace donut::opengl {
         void Unbind() const;
 
     private:
-        unsigned int m_vertexBuffer;
-        unsigned int m_vertexArray;
-
         VertexBuffer(unsigned int vertexBuffer, unsigned int vertexArray);
     };
 }

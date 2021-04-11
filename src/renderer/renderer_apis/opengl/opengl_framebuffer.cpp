@@ -1,4 +1,5 @@
 #include "donut_pch.h"
+#if defined(USE_OPENGL)
 #include "opengl_framebuffer.h"
 
 namespace {
@@ -42,16 +43,6 @@ namespace donut::opengl {
             if (depthBufferCount > 0) {
                 m_depthTexture = Texture2D::Create(m_width, m_height, TextureFormat::Depth);
                 glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, m_depthTexture->GetId(), 0);
-                //glCreateTextures(GL_TEXTURE_2D, 1, &m_depthBufferId);
-                //glBindTexture(GL_TEXTURE_2D, m_depthBufferId);
-                //glTexStorage2D(GL_TEXTURE_2D, 1, GL_DEPTH24_STENCIL8, m_width, m_height);
-                //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-                //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-                //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
-                //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-                //glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-                //glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, m_depthBufferId, 0);
-                //m_depthTexture = Texture2D::Create(m_depthBufferId);
             }
 
             if (m_colorTextures.size() > 1) {
@@ -67,8 +58,6 @@ namespace donut::opengl {
 
     FrameBuffer::~FrameBuffer() {
         glDeleteFramebuffers(1, &m_id);
-        //glDeleteTextures(static_cast<int>(m_colorBufferIds.size()), m_colorBufferIds.data());
-        //glDeleteTextures(1, &m_depthBufferId);
     }
 
     void FrameBuffer::Bind() {
@@ -85,3 +74,5 @@ namespace donut::opengl {
         return m_colorTextures[index];
     }
 }
+
+#endif

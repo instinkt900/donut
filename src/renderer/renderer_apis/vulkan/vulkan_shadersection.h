@@ -1,7 +1,7 @@
 #pragma once
-#if defined(USE_OPENGL)
+#if defined(USE_VULKAN)
 
-namespace donut::opengl {
+namespace donut::vulkan {
     class ShaderSection : public NonCopyable {
     public:
         static std::shared_ptr<ShaderSection> Create(ShaderSectionType type, char const* source);
