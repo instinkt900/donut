@@ -30,10 +30,20 @@ namespace donut::vulkan {
             return nullptr;
         }
 
-        return std::shared_ptr<GLFWWindow>(new GLFWWindow(window));
+        auto vkInstance = Renderer::GetInstance();
+        VkSurfaceKHR surface;
+        if (VK_SUCCESS != glfwCreateWindowSurface(vkInstance, window, nullptr, &surface)) {
+            spdlog::error("glfwCreateWindowSurface failed!");
+            return nullptr;
+        }
+
+        return std::shared_ptr<GLFWWindow>(new GLFWWindow(window, surface));
     }
 
     GLFWWindow::~GLFWWindow() {
+        auto vkInstance = Renderer::GetInstance();
+        vkDestroySurfaceKHR(vkInstance, m_surface, nullptr);
+
         glfwDestroyWindow(m_window);
         glfwTerminate();
     }
@@ -65,8 +75,9 @@ namespace donut::vulkan {
         m_layerStack.OnEvent(EventMouseMove(x, y));
     }
 
-    GLFWWindow::GLFWWindow(GLFWwindow* window)
+    GLFWWindow::GLFWWindow(GLFWwindow* window, VkSurfaceKHR surface)
         : m_window(window)
+        , m_surface(surface)
         , m_layerStack(*this) {
     }
 }

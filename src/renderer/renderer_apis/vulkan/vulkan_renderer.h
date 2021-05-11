@@ -6,6 +6,7 @@
 namespace donut::vulkan {
     class Renderer : public Abstract {
     public:
+        static VkInstance GetInstance();
         static void Init();
         static void Shutdown();
         static void Viewport(int x, int y, int width, int height);
