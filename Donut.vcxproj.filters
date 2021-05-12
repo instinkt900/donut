@@ -112,6 +112,9 @@
     <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_vertexlayout.cpp">
       <Filter>src\renderer\renderer_apis\vulkan</Filter>
     </ClCompile>
+    <ClCompile Include="src\application.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -335,6 +338,9 @@
     </ClInclude>
     <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_vertexlayout.h">
       <Filter>src\renderer\renderer_apis\vulkan</Filter>
+    </ClInclude>
+    <ClInclude Include="src\application.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\application.cpp" />
     <ClCompile Include="src\donut_pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -209,6 +210,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\abstract.h" />
+    <ClInclude Include="src\application.h" />
     <ClInclude Include="src\glad\include\glad\glad.h" />
     <ClInclude Include="src\glad\include\KHR\khrplatform.h" />
     <ClInclude Include="src\donut_pch.h" />

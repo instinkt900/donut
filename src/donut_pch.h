@@ -28,6 +28,10 @@
 #include <imgui.h>
 
 #include <optional>
+#include <set>
+
+#include <cstdint>
+#include <algorithm>
 
 #include "renderer/shadersection.h"
 #include "renderer/shader.h"
@@ -47,3 +51,5 @@
 #include "scene/systems/camerasystem.h"
 #include "scene/systems/inputsystem.h"
 #include "scene/systems/renderingsystem.h"
+
+#include "application.h"

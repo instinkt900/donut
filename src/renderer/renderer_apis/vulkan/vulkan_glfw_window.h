@@ -19,6 +19,9 @@ namespace donut::vulkan {
         int GetContentWidth() const override { return m_contentWidth; }
         int GetContentHeight() const override { return m_contentHeight; }
 
+        GLFWwindow* GetGLFWWindow() const { return m_window; }
+        VkSurfaceKHR GetSurface() const { return m_surface; }
+
     private:
         GLFWwindow* m_window = nullptr;
         VkSurfaceKHR m_surface;
