@@ -207,6 +207,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="src\renderer\renderer_apis\vulkan\shader.frag" />
+    <None Include="src\renderer\renderer_apis\vulkan\shader.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\abstract.h" />

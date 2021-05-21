@@ -49,7 +49,20 @@ namespace donut::vulkan {
     }
 
     bool GLFWWindow::Update() {
-        return true;
+        glfwPollEvents();
+
+        //ImGui_ImplOpenGL3_NewFrame();
+        //ImGui_ImplGlfw_NewFrame();
+        //ImGui::NewFrame();
+
+        m_layerStack.Draw();
+
+        //ImGui::Render();
+        //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+        //glfwSwapBuffers(m_window);
+
+        return !glfwWindowShouldClose(m_window);
     }
 
     void GLFWWindow::OnResize(int width, int height) {

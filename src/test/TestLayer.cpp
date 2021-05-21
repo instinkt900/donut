@@ -231,44 +231,44 @@ TestLayer::TestLayer() {
         VertexElement { VertexElementType::Float, 2, false }
     };
 
-    //auto verts = BuildDiscMesh();
-    auto verts = BuildQuadMesh();
-    std::vector<unsigned int> indices(verts.size());
-    for (int i = 0; i < verts.size(); ++i)
-        indices[i] = i;
+    ////auto verts = BuildDiscMesh();
+    //auto verts = BuildQuadMesh();
+    //std::vector<unsigned int> indices(verts.size());
+    //for (int i = 0; i < verts.size(); ++i)
+    //    indices[i] = i;
 
-    std::shared_ptr<VertexBuffer> vb = VertexBuffer::Create(layout, verts.data(), static_cast<unsigned int>(verts.size()));
-    std::shared_ptr<IndexBuffer> ib = IndexBuffer::Create(indices.data(), static_cast<unsigned int>(indices.size()));
-    emitterParams.m_mesh.m_vertexBuffer = vb;
-    emitterParams.m_mesh.m_indexBuffer = ib;
-    emitterParams.m_mesh.m_primitiveType = PrimitiveType::TRIANGLES;
+    //std::shared_ptr<VertexBuffer> vb = VertexBuffer::Create(layout, verts.data(), static_cast<unsigned int>(verts.size()));
+    //std::shared_ptr<IndexBuffer> ib = IndexBuffer::Create(indices.data(), static_cast<unsigned int>(indices.size()));
+    //emitterParams.m_mesh.m_vertexBuffer = vb;
+    //emitterParams.m_mesh.m_indexBuffer = ib;
+    //emitterParams.m_mesh.m_primitiveType = PrimitiveType::TRIANGLES;
 
-    FrameBufferDesc frameBufferDesc;
-    frameBufferDesc.m_width = 100;
-    frameBufferDesc.m_height = 100;
-    FrameBufferTextureDesc colorDesc;
-    colorDesc.m_format = FrameBufferTextureFormat::RGBA;
-    frameBufferDesc.m_attachments.push_back(colorDesc);
-    m_frameBuffer = FrameBuffer::Create(frameBufferDesc);
+    //FrameBufferDesc frameBufferDesc;
+    //frameBufferDesc.m_width = 100;
+    //frameBufferDesc.m_height = 100;
+    //FrameBufferTextureDesc colorDesc;
+    //colorDesc.m_format = FrameBufferTextureFormat::RGBA;
+    //frameBufferDesc.m_attachments.push_back(colorDesc);
+    //m_frameBuffer = FrameBuffer::Create(frameBufferDesc);
 
-    m_frameBuffer->Bind();
-    Renderer::Clear({ 1.0f, 1.0f, 0.0f, 0.3f });
-    m_frameBuffer->Unbind();
+    //m_frameBuffer->Bind();
+    //Renderer::Clear({ 1.0f, 1.0f, 0.0f, 0.3f });
+    //m_frameBuffer->Unbind();
 
-    //Image img = GetCollapsedNoise();
-    Image img = GetNoisyImage();
-    emitterParams.m_mesh.m_material.m_texture = Texture2D::Create(img, TextureFormat::RGBA);
-    //emitterParams.m_mesh.m_texture = m_frameBuffer->GetColorTexture(0);
+    ////Image img = GetCollapsedNoise();
+    //Image img = GetNoisyImage();
+    //emitterParams.m_mesh.m_material.m_texture = Texture2D::Create(img, TextureFormat::RGBA);
+    ////emitterParams.m_mesh.m_texture = m_frameBuffer->GetColorTexture(0);
 
-    auto originEntity = m_scene->CreateEntity();
-    originEntity.AddComponent<MeshComponent>(BuildOriginMesh());
-    auto& originTransform = originEntity.AddComponent<TransformComponent>();
-    originTransform.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, 0.0f });
+    //auto originEntity = m_scene->CreateEntity();
+    //originEntity.AddComponent<MeshComponent>(BuildOriginMesh());
+    //auto& originTransform = originEntity.AddComponent<TransformComponent>();
+    //originTransform.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, 0.0f });
 
-    auto gridEntity = m_scene->CreateEntity();
-    gridEntity.AddComponent<MeshComponent>(BuildGridMesh(50, 50, 300.0f, 300.f));
-    auto& gridTransform = gridEntity.AddComponent<TransformComponent>();
-    gridTransform.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, 0.0f });
+    //auto gridEntity = m_scene->CreateEntity();
+    //gridEntity.AddComponent<MeshComponent>(BuildGridMesh(50, 50, 300.0f, 300.f));
+    //auto& gridTransform = gridEntity.AddComponent<TransformComponent>();
+    //gridTransform.m_transform = glm::translate(glm::identity<glm::mat4x4>(), { 0.0f, 0.0f, 0.0f });
 }
 
 TestLayer::~TestLayer() {
@@ -323,23 +323,24 @@ void TestLayer::Draw() {
     auto deltaTime = time - m_lastTime;
     auto const timestep = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(deltaTime).count());
     m_lastTime = time;
-    Renderer::Viewport(0, 0, m_width, m_height);
-    m_emitterSystem->Update(*m_scene, timestep);
-    m_velocitySystem->Update(*m_scene, timestep);
-    m_lifetimeSystem->Update(*m_scene, timestep);
-    m_cameraSystem->Update(*m_scene);
-    m_renderingSystem->Update(*m_scene);
+    Renderer::Clear(glm::vec4 { 0, 0, 0, 1 });
+    //Renderer::Viewport(0, 0, m_width, m_height);
+    //m_emitterSystem->Update(*m_scene, timestep);
+    //m_velocitySystem->Update(*m_scene, timestep);
+    //m_lifetimeSystem->Update(*m_scene, timestep);
+    //m_cameraSystem->Update(*m_scene);
+    //m_renderingSystem->Update(*m_scene);
 
-    if (ImGui::Begin("Entities")) {
-        auto& registry = m_scene->GetRegistry();
-        registry.each([&](auto entity) {
-            if (ImGui::CollapsingHeader("Entity")) {
-                OrbitComponent::ImGuiComponent(registry, entity);
-            }
-        });
-        ImGui::End();
-    }
-    ImGui::Text("Hello world");
+    //if (ImGui::Begin("Entities")) {
+    //    auto& registry = m_scene->GetRegistry();
+    //    registry.each([&](auto entity) {
+    //        if (ImGui::CollapsingHeader("Entity")) {
+    //            OrbitComponent::ImGuiComponent(registry, entity);
+    //        }
+    //    });
+    //    ImGui::End();
+    //}
+    //ImGui::Text("Hello world");
 }
 
 bool TestLayer::OnResizeEvent(EventResize const& event) {

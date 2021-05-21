@@ -118,6 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="src\renderer\renderer_apis\vulkan\shader.vert">
+      <Filter>src\renderer\renderer_apis\vulkan</Filter>
+    </None>
+    <None Include="src\renderer\renderer_apis\vulkan\shader.frag">
+      <Filter>src\renderer\renderer_apis\vulkan</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\donut_pch.h">
