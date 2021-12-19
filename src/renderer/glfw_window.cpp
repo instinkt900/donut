@@ -1,7 +1,5 @@
 #include "donut_pch.h"
-#if defined(USE_VULKAN)
-
-#include "vulkan_glfw_window.h"
+#include "glfw_window.h"
 
 #include "renderer/events/eventresize.h"
 #include "renderer/events/eventkey.h"
@@ -11,7 +9,7 @@
 
 #define GET_WINDOW(glfwWindow) static_cast<GLFWWindow*>(glfwGetWindowUserPointer(glfwWindow))
 
-namespace donut::vulkan {
+namespace donut {
     std::shared_ptr<GLFWWindow> GLFWWindow::Create(int width, int height, std::string const& title) {
         if (!glfwInit()) {
             spdlog::error("glfwInit failed!");
@@ -22,25 +20,20 @@ namespace donut::vulkan {
             spdlog::error("glfw error: {}", desc);
         });
 
-        glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         auto window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
         if (nullptr == window) {
             spdlog::error("glfwCreateWindow failed!");
             return nullptr;
         }
 
-        auto vkInstance = Renderer::GetInstance();
-        VkSurfaceKHR surface;
-        if (VK_SUCCESS != glfwCreateWindowSurface(vkInstance, window, nullptr, &surface)) {
-            spdlog::error("glfwCreateWindowSurface failed!");
-            return nullptr;
-        }
-
-        return std::shared_ptr<GLFWWindow>(new GLFWWindow(window, surface));
+        return std::shared_ptr<GLFWWindow>(new GLFWWindow(window));
     }
 
     GLFWWindow::~GLFWWindow() {
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplGlfw_Shutdown();
+        ImGui::DestroyContext();
+
         glfwDestroyWindow(m_window);
         glfwTerminate();
     }
@@ -48,16 +41,16 @@ namespace donut::vulkan {
     bool GLFWWindow::Update() {
         glfwPollEvents();
 
-        //ImGui_ImplOpenGL3_NewFrame();
-        //ImGui_ImplGlfw_NewFrame();
-        //ImGui::NewFrame();
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
 
         m_layerStack.Draw();
 
-        //ImGui::Render();
-        //ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
-        //glfwSwapBuffers(m_window);
+        glfwSwapBuffers(m_window);
 
         return !glfwWindowShouldClose(m_window);
     }
@@ -85,16 +78,52 @@ namespace donut::vulkan {
         m_layerStack.OnEvent(EventMouseMove(x, y));
     }
 
-    GLFWWindow::GLFWWindow(GLFWwindow* window, VkSurfaceKHR surface)
+    GLFWWindow::GLFWWindow(GLFWwindow* window)
         : m_window(window)
-        , m_surface(surface)
         , m_layerStack(*this) {
+        glfwGetWindowSize(m_window, &m_width, &m_height);
+        glfwGetFramebufferSize(m_window, &m_contentWidth, &m_contentHeight);
+        glfwSetWindowUserPointer(m_window, this);
 
-        glfwSetWindowUserPointer(window, this);
         glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* glfwWindow, int width, int height) {
             GET_WINDOW(glfwWindow)->OnResize(width, height);
         });
+
+        glfwSetKeyCallback(m_window, [](GLFWwindow* glfwWindow, int key, int scancode, int action, int mods) {
+            GET_WINDOW(glfwWindow)->OnKey(key, scancode, action, mods);
+        });
+
+        glfwSetMouseButtonCallback(m_window, [](GLFWwindow* glfwWindow, int button, int action, int mods) {
+            GET_WINDOW(glfwWindow)->OnMouseButton(button, action, mods);
+        });
+
+        glfwSetScrollCallback(m_window, [](GLFWwindow* glfwWindow, double xOffset, double yOffset) {
+            GET_WINDOW(glfwWindow)->OnMouseScroll(xOffset, yOffset);
+        });
+
+        glfwSetCursorPosCallback(m_window, [](GLFWwindow* glfwWindow, double x, double y) {
+            GET_WINDOW(glfwWindow)->OnMouseMove(x, y);
+        });
+
+        glfwMakeContextCurrent(m_window);
+        glfwSwapInterval(1);
+
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+            spdlog::error("gladLoadGLLoader failed");
+            return;
+        }
+
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
+        ImGuiIO& io = ImGui::GetIO();
+        (void)io;
+
+        ImGui_ImplGlfw_InitForOpenGL(m_window, true);
+        ImGui_ImplOpenGL3_Init();
+
+        spdlog::info("OpenGL Info:");
+        spdlog::info("  Vendor: {0}", glGetString(GL_VENDOR));
+        spdlog::info("  Renderer: {0}", glGetString(GL_RENDERER));
+        spdlog::info("  Version: {0}", glGetString(GL_VERSION));
     }
 }
-
-#endif

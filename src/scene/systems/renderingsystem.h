@@ -3,6 +3,8 @@
 #include "scene/scene.h"
 
 namespace donut {
+    class Shader;
+    
     class RenderingSystem {
     public:
         RenderingSystem();

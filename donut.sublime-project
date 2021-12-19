@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+		},
+		{
+			"folder_include_patterns":
+			[
+				"//1.2.170.0",
+				"//1.2.170.0/Include/"
+			],
+			"path": "C:\\VulkanSDK"
+		},
+	],
+}

@@ -1,13 +1,14 @@
 #pragma once
-#if defined(USE_VULKAN)
 
-#include "renderer/layerstack.h"
+#include "iwindow.h"
+#include "layerstack.h"
 
-namespace donut::vulkan {
+namespace donut {
+    // TODO this is a bad name. GLFWWindow vs GLFWwindow
     class GLFWWindow : public IWindow, public NonCopyable {
     public:
         static std::shared_ptr<GLFWWindow> Create(int width, int height, std::string const& title);
-        ~GLFWWindow();
+        virtual ~GLFWWindow();
 
         bool Update() override;
 
@@ -20,11 +21,9 @@ namespace donut::vulkan {
         int GetContentHeight() const override { return m_contentHeight; }
 
         GLFWwindow* GetGLFWWindow() const { return m_window; }
-        VkSurfaceKHR GetSurface() const { return m_surface; }
 
     private:
         GLFWwindow* m_window = nullptr;
-        VkSurfaceKHR m_surface;
         int m_width = 0, m_height = 0;
         int m_contentWidth = 0, m_contentHeight = 0;
 
@@ -36,8 +35,6 @@ namespace donut::vulkan {
         void OnMouseScroll(double xOffset, double yOffset);
         void OnMouseMove(double x, double y);
 
-        GLFWWindow(GLFWwindow* window, VkSurfaceKHR surface);
+        GLFWWindow(GLFWwindow* window);
     };
 }
-
-#endif
