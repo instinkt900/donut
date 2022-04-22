@@ -215,6 +215,41 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "Searching 13 files for \"IM_ARRAYSIZE\"\n\nD:\\Development\\donut\\src\\imgui\\imgui.cpp:\n  976      // Most fields are initialized with zero\n  977      memset(this, 0, sizeof(*this));\n  978:     IM_ASSERT(IM_ARRAYSIZE(ImGuiIO::MouseDown) == ImGuiMouseButton_COUNT && IM_ARRAYSIZE(ImGuiIO::MouseClicked) == ImGuiMouseButton_COUNT); // Our pre-C++11 IM_STATIC_ASSERT() macros triggers warning on modern compilers so we don't use it here.\n  979  \n  980      // Settings\n  ...\n 1029      MousePosPrev = ImVec2(-FLT_MAX, -FLT_MAX);\n 1030      MouseDragThreshold = 6.0f;\n 1031:     for (int i = 0; i < IM_ARRAYSIZE(MouseDownDuration); i++) MouseDownDuration[i] = MouseDownDurationPrev[i] = -1.0f;\n 1032:     for (int i = 0; i < IM_ARRAYSIZE(KeysDownDuration); i++) KeysDownDuration[i]  = KeysDownDurationPrev[i] = -1.0f;\n 1033:     for (int i = 0; i < IM_ARRAYSIZE(NavInputsDownDuration); i++) NavInputsDownDuration[i] = -1.0f;\n 1034  }\n 1035  \n ....\n 1949      if (default_filter)\n 1950      {\n 1951:         ImStrncpy(InputBuf, default_filter, IM_ARRAYSIZE(InputBuf));\n 1952          Build();\n 1953      }\n ....\n 1963      if (width != 0.0f)\n 1964          ImGui::SetNextItemWidth(width);\n 1965:     bool value_changed = ImGui::InputText(label, InputBuf, IM_ARRAYSIZE(InputBuf));\n 1966      if (value_changed)\n 1967          Build();\n ....\n 2361  {\n 2362      IM_ASSERT(idx >= 0 && idx < ImGuiStyleVar_COUNT);\n 2363:     IM_ASSERT(IM_ARRAYSIZE(GStyleVarInfo) == ImGuiStyleVar_COUNT);\n 2364      return &GStyleVarInfo[idx];\n 2365  }\n ....\n 3419  \n 3420      g.IO.MousePosPrev = g.IO.MousePos;\n 3421:     for (int i = 0; i < IM_ARRAYSIZE(g.IO.MouseDown); i++)\n 3422      {\n 3423          g.IO.MouseClicked[i] = g.IO.MouseDown[i] && g.IO.MouseDownDuration[i] < 0.0f;\n ....\n 3605      int mouse_earliest_button_down = -1;\n 3606      bool mouse_any_down = false;\n 3607:     for (int i = 0; i < IM_ARRAYSIZE(g.IO.MouseDown); i++)\n 3608      {\n 3609          if (g.IO.MouseClicked[i])\n ....\n 3676      g.FramerateSecPerFrameAccum += g.IO.DeltaTime - g.FramerateSecPerFrame[g.FramerateSecPerFrameIdx];\n 3677      g.FramerateSecPerFrame[g.FramerateSecPerFrameIdx] = g.IO.DeltaTime;\n 3678:     g.FramerateSecPerFrameIdx = (g.FramerateSecPerFrameIdx + 1) % IM_ARRAYSIZE(g.FramerateSecPerFrame);\n 3679:     g.IO.Framerate = (g.FramerateSecPerFrameAccum > 0.0f) ? (1.0f / (g.FramerateSecPerFrameAccum / (float)IM_ARRAYSIZE(g.FramerateSecPerFrame))) : FLT_MAX;\n 3680  \n 3681      // Setup current font and draw list shared data\n ....\n 3756      g.IO.KeyMods = GetMergedKeyModFlags();\n 3757      memcpy(g.IO.KeysDownDurationPrev, g.IO.KeysDownDuration, sizeof(g.IO.KeysDownDuration));\n 3758:     for (int i = 0; i < IM_ARRAYSIZE(g.IO.KeysDown); i++)\n 3759          g.IO.KeysDownDuration[i] = g.IO.KeysDown[i] ? (g.IO.KeysDownDuration[i] < 0.0f ? 0.0f : g.IO.KeysDownDuration[i] + g.IO.DeltaTime) : -1.0f;\n 3760  \n ....\n 4053      int n = Layers[0].Size;\n 4054      int size = n;\n 4055:     for (int i = 1; i < IM_ARRAYSIZE(Layers); i++)\n 4056          size += Layers[i].Size;\n 4057      Layers[0].resize(size);\n 4058:     for (int layer_n = 1; layer_n < IM_ARRAYSIZE(Layers); layer_n++)\n 4059      {\n 4060          ImVector<ImDrawList*>& layer = Layers[layer_n];\n ....\n 4208              AddRootWindowToDrawData(window);\n 4209      }\n 4210:     for (int n = 0; n < IM_ARRAYSIZE(windows_to_render_top_most); n++)\n 4211          if (windows_to_render_top_most[n] && IsWindowActiveAndVisible(windows_to_render_top_most[n])) // NavWindowingTarget is always temporarily displayed as the top-most window\n 4212              AddRootWindowToDrawData(windows_to_render_top_most[n]);\n ....\n 4333          return false;\n 4334      ImGuiContext& g = *GImGui;\n 4335:     IM_ASSERT(user_key_index >= 0 && user_key_index < IM_ARRAYSIZE(g.IO.KeysDown));\n 4336      return g.IO.KeysDown[user_key_index];\n 4337  }\n ....\n 4360      if (key_index < 0)\n 4361          return 0;\n 4362:     IM_ASSERT(key_index >= 0 && key_index < IM_ARRAYSIZE(g.IO.KeysDown));\n 4363      const float t = g.IO.KeysDownDuration[key_index];\n 4364      return CalcTypematicRepeatAmount(t - g.IO.DeltaTime, t, repeat_delay, repeat_rate);\n ....\n 4370      if (user_key_index < 0)\n 4371          return false;\n 4372:     IM_ASSERT(user_key_index >= 0 && user_key_index < IM_ARRAYSIZE(g.IO.KeysDown));\n 4373      const float t = g.IO.KeysDownDuration[user_key_index];\n 4374      if (t == 0.0f)\n ....\n 4383      ImGuiContext& g = *GImGui;\n 4384      if (user_key_index < 0) return false;\n 4385:     IM_ASSERT(user_key_index >= 0 && user_key_index < IM_ARRAYSIZE(g.IO.KeysDown));\n 4386      return g.IO.KeysDownDurationPrev[user_key_index] >= 0.0f && !g.IO.KeysDown[user_key_index];\n 4387  }\n ....\n 4390  {\n 4391      ImGuiContext& g = *GImGui;\n 4392:     IM_ASSERT(button >= 0 && button < IM_ARRAYSIZE(g.IO.MouseDown));\n 4393      return g.IO.MouseDown[button];\n 4394  }\n ....\n 4397  {\n 4398      ImGuiContext& g = *GImGui;\n 4399:     IM_ASSERT(button >= 0 && button < IM_ARRAYSIZE(g.IO.MouseDown));\n 4400      const float t = g.IO.MouseDownDuration[button];\n 4401      if (t == 0.0f)\n ....\n 4415  {\n 4416      ImGuiContext& g = *GImGui;\n 4417:     IM_ASSERT(button >= 0 && button < IM_ARRAYSIZE(g.IO.MouseDown));\n 4418      return g.IO.MouseReleased[button];\n 4419  }\n ....\n 4422  {\n 4423      ImGuiContext& g = *GImGui;\n 4424:     IM_ASSERT(button >= 0 && button < IM_ARRAYSIZE(g.IO.MouseDown));\n 4425      return g.IO.MouseDoubleClicked[button];\n 4426  }\n ....\n 4430  {\n 4431      ImGuiContext& g = *GImGui;\n 4432:     IM_ASSERT(button >= 0 && button < IM_ARRAYSIZE(g.IO.MouseDown));\n 4433      if (lock_threshold < 0.0f)\n 4434          lock_threshold = g.IO.MouseDragThreshold;\n ....\n 4439  {\n 4440      ImGuiContext& g = *GImGui;\n 4441:     IM_ASSERT(button >= 0 && button < IM_ARRAYSIZE(g.IO.MouseDown));\n 4442      if (!g.IO.MouseDown[button])\n 4443          return false;\n ....\n 4474  {\n 4475      ImGuiContext& g = *GImGui;\n 4476:     for (int n = 0; n < IM_ARRAYSIZE(g.IO.MouseDown); n++)\n 4477          if (g.IO.MouseDown[n])\n 4478              return true;\n ....\n 4486  {\n 4487      ImGuiContext& g = *GImGui;\n 4488:     IM_ASSERT(button >= 0 && button < IM_ARRAYSIZE(g.IO.MouseDown));\n 4489      if (lock_threshold < 0.0f)\n 4490          lock_threshold = g.IO.MouseDragThreshold;\n ....\n 4499  {\n 4500      ImGuiContext& g = *GImGui;\n 4501:     IM_ASSERT(button >= 0 && button < IM_ARRAYSIZE(g.IO.MouseDown));\n 4502      // NB: We don't need to reset g.IO.MouseDragMaxDistanceSqr\n 4503      g.IO.MouseClickedPos[button] = g.IO.MousePos;\n ....\n 4674      char title[256];\n 4675      if (name)\n 4676:         ImFormatString(title, IM_ARRAYSIZE(title), \"%s/%s_%08X\", parent_window->Name, name, id);\n 4677      else\n 4678:         ImFormatString(title, IM_ARRAYSIZE(title), \"%s/%08X\", parent_window->Name, id);\n 4679  \n 4680      const float backup_border_size = g.Style.ChildBorderSize;\n ....\n 6745      IM_ASSERT(g.Style.WindowMenuButtonPosition == ImGuiDir_None || g.Style.WindowMenuButtonPosition == ImGuiDir_Left || g.Style.WindowMenuButtonPosition == ImGuiDir_Right);\n 6746      for (int n = 0; n < ImGuiKey_COUNT; n++)\n 6747:         IM_ASSERT(g.IO.KeyMap[n] >= -1 && g.IO.KeyMap[n] < IM_ARRAYSIZE(g.IO.KeysDown) && \"io.KeyMap[] contains an out of bound value (need to be 0..512, or -1 for unmapped key)\");\n 6748  \n 6749      // Perform simple check: required key mapping (we intentionally do NOT check all keys to not pressure user into setting up everything, but Space is required and was only recently added in 1.60 WIP)\n ....\n 6802      { int n = g.StyleModifiers.Size;      if (write) *p = (short)n; else IM_ASSERT(*p >= n && \"PushStyleVar/PopStyleVar Mismatch!\");           p++; }    // Too few or too many PopStyleVar()\n 6803      { int n = g.FontStack.Size;           if (write) *p = (short)n; else IM_ASSERT(*p >= n && \"PushFont/PopFont Mismatch!\");                   p++; }    // Too few or too many PopFont()\n 6804:     IM_ASSERT(p == window->DC.StackSizesBackup + IM_ARRAYSIZE(window->DC.StackSizesBackup));\n 6805  }\n 6806  \n ....\n 7477  \n 7478      char window_name[16];\n 7479:     ImFormatString(window_name, IM_ARRAYSIZE(window_name), \"##Tooltip_%02d\", g.TooltipOverrideCount);\n 7480      if (tooltip_flags & ImGuiTooltipFlags_OverridePreviousTooltip)\n 7481          if (ImGuiWindow* window = FindWindowByName(window_name))\n ....\n 7485                  window->Hidden = true;\n 7486                  window->HiddenFramesCanSkipItems = 1;\n 7487:                 ImFormatString(window_name, IM_ARRAYSIZE(window_name), \"##Tooltip_%02d\", ++g.TooltipOverrideCount);\n 7488              }\n 7489      ImGuiWindowFlags flags = ImGuiWindowFlags_Tooltip|ImGuiWindowFlags_NoInputs|ImGuiWindowFlags_NoTitleBar|ImGuiWindowFlags_NoMove|ImGuiWindowFlags_NoResize|ImGuiWindowFlags_NoSavedSettings|ImGuiWindowFlags_AlwaysAutoResize;\n ....\n 7731      char name[20];\n 7732      if (flags & ImGuiWindowFlags_ChildMenu)\n 7733:         ImFormatString(name, IM_ARRAYSIZE(name), \"##Menu_%02d\", g.BeginPopupStack.Size); // Recycle windows based on depth\n 7734      else\n 7735:         ImFormatString(name, IM_ARRAYSIZE(name), \"##Popup_%08x\", id); // Not recycling, so we can close/open during the same frame\n 7736  \n 7737      flags |= ImGuiWindowFlags_Popup;\n ....\n 8116      if (IsMouseHoveringRect(cand.Min, cand.Max))\n 8117      {\n 8118:         ImFormatString(buf, IM_ARRAYSIZE(buf), \"dbox (%.2f,%.2f->%.4f)\\ndcen (%.2f,%.2f->%.4f)\\nd (%.2f,%.2f->%.4f)\\nnav %c, quadrant %c\", dbx, dby, dist_box, dcx, dcy, dist_center, dax, day, dist_axial, \"WENS\"[g.NavMoveDir], \"WENS\"[quadrant]);\n 8119          ImDrawList* draw_list = GetForegroundDrawList(window);\n 8120          draw_list->AddRect(curr.Min, curr.Max, IM_COL32(255,200,0,100));\n ....\n 8128          if (quadrant == g.NavMoveDir)\n 8129          {\n 8130:             ImFormatString(buf, IM_ARRAYSIZE(buf), \"%.0f/%.0f\", dist_box, dist_center);\n 8131              ImDrawList* draw_list = GetForegroundDrawList(window);\n 8132              draw_list->AddRectFilled(cand.Min, cand.Max, IM_COL32(255, 0, 0, 200));\n ....\n 8451      }\n 8452      memcpy(g.IO.NavInputsDownDurationPrev, g.IO.NavInputsDownDuration, sizeof(g.IO.NavInputsDownDuration));\n 8453:     for (int i = 0; i < IM_ARRAYSIZE(g.IO.NavInputs); i++)\n 8454          g.IO.NavInputsDownDuration[i] = (g.IO.NavInputs[i] > 0.0f) ? (g.IO.NavInputsDownDuration[i] < 0.0f ? 0.0f : g.IO.NavInputsDownDuration[i] + g.IO.DeltaTime) : -1.0f;\n 8455  \n ....\n 9258  \n 9259      IM_ASSERT(type != NULL);\n 9260:     IM_ASSERT(strlen(type) < IM_ARRAYSIZE(payload.DataType) && \"Payload type can be at most 32 characters long\");\n 9261      IM_ASSERT((data != NULL && data_size > 0) || (data == NULL && data_size == 0));\n 9262      IM_ASSERT(cond == ImGuiCond_Always || cond == ImGuiCond_Once);\n ....\n 9266      {\n 9267          // Copy payload\n 9268:         ImStrncpy(payload.DataType, type, IM_ARRAYSIZE(payload.DataType));\n 9269          g.DragDropPayloadBufHeap.resize(0);\n 9270          if (data_size > sizeof(g.DragDropPayloadBufLocal))\n ....\n 10245                  ImDrawIdx* idx_buffer = (draw_list->IdxBuffer.Size > 0) ? draw_list->IdxBuffer.Data : NULL;\n 10246                  char buf[300];\n 10247:                 ImFormatString(buf, IM_ARRAYSIZE(buf), \"DrawCmd:%5d triangles, Tex 0x%p, ClipRect (%4.0f,%4.0f)-(%4.0f,%4.0f)\",\n 10248                      pcmd->ElemCount/3, (void*)(intptr_t)pcmd->TextureId,\n 10249                      pcmd->ClipRect.x, pcmd->ClipRect.y, pcmd->ClipRect.z, pcmd->ClipRect.w);\n .....\n 10266  \n 10267                  // Display vertex information summary. Hover to get all triangles drawn in wire-frame\n 10268:                 ImFormatString(buf, IM_ARRAYSIZE(buf), \"Mesh: ElemCount: %d, VtxOffset: +%d, IdxOffset: +%d, Area: ~%0.f px\", pcmd->ElemCount, pcmd->VtxOffset, pcmd->IdxOffset, total_area);\n 10269                  ImGui::Selectable(buf);\n 10270                  if (ImGui::IsItemHovered() && fg_draw_list)\n .....\n 10276                      for (int prim = clipper.DisplayStart, idx_i = elem_offset + clipper.DisplayStart*3; prim < clipper.DisplayEnd; prim++)\n 10277                      {\n 10278:                         char *buf_p = buf, *buf_end = buf + IM_ARRAYSIZE(buf);\n 10279                          ImVec2 triangle[3];\n 10280                          for (int n = 0; n < 3; n++, idx_i++)\n .....\n 10381              char buf[256];\n 10382              char* p = buf;\n 10383:             const char* buf_end = buf + IM_ARRAYSIZE(buf);\n 10384              p += ImFormatString(p, buf_end - p, \"TabBar (%d tabs)%s\", tab_bar->Tabs.Size, (tab_bar->PrevFrameVisible < ImGui::GetFrameCount() - 2) ? \" *Inactive*\" : \"\");\n 10385              IM_UNUSED(p);\n .....\n 10543      if (ImGui::TreeNode(\"Internal state\"))\n 10544      {\n 10545:         const char* input_source_names[] = { \"None\", \"Mouse\", \"Nav\", \"NavKeyboard\", \"NavGamepad\" }; IM_ASSERT(IM_ARRAYSIZE(input_source_names) == ImGuiInputSource_COUNT);\n 10546          ImGui::Text(\"HoveredWindow: '%s'\", g.HoveredWindow ? g.HoveredWindow->Name : \"NULL\");\n 10547          ImGui::Text(\"HoveredRootWindow: '%s'\", g.HoveredRootWindow ? g.HoveredRootWindow->Name : \"NULL\");\n .....\n 10578              {\n 10579                  char buf[32];\n 10580:                 ImFormatString(buf, IM_ARRAYSIZE(buf), \"%d\", window->BeginOrderWithinContext);\n 10581                  float font_size = ImGui::GetFontSize();\n 10582                  draw_list->AddRectFilled(window->Pos, window->Pos + ImVec2(font_size, font_size), IM_COL32(200, 100, 100, 255));\n\nD:\\Development\\donut\\src\\imgui\\imgui.h:\n   86  #define IM_FMTLIST(FMT)\n   87  #endif\n   88: #define IM_ARRAYSIZE(_ARR)          ((int)(sizeof(_ARR) / sizeof(*(_ARR))))     // Size of a static C-style array. Don't use on pointers!\n   89  #define IM_UNUSED(_VAR)             ((void)(_VAR))                              // Used to silence \"unused variable warnings\". Often useful as asserts may be stripped out from final builds.\n   90  #if (__cplusplus >= 201100)\n\nD:\\Development\\donut\\src\\imgui\\imgui_draw.cpp:\n  353  \n  354      // Lookup tables\n  355:     for (int i = 0; i < IM_ARRAYSIZE(ArcFastVtx); i++)\n  356      {\n  357:         const float a = ((float)i * 2 * IM_PI) / (float)IM_ARRAYSIZE(ArcFastVtx);\n  358          ArcFastVtx[i] = ImVec2(ImCos(a), ImSin(a));\n  359      }\n  ...\n  366          return;\n  367      CircleSegmentMaxError = max_error;\n  368:     for (int i = 0; i < IM_ARRAYSIZE(CircleSegmentCounts); i++)\n  369      {\n  370          const float radius = i + 1.0f;\n  ...\n  948      for (int a = a_min_of_12; a <= a_max_of_12; a++)\n  949      {\n  950:         const ImVec2& c = _Data->ArcFastVtx[a % IM_ARRAYSIZE(_Data->ArcFastVtx)];\n  951          _Path.push_back(ImVec2(center.x + c.x * radius, center.y + c.y * radius));\n  952      }\n  ...\n 1157          // Automatic segment count\n 1158          const int radius_idx = (int)radius - 1;\n 1159:         if (radius_idx < IM_ARRAYSIZE(_Data->CircleSegmentCounts))\n 1160              num_segments = _Data->CircleSegmentCounts[radius_idx]; // Use cached value\n 1161          else\n ....\n 1187          // Automatic segment count\n 1188          const int radius_idx = (int)radius - 1;\n 1189:         if (radius_idx < IM_ARRAYSIZE(_Data->CircleSegmentCounts))\n 1190              num_segments = _Data->CircleSegmentCounts[radius_idx]; // Use cached value\n 1191          else\n ....\n 1657      TexUvScale = ImVec2(0.0f, 0.0f);\n 1658      TexUvWhitePixel = ImVec2(0.0f, 0.0f);\n 1659:     for (int n = 0; n < IM_ARRAYSIZE(CustomRectIds); n++)\n 1660          CustomRectIds[n] = -1;\n 1661  }\n ....\n 1686      ConfigData.clear();\n 1687      CustomRects.clear();\n 1688:     for (int n = 0; n < IM_ARRAYSIZE(CustomRectIds); n++)\n 1689          CustomRectIds[n] = -1;\n 1690  }\n ....\n 1815          font_cfg.SizePixels = 13.0f * 1.0f;\n 1816      if (font_cfg.Name[0] == '\\0')\n 1817:         ImFormatString(font_cfg.Name, IM_ARRAYSIZE(font_cfg.Name), \"ProggyClean.ttf, %dpx\", (int)font_cfg.SizePixels);\n 1818      font_cfg.EllipsisChar = (ImWchar)0x0085;\n 1819  \n ....\n 1841          const char* p;\n 1842          for (p = filename + strlen(filename); p > filename && p[-1] != '/' && p[-1] != '\\\\'; p--) {}\n 1843:         ImFormatString(font_cfg.Name, IM_ARRAYSIZE(font_cfg.Name), \"%s, %.0fpx\", p, size_pixels);\n 1844      }\n 1845      return AddFontFromMemoryTTF(data, (int)data_size, size_pixels, &font_cfg, glyph_ranges);\n ....\n 2371              continue;\n 2372          const ImWchar ellipsis_variants[] = { (ImWchar)0x2026, (ImWchar)0x0085 };\n 2373:         for (int j = 0; j < IM_ARRAYSIZE(ellipsis_variants); j++)\n 2374              if (font->FindGlyphNoFallback(ellipsis_variants[j]) != NULL) // Verify glyph exists\n 2375              {\n ....\n 2490          0xFF00, 0xFFEF  // Half-width characters\n 2491      };\n 2492:     static ImWchar full_ranges[IM_ARRAYSIZE(base_ranges) + IM_ARRAYSIZE(accumulative_offsets_from_0x4E00) * 2 + 1] = { 0 };\n 2493      if (!full_ranges[0])\n 2494      {\n 2495          memcpy(full_ranges, base_ranges, sizeof(base_ranges));\n 2496:         UnpackAccumulativeOffsetsIntoRanges(0x4E00, accumulative_offsets_from_0x4E00, IM_ARRAYSIZE(accumulative_offsets_from_0x4E00), full_ranges + IM_ARRAYSIZE(base_ranges));\n 2497      }\n 2498      return &full_ranges[0];\n ....\n 2548          0xFF00, 0xFFEF  // Half-width characters\n 2549      };\n 2550:     static ImWchar full_ranges[IM_ARRAYSIZE(base_ranges) + IM_ARRAYSIZE(accumulative_offsets_from_0x4E00)*2 + 1] = { 0 };\n 2551      if (!full_ranges[0])\n 2552      {\n 2553          memcpy(full_ranges, base_ranges, sizeof(base_ranges));\n 2554:         UnpackAccumulativeOffsetsIntoRanges(0x4E00, accumulative_offsets_from_0x4E00, IM_ARRAYSIZE(accumulative_offsets_from_0x4E00), full_ranges + IM_ARRAYSIZE(base_ranges));\n 2555      }\n 2556      return &full_ranges[0];\n\nD:\\Development\\donut\\src\\imgui\\imgui_impl_glfw.cpp:\n   94          g_PrevUserCallbackMousebutton(window, button, action, mods);\n   95  \n   96:     if (action == GLFW_PRESS && button >= 0 && button < IM_ARRAYSIZE(g_MouseJustPressed))\n   97          g_MouseJustPressed[button] = true;\n   98  }\n   ..\n  255      // Update buttons\n  256      ImGuiIO& io = ImGui::GetIO();\n  257:     for (int i = 0; i < IM_ARRAYSIZE(io.MouseDown); i++)\n  258      {\n  259          // If a mouse press event came, always pass it as \"mouse held this frame\", so we don't miss click-release events that are shorter than 1 frame.\n\nD:\\Development\\donut\\src\\imgui\\imgui_impl_opengl3.cpp:\n  173          glsl_version = \"#version 130\";\n  174  #endif\n  175:     IM_ASSERT((int)strlen(glsl_version) + 2 < IM_ARRAYSIZE(g_GlslVersionString));\n  176      strcpy(g_GlslVersionString, glsl_version);\n  177      strcat(g_GlslVersionString, \"\\n\");\n\nD:\\Development\\donut\\src\\imgui\\imgui_internal.h:\n  554      ImVector<ImDrawList*>   Layers[2];           // Global layers for: regular, tooltip\n  555  \n  556:     void Clear()            { for (int n = 0; n < IM_ARRAYSIZE(Layers); n++) Layers[n].resize(0); }\n  557:     void ClearFreeMemory()  { for (int n = 0; n < IM_ARRAYSIZE(Layers); n++) Layers[n].clear(); }\n  558      IMGUI_API void FlattenIntoSingleLayer();\n  559  };\n\nD:\\Development\\donut\\src\\imgui\\imgui_widgets.cpp:\n  260  \n  261      ImGuiContext& g = *GImGui;\n  262:     const char* text_end = g.TempBuffer + ImFormatStringV(g.TempBuffer, IM_ARRAYSIZE(g.TempBuffer), fmt, args);\n  263      TextEx(g.TempBuffer, text_end, ImGuiTextFlags_NoWidthForLargeClippedText);\n  264  }\n  ...\n  341      // Render\n  342      const char* value_text_begin = &g.TempBuffer[0];\n  343:     const char* value_text_end = value_text_begin + ImFormatStringV(g.TempBuffer, IM_ARRAYSIZE(g.TempBuffer), fmt, args);\n  344      RenderTextClipped(value_bb.Min, value_bb.Max, value_text_begin, value_text_end, NULL, ImVec2(0.0f,0.5f));\n  345      if (label_size.x > 0.0f)\n  ...\n  366  \n  367      const char* text_begin = g.TempBuffer;\n  368:     const char* text_end = text_begin + ImFormatStringV(g.TempBuffer, IM_ARRAYSIZE(g.TempBuffer), fmt, args);\n  369      const ImVec2 label_size = CalcTextSize(text_begin, text_end, false);\n  370      const ImVec2 total_size = ImVec2(g.FontSize + (label_size.x > 0.0f ? (label_size.x + style.FramePadding.x * 2) : 0.0f), label_size.y);  // Empty text doesn't add padding\n  ...\n 1184      if (!overlay)\n 1185      {\n 1186:         ImFormatString(overlay_buf, IM_ARRAYSIZE(overlay_buf), \"%.0f%%\", fraction*100+0.01f);\n 1187          overlay = overlay_buf;\n 1188      }\n ....\n 1543  \n 1544      char name[16];\n 1545:     ImFormatString(name, IM_ARRAYSIZE(name), \"##Combo_%02d\", g.BeginPopupStack.Size); // Recycle windows based on depth\n 1546  \n 1547      // Peak into expected window size so we can position it\n ....\n 1701      { sizeof(double),           \"%f\",   \"%lf\"   },  // ImGuiDataType_Double\n 1702  };\n 1703: IM_STATIC_ASSERT(IM_ARRAYSIZE(GDataTypeInfo) == ImGuiDataType_COUNT);\n 1704  \n 1705  // FIXME-LEGACY: Prior to 1.61 our DragInt() function internally used floats and because of this the compile-time default value for format was \"%.0f\".\n ....\n 1718              return \"%d\";\n 1719          ImGuiContext& g = *GImGui;\n 1720:         ImFormatString(g.TempBuffer, IM_ARRAYSIZE(g.TempBuffer), \"%.*s%%d%s\", (int)(fmt_start - fmt), fmt, fmt_end); // Honor leading and trailing decorations, but lose alignment/precision.\n 1721          return g.TempBuffer;\n 1722  #else\n ....\n 1940      if (decimal_precision < 0)\n 1941          return FLT_MIN;\n 1942:     return (decimal_precision < IM_ARRAYSIZE(min_steps)) ? min_steps[decimal_precision] : ImPow(10.0f, (float)-decimal_precision);\n 1943  }\n 1944  \n ....\n 1963          return v;\n 1964      char v_str[64];\n 1965:     ImFormatString(v_str, IM_ARRAYSIZE(v_str), fmt_start, v);\n 1966      const char* p = v_str;\n 1967      while (*p == ' ')\n ....\n 2201      // Display value using user-provided display format so user can add prefix/suffix/decorations to the value.\n 2202      char value_buf[64];\n 2203:     const char* value_buf_end = value_buf + DataTypeFormatString(value_buf, IM_ARRAYSIZE(value_buf), data_type, p_data, format);\n 2204      RenderTextClipped(frame_bb.Min, frame_bb.Max, value_buf, value_buf_end, NULL, ImVec2(0.5f, 0.5f));\n 2205  \n ....\n 2659      // Display value using user-provided display format so user can add prefix/suffix/decorations to the value.\n 2660      char value_buf[64];\n 2661:     const char* value_buf_end = value_buf + DataTypeFormatString(value_buf, IM_ARRAYSIZE(value_buf), data_type, p_data, format);\n 2662      RenderTextClipped(frame_bb.Min, frame_bb.Max, value_buf, value_buf_end, NULL, ImVec2(0.5f,0.5f));\n 2663  \n ....\n 2806      // For the vertical slider we allow centered text to overlap the frame padding\n 2807      char value_buf[64];\n 2808:     const char* value_buf_end = value_buf + DataTypeFormatString(value_buf, IM_ARRAYSIZE(value_buf), data_type, p_data, format);\n 2809      RenderTextClipped(ImVec2(frame_bb.Min.x, frame_bb.Min.y + style.FramePadding.y), frame_bb.Max, value_buf, value_buf_end, NULL, ImVec2(0.5f,0.0f));\n 2810      if (label_size.x > 0.0f)\n ....\n 2959      char fmt_buf[32];\n 2960      char data_buf[32];\n 2961:     format = ImParseFormatTrimDecorations(format, fmt_buf, IM_ARRAYSIZE(fmt_buf));\n 2962:     DataTypeFormatString(data_buf, IM_ARRAYSIZE(data_buf), data_type, p_data, format);\n 2963      ImStrTrimBlanks(data_buf);\n 2964  \n ....\n 2966      flags |= ((data_type == ImGuiDataType_Float || data_type == ImGuiDataType_Double) ? ImGuiInputTextFlags_CharsScientific : ImGuiInputTextFlags_CharsDecimal);\n 2967      bool value_changed = false;\n 2968:     if (TempInputText(bb, id, label, data_buf, IM_ARRAYSIZE(data_buf), flags))\n 2969      {\n 2970          // Backup old value\n ....\n 3001  \n 3002      char buf[64];\n 3003:     DataTypeFormatString(buf, IM_ARRAYSIZE(buf), data_type, p_data, format);\n 3004  \n 3005      bool value_changed = false;\n ....\n 3016          PushID(label);\n 3017          SetNextItemWidth(ImMax(1.0f, CalcItemWidth() - (button_size + style.ItemInnerSpacing.x) * 2));\n 3018:         if (InputText(\"\", buf, IM_ARRAYSIZE(buf), flags)) // PushId(label) + \"\" gives us the expected ID from outside point of view\n 3019              value_changed = DataTypeApplyOpFromText(buf, g.InputTextState.InitialTextA.Data, data_type, p_data, format);\n 3020  \n ....\n 3051      else\n 3052      {\n 3053:         if (InputText(label, buf, IM_ARRAYSIZE(buf), flags))\n 3054              value_changed = DataTypeApplyOpFromText(buf, g.InputTextState.InitialTextA.Data, data_type, p_data, format);\n 3055      }\n ....\n 3122      char format[16] = \"%f\";\n 3123      if (decimal_precision >= 0)\n 3124:         ImFormatString(format, IM_ARRAYSIZE(format), \"%%.%df\", decimal_precision);\n 3125      return InputFloat(label, v, step, step_fast, format, flags);\n 3126  }\n ....\n 3130      char format[16] = \"%f\";\n 3131      if (decimal_precision >= 0)\n 3132:         ImFormatString(format, IM_ARRAYSIZE(format), \"%%.%df\", decimal_precision);\n 3133      return InputScalarN(label, ImGuiDataType_Float, v, 2, NULL, NULL, format, flags);\n 3134  }\n ....\n 3138      char format[16] = \"%f\";\n 3139      if (decimal_precision >= 0)\n 3140:         ImFormatString(format, IM_ARRAYSIZE(format), \"%%.%df\", decimal_precision);\n 3141      return InputScalarN(label, ImGuiDataType_Float, v, 3, NULL, NULL, format, flags);\n 3142  }\n ....\n 3146      char format[16] = \"%f\";\n 3147      if (decimal_precision >= 0)\n 3148:         ImFormatString(format, IM_ARRAYSIZE(format), \"%%.%df\", decimal_precision);\n 3149      return InputScalarN(label, ImGuiDataType_Float, v, 4, NULL, NULL, format, flags);\n 3150  }\n ....\n 4451          char buf[64];\n 4452          if (alpha)\n 4453:             ImFormatString(buf, IM_ARRAYSIZE(buf), \"#%02X%02X%02X%02X\", ImClamp(i[0],0,255), ImClamp(i[1],0,255), ImClamp(i[2],0,255), ImClamp(i[3],0,255));\n 4454          else\n 4455:             ImFormatString(buf, IM_ARRAYSIZE(buf), \"#%02X%02X%02X\", ImClamp(i[0],0,255), ImClamp(i[1],0,255), ImClamp(i[2],0,255));\n 4456          SetNextItemWidth(w_inputs);\n 4457:         if (InputText(\"##Text\", buf, IM_ARRAYSIZE(buf), ImGuiInputTextFlags_CharsHexadecimal | ImGuiInputTextFlags_CharsUppercase))\n 4458          {\n 4459              value_changed = true;\n ....\n 5140          int cr = IM_F32_TO_INT8_SAT(col[0]), cg = IM_F32_TO_INT8_SAT(col[1]), cb = IM_F32_TO_INT8_SAT(col[2]), ca = (flags & ImGuiColorEditFlags_NoAlpha) ? 255 : IM_F32_TO_INT8_SAT(col[3]);\n 5141          char buf[64];\n 5142:         ImFormatString(buf, IM_ARRAYSIZE(buf), \"(%.3ff, %.3ff, %.3ff, %.3ff)\", col[0], col[1], col[2], (flags & ImGuiColorEditFlags_NoAlpha) ? 1.0f : col[3]);\n 5143          if (Selectable(buf))\n 5144              SetClipboardText(buf);\n 5145:         ImFormatString(buf, IM_ARRAYSIZE(buf), \"(%d,%d,%d,%d)\", cr, cg, cb, ca);\n 5146          if (Selectable(buf))\n 5147              SetClipboardText(buf);\n 5148:         ImFormatString(buf, IM_ARRAYSIZE(buf), \"#%02X%02X%02X\", cr, cg, cb);\n 5149          if (Selectable(buf))\n 5150              SetClipboardText(buf);\n 5151          if (!(flags & ImGuiColorEditFlags_NoAlpha))\n 5152          {\n 5153:             ImFormatString(buf, IM_ARRAYSIZE(buf), \"#%02X%02X%02X%02X\", cr, cg, cb, ca);\n 5154              if (Selectable(buf))\n 5155                  SetClipboardText(buf);\n ....\n 5285  \n 5286      ImGuiContext& g = *GImGui;\n 5287:     const char* label_end = g.TempBuffer + ImFormatStringV(g.TempBuffer, IM_ARRAYSIZE(g.TempBuffer), fmt, args);\n 5288      return TreeNodeBehavior(window->GetID(str_id), flags, g.TempBuffer, label_end);\n 5289  }\n ....\n 5296  \n 5297      ImGuiContext& g = *GImGui;\n 5298:     const char* label_end = g.TempBuffer + ImFormatStringV(g.TempBuffer, IM_ARRAYSIZE(g.TempBuffer), fmt, args);\n 5299      return TreeNodeBehavior(window->GetID(ptr_id), flags, g.TempBuffer, label_end);\n 5300  }\n ....\n 6109      {\n 6110          char fmt[64];\n 6111:         ImFormatString(fmt, IM_ARRAYSIZE(fmt), \"%%s: %s\", float_format);\n 6112          Text(fmt, prefix, v);\n 6113      }\n ....\n 6141  void ImGuiMenuColumns::Update(int count, float spacing, bool clear)\n 6142  {\n 6143:     IM_ASSERT(count == IM_ARRAYSIZE(Pos));\n 6144      IM_UNUSED(count);\n 6145      Width = NextWidth = 0.0f;\n ....\n 6147      if (clear)\n 6148          memset(NextWidths, 0, sizeof(NextWidths));\n 6149:     for (int i = 0; i < IM_ARRAYSIZE(Pos); i++)\n 6150      {\n 6151          if (i > 0 && NextWidths[i] > 0.0f)\n ....\n 6163      NextWidths[1] = ImMax(NextWidths[1], w1);\n 6164      NextWidths[2] = ImMax(NextWidths[2], w2);\n 6165:     for (int i = 0; i < IM_ARRAYSIZE(Pos); i++)\n 6166          NextWidth += NextWidths[i] + ((i > 0 && NextWidths[i] > 0.0f) ? Spacing : 0.0f);\n 6167      return ImMax(Width, NextWidth);\n\n108 matches across 7 files\n\n\nSearching 13 files for \"#define IM_ARRAYSIZE\"\n\nD:\\Development\\donut\\src\\imgui\\imgui.h:\n   86  #define IM_FMTLIST(FMT)\n   87  #endif\n   88: #define IM_ARRAYSIZE(_ARR)          ((int)(sizeof(_ARR) / sizeof(*(_ARR))))     // Size of a static C-style array. Don't use on pointers!\n   89  #define IM_UNUSED(_VAR)             ((void)(_VAR))                              // Used to silence \"unused variable warnings\". Often useful as asserts may be stripped out from final builds.\n   90  #if (__cplusplus >= 201100)\n\n1 match in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 29361,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "src/imgui/imgui.h",
+			"settings":
+			{
+				"buffer_size": 228866,
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		},
+		{
+			"file": "src/renderer/renderer_apis/opengl/opengl_glfw_window.cpp",
+			"settings":
+			{
+				"buffer_size": 4288,
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -285,10 +320,15 @@
 		"/D/Development/donut",
 		"/D/Development/donut/src",
 		"/D/Development/donut/src/renderer",
-		"/D/Development/donut/src/renderer/renderer_apis"
+		"/D/Development/donut/src/renderer/renderer_apis",
+		"/D/Development/donut/src/renderer/renderer_apis/opengl",
+		"/D/Development/donut/src/test",
+		"/D/Development/donut/vulkan_test_app"
 	],
 	"file_history":
 	[
+		"/D/Development/donut/vulkan_test_app/main.cpp",
+		"/D/Development/donut/external/imgui/examples/libs/glfw/include/GLFW/glfw3.h",
 		"/D/Development/donut/src/renderer/renderer_apis/vulkan/notes.txt",
 		"/D/Development/donut/CMakeLists.txt",
 		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_context.cpp",
@@ -320,7 +360,6 @@
 		"/D/Development/donut/src/system/job.h",
 		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_glfw_window.cpp",
 		"/D/Development/donut/external/FastNoise2/NoiseTool/ThirdParty/imgui/examples/example_glfw_vulkan/main.cpp",
-		"/D/Development/donut/external/imgui/examples/libs/glfw/include/GLFW/glfw3.h",
 		"/D/Development/donut/src/renderer/shader.h",
 		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_vertexlayout.h",
 		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_reflectioninfo.h",
@@ -415,18 +454,18 @@
 		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/EnemyShip.cpp",
 		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/EnemySpawnerComponent.cpp",
 		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/EnemySpawnerComponent.h",
-		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Private/PrimitiveComponentPhysics.cpp",
-		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/ShipEngineComponent.cpp"
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Private/PrimitiveComponentPhysics.cpp"
 	],
 	"find":
 	{
-		"height": 27.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
 		"height": 101.0,
 		"where_history":
 		[
+			"D:\\Development\\donut\\src\\imgui,<project filters>",
 			"D:\\Development\\donut\\src\\renderer\\renderer_apis\\vulkan,<project filters>",
 			"C:\\VulkanSDK\\1.2.170.0\\Include\\vulkan,<project filters>",
 			"C:\\temp\\fastbuild\\Code\\Tools\\FBuild,<project filters>",
@@ -453,6 +492,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"#define IM_ARRAYSIZE",
+			"IM_ARRAYSIZE",
 			"\\",
 			"ShaderCache",
 			";\n",
@@ -578,9 +619,7 @@
 			"Failed to build Object. Error",
 			"Failed to build Object. error",
 			"ERROR_STR",
-			"LAST_ERROR_STR",
-			"GetLastErr",
-			"GetLastError"
+			"LAST_ERROR_STR"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -603,6 +642,110 @@
 		{
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 29361,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions": "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",
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								28986,
+								28986
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 11178.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/imgui/imgui.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 228866,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3936,
+								3975
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 958.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/renderer/renderer_apis/opengl/opengl_glfw_window.cpp",
+					"selected": true,
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 4288,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3901,
+								3901
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1350.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
 			]
 		}
 	],

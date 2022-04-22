@@ -2,7 +2,10 @@
 	"folders":
 	[
 		{
-			"path": "."
-		}
-	]
+			"path": ".",
+		},
+		{
+			"path": "D:\\Development\\moth_ui\\external\\imgui"
+		},
+	],
 }
