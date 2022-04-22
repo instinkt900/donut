@@ -11,7 +11,6 @@ int main(int argc, char const** argv) {
         while (windowOpen) {
             windowOpen = window->Update();
         }
-        donut::Renderer::Shutdown();
     }
     return 0;
 }

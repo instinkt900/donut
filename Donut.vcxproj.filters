@@ -85,33 +85,6 @@
     <ClCompile Include="src\scene\systems\inputsystem.cpp">
       <Filter>src\scene\systems</Filter>
     </ClCompile>
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_framebuffer.cpp">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_glfw_window.cpp">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_indexbuffer.cpp">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_renderer.cpp">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_shader.cpp">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_shadersection.cpp">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_texture2d.cpp">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_vertexbuffer.cpp">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClCompile>
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_vertexlayout.cpp">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -309,33 +282,6 @@
     <ClInclude Include="src\renderer\material.h">
       <Filter>src\renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_framebuffer.h">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_glfw_window.h">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_indexbuffer.h">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_renderer.h">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_shader.h">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_shadersection.h">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_texture2d.h">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_vertexbuffer.h">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClInclude>
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_vertexlayout.h">
-      <Filter>src\renderer\renderer_apis\vulkan</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -385,9 +331,6 @@
     </Filter>
     <Filter Include="src\renderer\events">
       <UniqueIdentifier>{54677ed5-dc34-4808-a615-27178fa25836}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\renderer\renderer_apis\vulkan">
-      <UniqueIdentifier>{1eec0a7b-d60d-4341-b962-eb2a0927d9b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,5 +1,4 @@
 #pragma once
-#if defined(USE_OPENGL)
 
 namespace donut::opengl {
     class ShaderSection : public NonCopyable {
@@ -13,5 +12,3 @@ namespace donut::opengl {
     };
 
 }
-
-#endif

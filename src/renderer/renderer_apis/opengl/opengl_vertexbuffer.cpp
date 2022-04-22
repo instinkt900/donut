@@ -1,5 +1,4 @@
 #include "donut_pch.h"
-#if defined(USE_OPENGL)
 #include "opengl_vertexbuffer.h"
 
 namespace donut::opengl {
@@ -35,5 +34,3 @@ namespace donut::opengl {
     VertexBuffer::VertexBuffer(unsigned int vertexBuffer, unsigned int vertexArray)
         : m_vertexBuffer(vertexBuffer), m_vertexArray(vertexArray) { }
 }
-
-#endif

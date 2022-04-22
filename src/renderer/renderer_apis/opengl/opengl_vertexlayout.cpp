@@ -1,5 +1,4 @@
 #include "donut_pch.h"
-#if defined(USE_OPENGL)
 #include "opengl_vertexlayout.h"
 
 namespace donut::opengl {
@@ -33,5 +32,3 @@ namespace donut::opengl {
         }
     }
 }
-
-#endif

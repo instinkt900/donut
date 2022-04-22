@@ -1,5 +1,4 @@
 #pragma once
-#if defined(USE_OPENGL)
 
 namespace donut::opengl {
     class IndexBuffer : public NonCopyable {
@@ -17,5 +16,3 @@ namespace donut::opengl {
         IndexBuffer(unsigned int id, unsigned int count);
     };
 }
-
-#endif

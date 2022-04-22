@@ -1,5 +1,4 @@
 #include "donut_pch.h"
-#if defined(USE_OPENGL)
 #include "opengl_renderer.h"
 
 namespace donut::opengl {
@@ -64,5 +63,3 @@ namespace donut::opengl {
         glDrawElements(ToGL(primitiveType), indexCount, GL_UNSIGNED_INT, 0);
     }
 }
-
-#endif

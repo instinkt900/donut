@@ -1,5 +1,4 @@
 #pragma once
-#if defined(USE_OPENGL)
 
 namespace donut::opengl {
     class FrameBuffer : public NonCopyable {
@@ -18,9 +17,10 @@ namespace donut::opengl {
         unsigned int m_width = 0;
         unsigned int m_height = 0;
 
+        //std::vector<unsigned int> m_colorBufferIds;
+        //unsigned int m_depthBufferId = 0;
+
         std::vector<std::shared_ptr<Texture2D>> m_colorTextures;
         std::shared_ptr<Texture2D> m_depthTexture;
     };
 }
-
-#endif

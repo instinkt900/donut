@@ -1,5 +1,4 @@
 #include "donut_pch.h"
-#if defined(USE_OPENGL)
 #include "opengl_shadersection.h"
 
 namespace donut::opengl {
@@ -36,5 +35,3 @@ namespace donut::opengl {
     ShaderSection::ShaderSection(int id)
         : m_id(id) { }
 }
-
-#endif

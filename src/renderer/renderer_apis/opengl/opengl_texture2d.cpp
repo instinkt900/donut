@@ -1,5 +1,4 @@
 #include "donut_pch.h"
-#if defined(USE_OPENGL)
 #include "opengl_texture2d.h"
 
 namespace donut::opengl {
@@ -76,5 +75,3 @@ namespace donut::opengl {
     Texture2D::Texture2D(unsigned int textureId)
         : m_textureId(textureId) { }
 }
-
-#endif

@@ -1,5 +1,4 @@
 #pragma once
-#if defined(USE_OPENGL)
 
 #include "layerstack.h"
 
@@ -37,5 +36,3 @@ namespace donut {
         };
     }
 }
-
-#endif

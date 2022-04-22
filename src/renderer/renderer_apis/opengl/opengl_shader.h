@@ -1,5 +1,4 @@
 #pragma once
-#if defined(USE_OPENGL)
 
 #include "renderer/shadersection.h"
 
@@ -24,5 +23,3 @@ namespace donut::opengl {
         int GetUniformLoc(std::string const& name);
     };
 }
-
-#endif

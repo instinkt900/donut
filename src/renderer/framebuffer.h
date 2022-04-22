@@ -18,15 +18,10 @@ namespace donut {
     };
 }
 
-#if defined(USE_OPENGL)
+#ifdef USE_OPENGL
 #include "renderer_apis/opengl/opengl_framebuffer.h"
 namespace donut {
     using FrameBuffer = opengl::FrameBuffer;
-}
-#elif defined(USE_VULKAN)
-#include "renderer_apis/vulkan/vulkan_framebuffer.h"
-namespace donut {
-    using FrameBuffer = vulkan::FrameBuffer;
 }
 #else
 #error TODO

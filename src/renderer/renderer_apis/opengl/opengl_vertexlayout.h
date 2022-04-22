@@ -1,5 +1,4 @@
 #pragma once
-#if defined(USE_OPENGL)
 
 #include "renderer/vertexelement.h"
 
@@ -18,5 +17,3 @@ namespace donut::opengl {
         size_t m_stride;
     };
 }
-
-#endif

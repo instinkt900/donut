@@ -65,7 +65,6 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="project.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -120,18 +119,18 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>USE_VULKAN;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>USE_OPENGL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>external/glm;external/spdlog/include;external/entt/single_include;external/FastNoise2/include;src/glad/include;src/imgui;src;$(VULKAN_INCLUDE_PATH);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external/glm;external/spdlog/include;external/entt/single_include;external/FastNoise2/include;src/glad/include;src/imgui;src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>donut_pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>external\FastNoise2\out\build\x64-MSVC-Debug\src;$(VULKAN_LIB_PATH);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>FastNoiseD.lib;$(VULKAN_LIBS);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>external\FastNoise2\out\build\x64-MSVC-Debug\src;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FastNoiseD.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -185,15 +184,6 @@
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_texture2d.cpp" />
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_vertexbuffer.cpp" />
     <ClCompile Include="src\renderer\renderer_apis\opengl\opengl_vertexlayout.cpp" />
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_framebuffer.cpp" />
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_glfw_window.cpp" />
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_indexbuffer.cpp" />
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_renderer.cpp" />
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_shader.cpp" />
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_shadersection.cpp" />
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_texture2d.cpp" />
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_vertexbuffer.cpp" />
-    <ClCompile Include="src\renderer\renderer_apis\vulkan\vulkan_vertexlayout.cpp" />
     <ClCompile Include="src\scene\entity.cpp" />
     <ClCompile Include="src\scene\scene.cpp" />
     <ClCompile Include="src\scene\systems\camerasystem.cpp" />
@@ -248,15 +238,6 @@
     <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_texture2d.h" />
     <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_vertexbuffer.h" />
     <ClInclude Include="src\renderer\renderer_apis\opengl\opengl_vertexlayout.h" />
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_framebuffer.h" />
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_glfw_window.h" />
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_indexbuffer.h" />
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_renderer.h" />
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_shader.h" />
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_shadersection.h" />
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_texture2d.h" />
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_vertexbuffer.h" />
-    <ClInclude Include="src\renderer\renderer_apis\vulkan\vulkan_vertexlayout.h" />
     <ClInclude Include="src\renderer\shader.h" />
     <ClInclude Include="src\renderer\shadersection.h" />
     <ClInclude Include="src\renderer\texture2d.h" />

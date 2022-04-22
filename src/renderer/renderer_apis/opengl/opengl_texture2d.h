@@ -1,5 +1,4 @@
 #pragma once
-#if defined(USE_OPENGL)
 
 namespace donut::opengl {
     class Texture2D : public NonCopyable {
@@ -21,5 +20,3 @@ namespace donut::opengl {
         Texture2D(unsigned int textureId);
     };
 }
-
-#endif

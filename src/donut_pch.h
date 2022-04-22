@@ -11,16 +11,11 @@
 #include "noncopyable.h"
 #include "abstract.h"
 
-#if defined(USE_OPENGL)
+#ifdef USE_OPENGL
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <imgui_impl_glfw.h>
 #include <imgui_impl_opengl3.h>
-#elif defined(USE_VULKAN)
-#include <vulkan/vulkan.h>
-#include <GLFW/glfw3.h>
-#include <imgui_impl_glfw.h>
-
 #else
 #error TODO
 #endif

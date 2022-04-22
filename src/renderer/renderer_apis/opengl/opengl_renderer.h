@@ -1,5 +1,4 @@
 #pragma once
-#if defined(USE_OPENGL)
 
 #include "renderer/primitivetype.h"
 
@@ -13,5 +12,3 @@ namespace donut::opengl {
         static void DrawIndexedPrimitives(PrimitiveType primitiveType, unsigned int indexCount);
     };
 }
-
-#endif

@@ -1,5 +1,4 @@
 #pragma once
-#if defined(USE_OPENGL)
 
 #include "renderer/vertexlayout.h"
 
@@ -18,5 +17,3 @@ namespace donut::opengl {
         VertexBuffer(unsigned int vertexBuffer, unsigned int vertexArray);
     };
 }
-
-#endif
