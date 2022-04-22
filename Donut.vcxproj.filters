@@ -311,9 +311,6 @@
     <Filter Include="src\scene">
       <UniqueIdentifier>{a0cceb8c-4336-4dc4-91d7-dd60d9b86baa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Noise">
-      <UniqueIdentifier>{66c30aca-b731-4ced-9a6b-dfe67b9ca6a5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\renderer\renderer_apis">
       <UniqueIdentifier>{4427f88c-cd4e-4593-8b3b-a3ce6b827435}</UniqueIdentifier>
     </Filter>

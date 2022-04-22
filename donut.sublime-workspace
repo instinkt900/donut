@@ -1,0 +1,795 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"vulka",
+				"vulkan_utils"
+			],
+			[
+				"VkDescriptorSetL",
+				"VkDescriptorSetLayoutBinding"
+			],
+			[
+				"vulkan_shaderca",
+				"vulkan_shadercache"
+			],
+			[
+				"vulkan_vertex",
+				"vulkan_vertexlayout"
+			],
+			[
+				"Sha",
+				"ShaderModule"
+			],
+			[
+				"Verte",
+				"VertexAttrib"
+			],
+			[
+				"Vertex",
+				"VertexLayout"
+			],
+			[
+				"VkAtta",
+				"VkAttachmentDescription"
+			],
+			[
+				"empla",
+				"emplace_back"
+			],
+			[
+				"empl",
+				"emplace_back"
+			],
+			[
+				"attach",
+				"attachments"
+			],
+			[
+				"VkA",
+				"VkAttachmentDescription"
+			],
+			[
+				"CreateIn",
+				"CreateInstance"
+			],
+			[
+				"OnEx",
+				"OnExpireEvent"
+			],
+			[
+				"Tic",
+				"TickComponent"
+			],
+			[
+				"Pro",
+				"Projectile"
+			],
+			[
+				"UPRO",
+				"UPROPERTY"
+			],
+			[
+				"Proj",
+				"ProjectileTrackingComponent"
+			],
+			[
+				"Deton",
+				"Detonate"
+			],
+			[
+				"UFun",
+				"UFUNCTION"
+			],
+			[
+				"dis",
+				"Distance"
+			],
+			[
+				"UStaticMe",
+				"UStaticMeshComponent"
+			],
+			[
+				"Ma",
+				"MakeSphere"
+			],
+			[
+				"siz",
+				"Size"
+			],
+			[
+				"ComponentSpace",
+				"ComponentSpaceTargetDirection"
+			],
+			[
+				"Component",
+				"ComponentSpaceTargetLocation"
+			],
+			[
+				"Curr",
+				"CurrentLocalRotation"
+			],
+			[
+				"Forwa",
+				"ForwardVector"
+			],
+			[
+				"CurrentWea",
+				"CurrentWeaponRotation"
+			],
+			[
+				"ang",
+				"Angle"
+			],
+			[
+				"DesiredLocal",
+				"DesiredLocalRotation"
+			],
+			[
+				"tra",
+				"Transform"
+			],
+			[
+				"trans",
+				"TransformVector"
+			],
+			[
+				"Ori",
+				"OrigRotation"
+			],
+			[
+				"NewRa",
+				"NewRelativeRotation"
+			],
+			[
+				"Rotat",
+				"Rotator"
+			],
+			[
+				"Orin",
+				"OriginalQuat"
+			],
+			[
+				"Orig",
+				"OriginalRotation"
+			],
+			[
+				"GetBa",
+				"GetBarrelRotation"
+			],
+			[
+				"Weap",
+				"WeaponRotation"
+			],
+			[
+				"WeaponCom",
+				"WeaponComponent"
+			],
+			[
+				"UStatic",
+				"UStaticMeshComponent"
+			],
+			[
+				"Play",
+				"PlayerShip"
+			],
+			[
+				"Indic",
+				"IndicatorWidget"
+			],
+			[
+				"SetLoca",
+				"SetRelativeLocation"
+			],
+			[
+				"Spawn",
+				"SpawnCollisionHandlingOverride"
+			],
+			[
+				"Enemy",
+				"EnemySpawnerComponent"
+			],
+			[
+				"In",
+				"Indicator"
+			],
+			[
+				"Indi",
+				"Indicator"
+			],
+			[
+				"IndicatorCla",
+				"IndicatorClass"
+			],
+			[
+				"Upro",
+				"UPROPERTY"
+			],
+			[
+				"GetPlayerControll",
+				"GetFirstLocalPlayerController"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"create",
+				"Package Control: Create Package File"
+			],
+			[
+				"Snippet: log",
+				"Snippet: unreal-log-cpp"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: unreal-class-actor"
+			],
+			[
+				"Snippet: uca",
+				"Snippet: unreal-uproject"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"disab",
+				"Package Control: Disable Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"ls",
+			"ll"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Development/donut",
+		"/D/Development/donut/src",
+		"/D/Development/donut/src/renderer",
+		"/D/Development/donut/src/renderer/renderer_apis"
+	],
+	"file_history":
+	[
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/notes.txt",
+		"/D/Development/donut/CMakeLists.txt",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_context.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_context.h",
+		"/D/Development/donut/external/concurrentqueue/README.md",
+		"/D/Development/donut/external/concurrentqueue/.git",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shader.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_pipeline.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_reflectioninfo.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_renderpass.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shadercache.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shader.h",
+		"/D/Development/donut/src/donut_pch.h",
+		"/C/Users/insti/Documents/SFU_instr.txt",
+		"/D/Development/Barotrauma/README.md",
+		"/D/Development/Barotrauma/Barotrauma/bin/DebugWindows/netcoreapp3.1/Content/Items/Tools/tools.xml",
+		"/D/Development/Barotrauma/Barotrauma/bin/DebugWindows/netcoreapp3.1/Content/Items/Electricity/signalitems.xml",
+		"/D/SteamLibrary/steamapps/common/Barotrauma/Content/OutpostEvents.xml",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shadercompiler.cpp",
+		"/D/Development/donut/src/utils/string_utils.h",
+		"/D/Development/donut/external/DirectXShaderCompiler/include/dxc/dxcapi.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shadercache.h",
+		"/D/Development/donut/external/DirectXShaderCompiler/docs/LangRef.rst",
+		"/D/Development/donut/external/DirectXShaderCompiler/docs/README.txt",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_renderer.cpp",
+		"/C/VulkanSDK/1.2.170.0/Include/vulkan/vulkan_core.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shadercompiler.h",
+		"/D/Development/donut/singlebuild.bat",
+		"/D/Development/donut/src/system/job.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_glfw_window.cpp",
+		"/D/Development/donut/external/FastNoise2/NoiseTool/ThirdParty/imgui/examples/example_glfw_vulkan/main.cpp",
+		"/D/Development/donut/external/imgui/examples/libs/glfw/include/GLFW/glfw3.h",
+		"/D/Development/donut/src/renderer/shader.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_vertexlayout.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_reflectioninfo.h",
+		"/D/Development/donut/src/scene/systems/renderingsystem.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_vertexlayout.cpp",
+		"/D/Development/donut/external/DirectXShaderCompiler/include/dxc/Support/WinAdapter.h",
+		"/D/Development/vulkan-engine/engine/lib/dxc/dxcapi.h",
+		"/C/Users/insti/Documents/SFU_doc.txt",
+		"/D/Development/donut/src/system/allocator.h",
+		"/D/Development/donut/src/system/allocator.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_utils.cpp",
+		"/D/Development/donut/src/system/job.cpp",
+		"/D/Development/donut/src/utils/math_utils.h",
+		"/D/Development/donut/src/renderer/glfw_window.h",
+		"/D/Development/donut/src/renderer/glfw_window.cpp",
+		"/C/Users/insti/AppData/Roaming/Sublime Text 3/Packages/User/DonutBuild.sublime-build",
+		"/D/Development/donut/src/renderer/renderer_apis/opengl/opengl_glfw_window.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/opengl/opengl_glfw_window.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shaderresource.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shaderresource.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shaderdefines.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shaderdefines.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_capsset.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_shadercaps.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_types.h",
+		"/D/Development/donut/.gitmodules",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_renderpass.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_pipeline.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_renderer.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_utils.h",
+		"/D/Development/donut/src/renderer/iwindow.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_glfw_window.h",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_swapchain.cpp",
+		"/D/Development/donut/src/renderer/renderer_apis/vulkan/vulkan_swapchain.h",
+		"/C/VulkanSDK/1.2.170.0/Include/vulkan/vulkan.hpp",
+		"/C/VulkanSDK/1.2.170.0/Include/vulkan/vulkan.h",
+		"/D/Development/donut/donut.sublime-project",
+		"/D/SteamLibrary/steamapps/common/Last Oasis - Dedicated Server/start.bat",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/TODO.txt",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/NOTES.txt",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ProjectileTrackingComponent.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ProjectileComponent.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ProjectileThrustComponent.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ProjectileThrustComponent.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ProjectileComponent.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/Projectile.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/Projectile.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ProjectileTrackingComponent.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ProjectileWarheadComponent.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ProjectileWarheadComponent.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Saved/Logs/SpaceCombat.log",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/StaticMeshComponent.h",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/MeshComponent.cpp",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/MeshComponent.h",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/PrimitiveComponent.cpp",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/PrimitiveComponent.h",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/SparseDelegate.h",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Private/Actor.cpp",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/HealthComponent.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/HealthComponent.h",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/ActorComponent.cpp",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Classes/Engine/EngineTypes.h",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Private/Components/SceneComponent.cpp",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/SceneComponent.h",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Classes/Components/ActorComponent.h",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Core/Public/Math/Vector.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/Rocket.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/Flack.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/Flack.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/Rocket.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ExplosiveProjectile.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/ExplosiveProjectile.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/Missile.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/WeaponComponent.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/WeaponComponent.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectiles/Missile.cpp",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Private/DrawDebugHelpers.cpp",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Public/DrawDebugHelpers.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/genproject.bat",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/PhysicsCore/Public/Chaos/ChaosEngineInterface.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectile.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Projectile.cpp",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Classes/Engine/World.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Ship.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/ShipEngineComponent.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Ship.cpp",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/CoreUObject/Public/UObject/NoExportTypes.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Missile.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/Missile.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/EnemyShip.h",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/EnemyShip.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/EnemySpawnerComponent.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/EnemySpawnerComponent.h",
+		"/D/Epic/UE_4.26/Engine/Source/Runtime/Engine/Private/PrimitiveComponentPhysics.cpp",
+		"/C/Users/insti/Documents/Unreal Projects/SpaceCombat/Source/SpaceCombat/ShipEngineComponent.cpp"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+			"D:\\Development\\donut\\src\\renderer\\renderer_apis\\vulkan,<project filters>",
+			"C:\\VulkanSDK\\1.2.170.0\\Include\\vulkan,<project filters>",
+			"C:\\temp\\fastbuild\\Code\\Tools\\FBuild,<project filters>",
+			"C:\\temp\\fastbuild\\Code\\Tools\\FBuild\\FBuildCore,<project filters>",
+			"C:\\temp\\fastbuild\\Code\\Tools\\FBuild\\FBuildWorker,<project filters>",
+			"C:\\temp\\fastbuild-0.99\\Code",
+			"C:\\temp\\fastbuild-0.99\\Code\\Tools\\FBuild\\FBuildCore\\BFF",
+			"C:\\temp\\dist_v1.05",
+			"C:\\temp\\dist_v1.05\\Code\\Core",
+			"C:\\temp\\dist_v1.05\\Code\\",
+			"C:\\temp\\dist_v1.05\\Code\\Tools\\FBuild",
+			"C:\\temp\\dist_v1.05\\Code\\Tools\\FBuild\\FBuild",
+			"C:\\temp\\dist_v1.05\\Code\\Tools\\FBuild\\FBuildCore",
+			"C:\\temp\\dist_v1.05\\Code\\Tools\\FBuild",
+			"C:\\temp\\dist_v1.05\\Code\\Tools\\FBuild\\FBuildCore",
+			"C:\\temp\\dist_v1.05",
+			"D:\\Development\\vulkan-engine\\engine",
+			"D:\\Development\\vulkan-engine\\engine\\render",
+			"D:\\Development\\vulkan-engine"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\\",
+			"ShaderCache",
+			";\n",
+			"Empty",
+			"#include \"scene/scene.h\"\n// #include \"scene/entity.h\"\n// #include \"scene/systems/camerasystem.h\"\n// #include \"scene/systems/inputsystem.h\"\n// #include \"scene/systems/renderingsystem.h\"",
+			"VkDescriptorSetLayoutBinding",
+			"std::atomic<State>",
+			"TransitionState",
+			"device",
+			"shader_stage_flag_map",
+			"VkShaderStageFlagBits",
+			"bindingDescription",
+			"DescriptorSetLayout",
+			"DescripterSet",
+			"attributeDescriptions",
+			"m_shader",
+			"renderPass",
+			"swapChainFramebuffers",
+			"swapChainImageViews",
+			"findQueueFamilies",
+			"chooseSwapSurfaceFormat",
+			"SwapChainSupportDetails",
+			"DestroyDebugUtilsMessengerEXT",
+			"createDebugUtilsMessengerEXT",
+			"DestroyDebugUtilsMessengerEXT",
+			"debugMessenger",
+			"createDebugUtilsMessengerEXT",
+			"getDebugMessengerCreateInfo",
+			"queueFamilies",
+			"createDebugUtilsMessengerEXT",
+			"VkSurfaceKHR",
+			"imageAvailableSemaphores",
+			"OnComponentHit",
+			"SetActorRotation",
+			"GetComponents(",
+			"GetComponentsByClass",
+			"GetComponents",
+			"Components",
+			"Damage",
+			"anydamage",
+			"valid",
+			"destroy",
+			"deleted",
+			"FComponentHitSignature",
+			"OnComponentHit",
+			"Force",
+			"Impulse",
+			"GetActorQuat",
+			"GetActorRotation",
+			"RotateVector",
+			"rotation",
+			"SetWorldRotation",
+			"GetComponents(",
+			"getrelativerotation",
+			"acos",
+			"radians",
+			"angle",
+			"Rotator",
+			"attachtocomponent",
+			"Destroycom",
+			"collision",
+			"visible",
+			"visiblein",
+			"visible",
+			"Visibility",
+			"Visible",
+			"Velocity",
+			"velocity",
+			"SocketOffset",
+			"RelativeSocketLocation",
+			"LinearColor",
+			"FVector",
+			"h",
+			"EWidgetSpace",
+			"AttachToComponent",
+			"AttachToCompoenent",
+			"SetWidget",
+			"TargetWidget",
+			"yaw",
+			"CreateDefaultSubobject",
+			"}));",
+			"GetActorRotation",
+			"{\n",
+			"UPlayer",
+			"GetPlayer",
+			"APlayerController",
+			"AddTorque",
+			"SetLinearDamping",
+			"simulatephysics",
+			"physics",
+			"Length",
+			"InputComponent",
+			"Frotator",
+			"FLAG_GCC",
+			"Failed to build",
+			"m_AllowDistributed",
+			"OUTPUT",
+			"OnConnected",
+			"Disconnected from the coordinator",
+			"m_ConsoleMode",
+			"m_CompressedContent",
+			"50-",
+			"jpeg_std_error",
+			"turbo",
+			".mm",
+			"bin/",
+			"CreateTempFile",
+			"CreateThreadLocalTmpDir",
+			"CreateTempFilePath",
+			"GetTempFileDirectory",
+			"s_TmpRoot",
+			"CLFilterDependenciesOutput",
+			"%3",
+			"%5",
+			"%4",
+			"%3",
+			"%1",
+			"%5",
+			"%",
+			"include",
+			"INCLUDE",
+			"EXEC",
+			"Failed to build Object. Error",
+			"Failed to build Object. error",
+			"ERROR_STR",
+			"LAST_ERROR_STR",
+			"GetLastErr",
+			"GetLastError"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"/"
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.Terminus":
+	{
+		"height": 282.0
+	},
+	"output.exec":
+	{
+		"height": 240.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/DonutBuild.sublime-build",
+	"project": "donut.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"staticmeshcomponent",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\Components\\StaticMeshComponent.h"
+			],
+			[
+				"Actor",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\GameFramework\\Actor.h"
+			],
+			[
+				"Actor.h",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\GameFramework\\Actor.h"
+			],
+			[
+				"actor.h",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\GameFramework\\Actor.h"
+			],
+			[
+				"primitivecomponent",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\Components\\PrimitiveComponent.h"
+			],
+			[
+				"transform.",
+				"Engine\\Source\\Runtime\\Core\\Public\\Algo\\Transform.h"
+			],
+			[
+				"SceneComponent",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\Components\\SceneComponent.h"
+			],
+			[
+				"scenecomponent.",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\Components\\SceneComponent.h"
+			],
+			[
+				"staticmeshcomponent.h",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\Components\\StaticMeshComponent.h"
+			],
+			[
+				"StaticMeshComponent.h",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\Components\\StaticMeshComponent.h"
+			],
+			[
+				"PrimitiveComponent.h",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\Components\\PrimitiveComponent.h"
+			],
+			[
+				"SpringArmComponent.h",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\GameFramework\\SpringArmComponent.h"
+			],
+			[
+				"widgetcomponent",
+				"Engine\\Source\\Runtime\\UMG\\Public\\Components\\WidgetComponent.h"
+			],
+			[
+				"UserWidget",
+				"Engine\\Source\\Runtime\\UMG\\Public\\Blueprint\\UserWidget.h"
+			],
+			[
+				"WidgetComponent",
+				"Engine\\Source\\Runtime\\UMG\\Public\\Components\\WidgetComponent.h"
+			],
+			[
+				"ActorComponent",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\Components\\ActorComponent.h"
+			],
+			[
+				"PlayerController",
+				"Engine\\Source\\Runtime\\Engine\\Classes\\GameFramework\\PlayerController.h"
+			],
+			[
+				"pawn.",
+				"Source\\Runtime\\Engine\\Private\\Pawn.cpp"
+			],
+			[
+				"objectnode",
+				"Code\\Tools\\FBuild\\FBuildCore\\Graph\\ObjectNode.cpp"
+			],
+			[
+				"workerb",
+				"Code\\Tools\\FBuild\\FBuildCore\\WorkerPool\\WorkerBrokerage.cpp"
+			],
+			[
+				"protocol",
+				"Code\\Tools\\FBuild\\FBuildCore\\Protocol\\Protocol.h"
+			],
+			[
+				"objectnode.cpp",
+				"Code\\Tools\\FBuild\\FBuildCore\\Graph\\ObjectNode.cpp"
+			],
+			[
+				"errorform",
+				"dist_v1.05\\Code\\Core\\Env\\ErrorFormat.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"D:\\Development\\vulkan-engine\\vulkan-engine.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 305.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
