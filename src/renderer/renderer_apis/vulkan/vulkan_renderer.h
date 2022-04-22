@@ -13,8 +13,6 @@ namespace donut::vulkan {
         static void Clear(glm::vec4 const& color);
         static void DrawPrimitives(PrimitiveType primitiveType, unsigned int start, unsigned int count);
         static void DrawIndexedPrimitives(PrimitiveType primitiveType, unsigned int indexCount);
-
-        static void OnResize();
     };
 }
 

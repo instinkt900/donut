@@ -23,7 +23,7 @@ namespace donut::vulkan {
         });
 
         glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
         auto window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
         if (nullptr == window) {
             spdlog::error("glfwCreateWindow failed!");
@@ -89,11 +89,6 @@ namespace donut::vulkan {
         : m_window(window)
         , m_surface(surface)
         , m_layerStack(*this) {
-
-        glfwSetWindowUserPointer(window, this);
-        glfwSetFramebufferSizeCallback(m_window, [](GLFWwindow* glfwWindow, int width, int height) {
-            GET_WINDOW(glfwWindow)->OnResize(width, height);
-        });
     }
 }
 
