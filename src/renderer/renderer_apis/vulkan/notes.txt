@@ -1,9 +1,0 @@
-vulkan notes
-
-https://raphlinus.github.io/ui/graphics/2020/09/13/compositor-is-evil.html
-https://raphlinus.github.io/ui/graphics/gpu/2021/10/22/swapchain-frame-pacing.html
-
-
-TODO
-motherfucking git
-turns out i reset the changes so all existing files that were changed were reverted.
