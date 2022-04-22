@@ -41,6 +41,9 @@ namespace donut::vulkan {
     }
 
     GLFWWindow::~GLFWWindow() {
+        auto vkInstance = Renderer::GetInstance();
+        vkDestroySurfaceKHR(vkInstance, m_surface, nullptr);
+
         glfwDestroyWindow(m_window);
         glfwTerminate();
     }
