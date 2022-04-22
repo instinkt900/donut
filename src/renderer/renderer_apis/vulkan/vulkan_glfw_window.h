@@ -21,7 +21,6 @@ namespace donut::vulkan {
 
     private:
         GLFWwindow* m_window = nullptr;
-        VkSurfaceKHR m_surface;
         int m_width = 0, m_height = 0;
         int m_contentWidth = 0, m_contentHeight = 0;
 
@@ -33,7 +32,7 @@ namespace donut::vulkan {
         void OnMouseScroll(double xOffset, double yOffset);
         void OnMouseMove(double x, double y);
 
-        GLFWWindow(GLFWwindow* window, VkSurfaceKHR surface);
+        GLFWWindow(GLFWwindow* window);
     };
 }
 
